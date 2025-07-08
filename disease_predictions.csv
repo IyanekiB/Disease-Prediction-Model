@@ -1,0 +1,241 @@
+True_Disease,RF_Prediction,SVM_Prediction,RF_Confidence,SVM_Confidence
+Pneumonia,Pneumonia,Pneumonia,0.68,0.4669931873359531
+Malaria,Malaria,Malaria,0.66,0.4667388137944106
+Dengue,Dengue,Dengue,0.31,0.49821938026925594
+Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,0.99,0.8506970182502837
+Arthritis,Arthritis,Arthritis,0.98,0.7957098369224999
+Jaundice,Jaundice,Jaundice,1.0,0.861346061474974
+urinary tract infection,urinary tract infection,urinary tract infection,0.47,0.30303138521390155
+allergy,allergy,allergy,0.58,0.4855363647817394
+Jaundice,Jaundice,Jaundice,0.89,0.7185568320401342
+Common Cold,Common Cold,Common Cold,0.57,0.8030679894144375
+Acne,Acne,Acne,0.95,0.7676058339567455
+Impetigo,Impetigo,Impetigo,0.74,0.7408637342338911
+diabetes,diabetes,diabetes,0.5056666666666667,0.3956519022858434
+Hypertension,Hypertension,Hypertension,0.63,0.6987227230615459
+Chicken pox,Chicken pox,Chicken pox,0.45,0.39960698259886385
+Impetigo,diabetes,Dengue,0.18,0.3921447508311814
+Impetigo,Impetigo,Impetigo,0.95,0.9377851845969367
+Impetigo,Impetigo,Impetigo,0.62,0.6404623040134472
+Dengue,Dengue,Chicken pox,0.36,0.5922971814276505
+Acne,Acne,Acne,0.99,0.8188560023714702
+allergy,allergy,allergy,0.7,0.6819497809557383
+Pneumonia,Pneumonia,Pneumonia,0.41,0.5809875991104219
+Common Cold,Common Cold,Common Cold,0.6,0.6805880445801097
+allergy,allergy,allergy,0.94,0.8768608939314563
+Migraine,Migraine,Migraine,0.96,0.46637853508761257
+Typhoid,Dengue,Dengue,0.32,0.6589309522246298
+Varicose Veins,diabetes,Varicose Veins,0.3,0.25426162615082765
+Bronchial Asthma,Bronchial Asthma,Bronchial Asthma,0.9,0.7452600853030148
+Psoriasis,Psoriasis,Psoriasis,0.44,0.6168418102634771
+Varicose Veins,Varicose Veins,Varicose Veins,0.9,0.6873554855429261
+Fungal infection,Psoriasis,Psoriasis,0.65,0.6138328770365924
+drug reaction,drug reaction,drug reaction,0.55,0.3507650513440309
+Dengue,Dengue,Dengue,0.43,0.7529226154747323
+Arthritis,Arthritis,Arthritis,0.88,0.6028633361073552
+drug reaction,drug reaction,drug reaction,0.35,0.26405075952844875
+Varicose Veins,Varicose Veins,Varicose Veins,0.95,0.93107216265634
+Cervical spondylosis,Cervical spondylosis,Cervical spondylosis,0.97,0.9278442750138332
+Impetigo,Chicken pox,Chicken pox,0.23,0.3071168261010515
+peptic ulcer disease,peptic ulcer disease,peptic ulcer disease,0.5,0.4845172285506006
+urinary tract infection,urinary tract infection,urinary tract infection,0.58,0.2707932696213506
+Common Cold,Common Cold,Common Cold,0.7,0.7923554685933294
+Migraine,Migraine,Migraine,1.0,0.8110431471641171
+Arthritis,Arthritis,Arthritis,0.99,0.8330799437158227
+Cervical spondylosis,Cervical spondylosis,Cervical spondylosis,0.91,0.8043992436852638
+Bronchial Asthma,Bronchial Asthma,Bronchial Asthma,0.72,0.6008385945542197
+drug reaction,diabetes,diabetes,0.29,0.3469143597401016
+Malaria,Malaria,Malaria,1.0,0.9449090320025396
+gastroesophageal reflux disease,gastroesophageal reflux disease,gastroesophageal reflux disease,0.94,0.8705834681869782
+Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,1.0,0.9077535316952073
+gastroesophageal reflux disease,gastroesophageal reflux disease,gastroesophageal reflux disease,0.75,0.5597066672112244
+Fungal infection,Fungal infection,Fungal infection,0.91,0.7195308227188996
+diabetes,diabetes,diabetes,0.7233333333333334,0.35538770579216483
+Bronchial Asthma,Bronchial Asthma,Bronchial Asthma,0.77,0.8256087106988388
+Dengue,Dengue,Dengue,0.32,0.723899933780567
+diabetes,diabetes,diabetes,0.89,0.832980753702799
+allergy,allergy,allergy,0.52,0.7179036463610313
+Arthritis,Arthritis,Arthritis,0.95,0.5947707578362951
+Cervical spondylosis,Cervical spondylosis,Cervical spondylosis,0.96,0.8562687679344257
+Dengue,Dengue,Dengue,0.35,0.6289048547464026
+peptic ulcer disease,peptic ulcer disease,peptic ulcer disease,0.32,0.32316622868305406
+Bronchial Asthma,Bronchial Asthma,Bronchial Asthma,0.89,0.8617269584876665
+Jaundice,Jaundice,Jaundice,1.0,0.824576644694961
+Acne,Acne,Acne,1.0,0.7422408294137289
+Psoriasis,diabetes,diabetes,0.61,0.4539551841276606
+Fungal infection,Fungal infection,Fungal infection,0.64,0.8486810461352867
+Common Cold,Common Cold,Common Cold,0.54,0.7495002455740567
+gastroesophageal reflux disease,gastroesophageal reflux disease,gastroesophageal reflux disease,0.96,0.8408665275822854
+Impetigo,Impetigo,Impetigo,0.63,0.848809814095242
+allergy,gastroesophageal reflux disease,gastroesophageal reflux disease,0.47,0.2563017907383418
+Typhoid,Typhoid,Typhoid,0.67,0.9250678677348813
+Pneumonia,Pneumonia,Pneumonia,0.93,0.8560992823922684
+gastroesophageal reflux disease,gastroesophageal reflux disease,gastroesophageal reflux disease,0.94,0.8705834681869782
+diabetes,diabetes,diabetes,0.7,0.5155688468275559
+peptic ulcer disease,peptic ulcer disease,peptic ulcer disease,0.84,0.7031567211396482
+Acne,Acne,Acne,0.98,0.8258956076505984
+Jaundice,Jaundice,Jaundice,0.95,0.8334399573388839
+Typhoid,Typhoid,Typhoid,0.36,0.8197726516362859
+Hypertension,Migraine,Migraine,0.2432222222222222,0.2954264110277863
+Malaria,Malaria,Malaria,0.99,0.8057061336263864
+Arthritis,Arthritis,Arthritis,0.57,0.19933069913798798
+Hypertension,Hypertension,Hypertension,1.0,0.8986919154974727
+Hypertension,Hypertension,Hypertension,1.0,0.856894851883046
+gastroesophageal reflux disease,Typhoid,Hypertension,0.3,0.3095810081063463
+Acne,Acne,Acne,1.0,0.9241952772983527
+Jaundice,Jaundice,Jaundice,1.0,0.8667789853354129
+Acne,Acne,Acne,0.98,0.8258956076505984
+Fungal infection,Fungal infection,Fungal infection,0.53,0.7155403556476359
+allergy,allergy,allergy,0.57,0.717345066154007
+Migraine,Migraine,Migraine,1.0,0.8124359144341899
+Jaundice,Jaundice,Jaundice,0.98,0.938079968081622
+Impetigo,Impetigo,Dengue,0.18,0.2332988879246198
+Varicose Veins,Varicose Veins,Varicose Veins,0.73,0.6829145172731051
+Pneumonia,Pneumonia,Pneumonia,0.98,0.9318698122697808
+Migraine,Migraine,Migraine,1.0,0.7435730750064029
+gastroesophageal reflux disease,gastroesophageal reflux disease,gastroesophageal reflux disease,0.96,0.8408665275822854
+peptic ulcer disease,peptic ulcer disease,peptic ulcer disease,0.49,0.6890707381045447
+Bronchial Asthma,Bronchial Asthma,Bronchial Asthma,0.95,0.8820142715964909
+Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,0.92,0.6996313462828712
+Chicken pox,Typhoid,Dengue,0.29,0.6390508106634908
+Typhoid,Typhoid,Typhoid,0.71,0.902121909775503
+Typhoid,Typhoid,Typhoid,0.51,0.5578780284450083
+Dengue,Bronchial Asthma,Dengue,0.22,0.3143082806531306
+Arthritis,Arthritis,Arthritis,0.86,0.4299053443123733
+urinary tract infection,urinary tract infection,urinary tract infection,0.523277777777778,0.3298026140259628
+Typhoid,Typhoid,Typhoid,0.71,0.7268375348940052
+Malaria,Malaria,Malaria,0.97,0.8425718240725214
+Dengue,Psoriasis,Dengue,0.38,0.6729017093778478
+allergy,allergy,allergy,0.39,0.4467210676429531
+drug reaction,diabetes,diabetes,0.84,0.38985388050850683
+Common Cold,Common Cold,Common Cold,0.37,0.5859469589610418
+Varicose Veins,Varicose Veins,Varicose Veins,0.81,0.9415577360385724
+diabetes,diabetes,diabetes,0.6533333333333334,0.2975264190690206
+Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,0.96,0.8246176911097582
+Pneumonia,Pneumonia,Pneumonia,0.81,0.9213530362315014
+Arthritis,Arthritis,Arthritis,0.78,0.5746193421250114
+Cervical spondylosis,Cervical spondylosis,Cervical spondylosis,0.93,0.8605764859468198
+Typhoid,peptic ulcer disease,peptic ulcer disease,0.35,0.2824083599537041
+Hypertension,Hypertension,Hypertension,1.0,0.8115733928070931
+allergy,allergy,allergy,0.47,0.49845391942704875
+allergy,allergy,diabetes,0.22,0.19825632120823086
+Migraine,Migraine,Migraine,1.0,0.6502802323931364
+peptic ulcer disease,peptic ulcer disease,peptic ulcer disease,0.8,0.8329012080782022
+Bronchial Asthma,Bronchial Asthma,Bronchial Asthma,0.54,0.7795408162323654
+Fungal infection,Fungal infection,Fungal infection,0.52,0.7192922078616297
+Psoriasis,Varicose Veins,Psoriasis,0.39,0.2646601278890888
+peptic ulcer disease,peptic ulcer disease,diabetes,0.37,0.22758955662912728
+Cervical spondylosis,Cervical spondylosis,Cervical spondylosis,0.72,0.8109898323834731
+Hypertension,Hypertension,Hypertension,0.97,0.631429526308966
+Varicose Veins,Varicose Veins,Varicose Veins,0.74,0.544051770118629
+Migraine,Migraine,Migraine,0.96,0.46637853508761257
+Dengue,Dengue,Dengue,0.56,0.7777560567226268
+gastroesophageal reflux disease,gastroesophageal reflux disease,gastroesophageal reflux disease,0.78,0.792849725999357
+Common Cold,Common Cold,Common Cold,0.78,0.8946523255456766
+Hypertension,Hypertension,Hypertension,0.4855,0.35003082278219294
+diabetes,diabetes,urinary tract infection,0.3216666666666667,0.2683372299837595
+Chicken pox,Chicken pox,Chicken pox,0.65,0.8993386932281958
+diabetes,diabetes,Hypertension,0.31,0.3196967773583206
+peptic ulcer disease,peptic ulcer disease,drug reaction,0.33,0.23498711835114292
+Hypertension,Hypertension,Hypertension,0.79,0.7143858770367791
+Chicken pox,Chicken pox,Chicken pox,0.55,0.7583339266491566
+urinary tract infection,urinary tract infection,urinary tract infection,0.37,0.35543248963583945
+urinary tract infection,urinary tract infection,urinary tract infection,0.6425,0.6870477618387342
+Malaria,Malaria,Malaria,1.0,0.9153788999958078
+Malaria,Malaria,Malaria,0.79,0.6792425808160755
+Acne,Acne,Acne,0.99,0.8776606049258998
+drug reaction,drug reaction,diabetes,0.42,0.39551140402598256
+Acne,Acne,Acne,0.97,0.868741790537349
+urinary tract infection,urinary tract infection,drug reaction,0.39,0.16276559839099164
+Migraine,Migraine,Migraine,1.0,0.7160584059869511
+diabetes,diabetes,diabetes,0.88,0.6792993243150397
+Typhoid,Dengue,Dengue,0.24,0.6054797111514875
+Pneumonia,Pneumonia,Pneumonia,0.63,0.8656740048071718
+Jaundice,Jaundice,Jaundice,1.0,0.824576644694961
+Typhoid,Typhoid,Typhoid,0.54,0.5534325946213478
+gastroesophageal reflux disease,gastroesophageal reflux disease,gastroesophageal reflux disease,0.9,0.7670477081646565
+drug reaction,peptic ulcer disease,peptic ulcer disease,0.43,0.4762728064276039
+allergy,allergy,allergy,0.39,0.5986998080332078
+Jaundice,Jaundice,Jaundice,0.96,0.772443879747267
+Malaria,Malaria,Malaria,0.95,0.8568032294893545
+Common Cold,Common Cold,Common Cold,0.71,0.8693381368757568
+Varicose Veins,diabetes,diabetes,0.3536666666666667,0.31392153169586595
+Jaundice,Jaundice,Jaundice,0.98,0.938079968081622
+Fungal infection,Fungal infection,Fungal infection,0.74,0.7909121941407014
+drug reaction,diabetes,diabetes,0.49866666666666665,0.4544870605257523
+Chicken pox,Chicken pox,Chicken pox,0.5,0.6885222314748183
+Common Cold,Common Cold,Common Cold,0.73,0.7033674258055653
+Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,0.94,0.84166500020003
+Psoriasis,Fungal infection,Fungal infection,0.43,0.6647446831178482
+urinary tract infection,urinary tract infection,urinary tract infection,0.833,0.5985710865573879
+Cervical spondylosis,Cervical spondylosis,Cervical spondylosis,0.96,0.8593808409269442
+Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,0.98,0.8006951136461019
+gastroesophageal reflux disease,gastroesophageal reflux disease,gastroesophageal reflux disease,0.95,0.7355921718891574
+Hypertension,Hypertension,Hypertension,0.94,0.43906922196265574
+Acne,Acne,Acne,1.0,0.8632374673277249
+Hypertension,Hypertension,Hypertension,0.39549999999999996,0.3081049404864019
+Fungal infection,Fungal infection,Fungal infection,0.76,0.7365444729271577
+Fungal infection,Fungal infection,Fungal infection,0.87,0.8583768558580708
+Migraine,Migraine,Migraine,1.0,0.7435730750064029
+Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,0.94,0.867156047515054
+Varicose Veins,diabetes,diabetes,0.48,0.39846100107036136
+Acne,Acne,Acne,0.98,0.8258956076505984
+Pneumonia,Pneumonia,Pneumonia,0.95,0.8022030003145435
+Psoriasis,Dengue,Dengue,0.39,0.4188339789434197
+Typhoid,Chicken pox,Chicken pox,0.26,0.41298661166445527
+Impetigo,Impetigo,Impetigo,0.88,0.8789858308926767
+Pneumonia,Pneumonia,Pneumonia,0.71,0.6692938558953112
+Migraine,Migraine,Migraine,0.3825,0.5900494478163109
+Cervical spondylosis,Cervical spondylosis,Cervical spondylosis,0.82,0.8867434497682511
+urinary tract infection,urinary tract infection,urinary tract infection,0.6025,0.6804513898816825
+Psoriasis,Psoriasis,Psoriasis,0.87,0.9350777833800996
+Bronchial Asthma,Bronchial Asthma,Bronchial Asthma,0.94,0.9419525444680024
+Common Cold,Common Cold,Common Cold,0.7,0.8030039677087832
+drug reaction,drug reaction,drug reaction,0.89,0.6636726859471572
+Malaria,Malaria,Malaria,0.95,0.8568032294893545
+Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,0.97,0.8718447737810158
+Cervical spondylosis,Cervical spondylosis,Cervical spondylosis,0.98,0.8829742327527323
+Arthritis,Arthritis,Arthritis,0.88,0.5861246940099903
+Pneumonia,Pneumonia,Pneumonia,0.7,0.7597474802620588
+gastroesophageal reflux disease,gastroesophageal reflux disease,gastroesophageal reflux disease,0.74,0.7799759598090402
+Dengue,Bronchial Asthma,Dengue,0.21,0.3194315014526836
+peptic ulcer disease,diabetes,diabetes,0.5056666666666667,0.3956519022858434
+Common Cold,Common Cold,Common Cold,0.66,0.8129895006649757
+drug reaction,drug reaction,drug reaction,0.32,0.2923577530003565
+Cervical spondylosis,Cervical spondylosis,Cervical spondylosis,0.98,0.911617798564559
+Bronchial Asthma,Bronchial Asthma,Bronchial Asthma,0.81,0.8806403267293872
+Pneumonia,Pneumonia,Pneumonia,0.91,0.9050644728504935
+Malaria,Malaria,Malaria,0.95,0.8247422779506101
+urinary tract infection,urinary tract infection,urinary tract infection,0.7716666666666666,0.7448328525424783
+Chicken pox,Typhoid,Dengue,0.33,0.543159758885287
+Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,0.97,0.8829215231379187
+Impetigo,Impetigo,Impetigo,0.37,0.5288798100556599
+Psoriasis,Psoriasis,Psoriasis,0.53,0.7907177965766293
+Bronchial Asthma,Bronchial Asthma,Bronchial Asthma,0.77,0.7815667864601116
+Varicose Veins,urinary tract infection,urinary tract infection,0.26783333333333337,0.2983037483073871
+Malaria,Malaria,Malaria,1.0,0.9269316924331246
+Impetigo,Impetigo,Impetigo,0.65,0.9493414589569004
+Chicken pox,Chicken pox,Chicken pox,0.67,0.835546798730054
+Dengue,Dengue,Dengue,0.34,0.3870495608239832
+Fungal infection,Fungal infection,Fungal infection,0.84,0.9569310980911542
+Varicose Veins,Varicose Veins,Varicose Veins,0.79,0.7691909043051918
+Chicken pox,Typhoid,Typhoid,0.28,0.3424572472995844
+Arthritis,Arthritis,Arthritis,0.89,0.6362455613551532
+Chicken pox,Chicken pox,Chicken pox,0.25,0.6760580775191346
+drug reaction,Pneumonia,Pneumonia,0.36,0.12322357302244372
+Cervical spondylosis,Cervical spondylosis,Cervical spondylosis,0.98,0.9447674085233123
+urinary tract infection,urinary tract infection,urinary tract infection,0.67,0.5907555937388609
+peptic ulcer disease,diabetes,diabetes,0.52,0.35532137376659373
+Migraine,Migraine,Migraine,0.99,0.7002457515797722
+Arthritis,Arthritis,Arthritis,0.88,0.7032778931580997
+Psoriasis,Psoriasis,Psoriasis,0.36,0.3302444865862625
+Psoriasis,Chicken pox,Chicken pox,0.2,0.2753634294080716
+peptic ulcer disease,gastroesophageal reflux disease,gastroesophageal reflux disease,0.42,0.6013460095612134
+Jaundice,Jaundice,Jaundice,0.99,0.8153344614947504
+Psoriasis,Psoriasis,Psoriasis,0.93,0.8656636455512876
+diabetes,diabetes,diabetes,0.64,0.5565402327695572
+diabetes,diabetes,diabetes,0.47,0.34419279538684255
+Chicken pox,Chicken pox,Chicken pox,0.23,0.4629545484520327
+Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,0.99,0.8779262140861189
+Bronchial Asthma,Bronchial Asthma,Bronchial Asthma,0.81,0.7048165940549144
+Fungal infection,Fungal infection,Fungal infection,0.9,0.890184516146314
