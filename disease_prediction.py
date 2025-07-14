@@ -5,6 +5,8 @@ import seaborn as sns
 import re
 import nltk
 from nltk.stem import WordNetLemmatizer
+import warnings
+warnings.filterwarnings('ignore')
 
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.preprocessing import LabelEncoder
@@ -17,7 +19,7 @@ from sklearn.metrics import (
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 # Download NLTK resources
-nltk.download('punkt')
+nltk.download('punkt_tab')
 nltk.download('wordnet')
 
 # ----- Data Loading and Preprocessing -----
