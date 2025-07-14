@@ -131,52 +131,52 @@ results = pd.DataFrame({
 results.to_csv('disease_predictions.csv', index=False)
 print("Saved predictions to disease_predictions.csv")
 
-# ----- Interactive User Prediction and Evaluation -----
-# Store all interactive predictions for evaluation
-user_true_labels = []
-user_rf_preds = []
-user_svm_preds = []
+# # ----- Interactive User Prediction and Evaluation -----
+# # Store all interactive predictions for evaluation
+# user_true_labels = []
+# user_rf_preds = []
+# user_svm_preds = []
 
-def predict_user_input():
-    while True:
-        user_text = input("\nEnter your symptom description (or type 'exit' to finish):\n")
-        if user_text.lower().strip() == 'exit':
-            break
-        true_disease = input("What is the *true* disease label? (for evaluation):\n").strip()
-        # Preprocess input
-        text_clean = preprocess_text(user_text)
-        X_input = vectorizer.transform([text_clean])
-        rf_pred = le.inverse_transform(rf.predict(X_input))[0]
-        svm_pred = le.inverse_transform(svm_best.predict(X_input))[0]
-        print(f"\nRandom Forest prediction: {rf_pred}")
-        print(f"SVM prediction: {svm_pred}")
-        # Show top-3 likely diseases from Random Forest
-        top3_idx = rf.predict_proba(X_input)[0].argsort()[-3:][::-1]
-        print("Top 3 probable diseases (RF):")
-        for i in top3_idx:
-            print(f" - {le.inverse_transform([i])[0]} ({rf.predict_proba(X_input)[0][i]*100:.1f}%)")
-        # Record for confusion matrix and metrics
-        user_true_labels.append(true_disease)
-        user_rf_preds.append(rf_pred)
-        user_svm_preds.append(svm_pred)
+# def predict_user_input():
+#     while True:
+#         user_text = input("\nEnter your symptom description (or type 'exit' to finish):\n")
+#         if user_text.lower().strip() == 'exit':
+#             break
+#         true_disease = input("What is the *true* disease label? (for evaluation):\n").strip()
+#         # Preprocess input
+#         text_clean = preprocess_text(user_text)
+#         X_input = vectorizer.transform([text_clean])
+#         rf_pred = le.inverse_transform(rf.predict(X_input))[0]
+#         svm_pred = le.inverse_transform(svm_best.predict(X_input))[0]
+#         print(f"\nRandom Forest prediction: {rf_pred}")
+#         print(f"SVM prediction: {svm_pred}")
+#         # Show top-3 likely diseases from Random Forest
+#         top3_idx = rf.predict_proba(X_input)[0].argsort()[-3:][::-1]
+#         print("Top 3 probable diseases (RF):")
+#         for i in top3_idx:
+#             print(f" - {le.inverse_transform([i])[0]} ({rf.predict_proba(X_input)[0][i]*100:.1f}%)")
+#         # Record for confusion matrix and metrics
+#         user_true_labels.append(true_disease)
+#         user_rf_preds.append(rf_pred)
+#         user_svm_preds.append(svm_pred)
 
-print("\n---- User Input Mode ----")
-print("Enter your symptom descriptions to get predictions. Type 'exit' to stop and evaluate.")
-predict_user_input()
+# print("\n---- User Input Mode ----")
+# print("Enter your symptom descriptions to get predictions. Type 'exit' to stop and evaluate.")
+# predict_user_input()
 
-if user_true_labels:
-    # Convert user true labels to numeric
-    user_true_y = le.transform(user_true_labels)
-    user_rf_y = le.transform(user_rf_preds)
-    user_svm_y = le.transform(user_svm_preds)
+# if user_true_labels:
+#     # Convert user true labels to numeric
+#     user_true_y = le.transform(user_true_labels)
+#     user_rf_y = le.transform(user_rf_preds)
+#     user_svm_y = le.transform(user_svm_preds)
 
-    print("\nUser Input Evaluation (Random Forest):")
-    print_metrics("Random Forest (User)", user_true_y, user_rf_y)
-    print("\nUser Input Evaluation (SVM):")
-    print_metrics("SVM (User)", user_true_y, user_svm_y)
+#     print("\nUser Input Evaluation (Random Forest):")
+#     print_metrics("Random Forest (User)", user_true_y, user_rf_y)
+#     print("\nUser Input Evaluation (SVM):")
+#     print_metrics("SVM (User)", user_true_y, user_svm_y)
 
-    # Plot confusion matrices for user session
-    plot_cm(user_true_y, user_rf_y, "Random Forest (User Input)")
-    plot_cm(user_true_y, user_svm_y, "SVM (User Input)")
-else:
-    print("No user predictions to evaluate.")
+#     # Plot confusion matrices for user session
+#     plot_cm(user_true_y, user_rf_y, "Random Forest (User Input)")
+#     plot_cm(user_true_y, user_svm_y, "SVM (User Input)")
+# else:
+#     print("No user predictions to evaluate.")
