@@ -33,12 +33,12 @@ def preprocess_text(text):
     return ' '.join(words)
 
 # --- Load and Preprocess Training Data ---
-df_train = pd.read_csv('/mnt/data/symptom-disease-train-dataset.csv')
+df_train = pd.read_csv('symptom-disease-train-dataset.csv')
 texts_train = df_train['text'].astype(str).apply(preprocess_text)
 labels_train = df_train['label']
 
 # --- Load and Preprocess External Test Data ---
-df_test = pd.read_csv('/mnt/data/symptom-disease-test-dataset.csv')
+df_test = pd.read_csv('symptom-disease-test-dataset.csv')
 texts_test = df_test['text'].astype(str).apply(preprocess_text)
 labels_test = df_test['label']
 
