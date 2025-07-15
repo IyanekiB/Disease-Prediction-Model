@@ -1,8 +1,10 @@
 import pandas as pd
 import numpy as np
-import re
 import matplotlib.pyplot as plt
 import seaborn as sns
+import re
+import nltk
+from nltk.stem import WordNetLemmatizer
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -14,73 +16,71 @@ from sklearn.metrics import (
     accuracy_score, classification_report, confusion_matrix,
     f1_score, precision_score, recall_score
 )
+from sklearn.feature_extraction.text import TfidfVectorizer
 
-# --- Symptom Extraction Utility ---
-def extract_symptoms(text):
-    if pd.isnull(text) or str(text).strip() == "":
-        return []
+# Download NLTK resources
+nltk.download('punkt_tab')
+nltk.download('wordnet')
+
+# --- Define robust preprocessing ---
+lemmatizer = WordNetLemmatizer()
+def preprocess_text(text):
     text = str(text).lower()
-    text = re.sub(r'[^\w\s,]', ',', text)
-    tokens = [t.strip() for t in re.split(r',|\n', text) if t.strip()]
-    return [re.sub(r'[^a-z0-9_]', '', tok) for tok in tokens if len(tok) > 2]
+    text = re.sub(r'\d+', '', text)
+    words = nltk.word_tokenize(text)
+    words = [w for w in words if w.isalpha() and len(w) > 2]
+    words = [lemmatizer.lemmatize(w) for w in words]
+    return ' '.join(words)
 
-def build_symptom_vocab(df_train, df_test):
-    vocab = set()
-    for col in ['text']:
-        for s in pd.concat([df_train[col], df_test[col]]):
-            for symptom in extract_symptoms(s):
-                vocab.add(symptom)
-    return sorted(list(vocab))
+# --- Load train dataset (robust to various column names) ---
+def load_and_prepare_csv(path):
+    df = pd.read_csv(path)
+    # Find possible text/label column names
+    text_col = next((col for col in df.columns if 'text' in col.lower() or 'desc' in col.lower()), None)
+    label_col = next((col for col in df.columns if 'label' in col.lower() or 'disease' in col.lower()), None)
+    if text_col is None or label_col is None:
+        raise ValueError(f"Could not find appropriate text/label columns in {path}")
+    texts = df[text_col].astype(str).apply(preprocess_text)
+    labels = df[label_col].astype(str)
+    return texts, labels, df
 
-# --- Load Datasets ---
-df_train = pd.read_csv('symptom-disease-train-dataset.csv')
-df_test = pd.read_csv('symptom-disease-test-dataset.csv')
+train_path = 'symptom-disease-train-dataset.csv'
+test_path = 'symptom-disease-test-dataset.csv'
 
-# --- Reduce Test Set for Speed and Reset Indexes ---
-SAMPLE_N = 50
-if len(df_test) > SAMPLE_N:
-    df_test = df_test.sample(n=SAMPLE_N, random_state=42).reset_index(drop=True)
+texts_train, labels_train, df_train_raw = load_and_prepare_csv(train_path)
+texts_test, labels_test, df_test_raw = load_and_prepare_csv(test_path)
 
-df_train = df_train.reset_index(drop=True)
-df_test = df_test.reset_index(drop=True)
-
-# --- Build Symptom Vocabulary ---
-symptom_vocab = build_symptom_vocab(df_train, df_test)
-print(f"Total unique symptoms: {len(symptom_vocab)}")
-
-# --- Convert Text to Binary Matrix ---
-def text_to_binary_matrix(df, vocab):
-    arr = np.zeros((len(df), len(vocab)), dtype=int)
-    for i, text in enumerate(df['text']):
-        found = set(extract_symptoms(text))
-        for j, sym in enumerate(vocab):
-            if sym in found:
-                arr[i, j] = 1
-    return pd.DataFrame(arr, columns=vocab)
-
-X_train = text_to_binary_matrix(df_train, symptom_vocab).reset_index(drop=True)
-X_test = text_to_binary_matrix(df_test, symptom_vocab).reset_index(drop=True)
+# --- Fit vectorizer and encoder only on train, transform test ---
+vectorizer = TfidfVectorizer(
+    binary=True,
+    stop_words='english',
+    max_features=200,
+    token_pattern=r'\b[a-zA-Z]{3,}\b'
+)
+X_train = vectorizer.fit_transform(texts_train)
+X_test = vectorizer.transform(texts_test)
 
 le = LabelEncoder()
-y_train = le.fit_transform(df_train['label'].astype(str))
+y_train = le.fit_transform(labels_train)
 
-# --- Mask Only Test Labels Seen in Training, Align Indices ---
-mask = df_test['label'].astype(str).isin(le.classes_).values
+# --- Align test labels: ignore test diseases not in training set ---
+test_label_map = {label: idx for idx, label in enumerate(le.classes_)}
+mask = [lbl in test_label_map for lbl in labels_test]
+X_test_final = X_test[mask]
+labels_test_final = labels_test[mask].values
+y_test_final = [test_label_map[lbl] for lbl in labels_test_final]
+orig_test_texts_final = df_test_raw.iloc[np.where(mask)[0]]  # for saving results
 
-X_test_final = X_test.loc[mask].reset_index(drop=True)
-y_test_final = df_test.loc[mask, 'label'].astype(str).reset_index(drop=True)
-y_test_enc = le.transform(y_test_final)
+print(f"Test samples evaluated: {len(y_test_final)} / {len(labels_test)} (only diseases seen in training set)")
 
-print(f"Test samples kept: {len(y_test_final)} / {len(df_test)}")
-
-# --- Random Forest ---
-rf = RandomForestClassifier(n_estimators=100, random_state=42, n_jobs=-1)
+# --- Model training (Random Forest & SVM) ---
+rf = RandomForestClassifier(n_estimators=100, random_state=42)
 rf.fit(X_train, y_train)
 rf_preds = rf.predict(X_test_final)
 rf_probs = rf.predict_proba(X_test_final)
 
-# --- SVM (Efficient grid) ---
-param_grid = {'C': [1], 'gamma': ['scale']}
+# SVM (optional: set probability=False for speed if confidence not needed)
+param_grid = {'C': [1], 'gamma': ['scale']}  # Keep grid small for speed; adjust as needed!
 svm = SVC(kernel='rbf', probability=True, random_state=42)
 grid = GridSearchCV(svm, param_grid, cv=3, scoring='accuracy', n_jobs=-1)
 grid.fit(X_train, y_train)
@@ -89,7 +89,7 @@ svm_preds = svm_best.predict(X_test_final)
 svm_probs = svm_best.predict_proba(X_test_final)
 print("Best SVM params:", grid.best_params_)
 
-# --- Evaluation ---
+# --- Metrics and reporting ---
 def print_metrics(name, y_true, y_pred):
     print(f"\n{name} Metrics:")
     print(f"Accuracy: {accuracy_score(y_true, y_pred):.2%}")
@@ -102,9 +102,10 @@ def print_metrics(name, y_true, y_pred):
     print("\nClassification Report:")
     print(classification_report(y_true, y_pred, target_names=le.classes_))
 
-print_metrics("Random Forest (External Test)", y_test_enc, rf_preds)
-print_metrics("SVM (External Test)", y_test_enc, svm_preds)
+print_metrics("Random Forest (External Test)", y_test_final, rf_preds)
+print_metrics("SVM (External Test)", y_test_final, svm_preds)
 
+# --- Confusion matrices ---
 def plot_cm(y_true, y_pred, model_name):
     cm = confusion_matrix(y_true, y_pred)
     plt.figure(figsize=(14, 12))
@@ -116,12 +117,16 @@ def plot_cm(y_true, y_pred, model_name):
     plt.show()
     return cm
 
-cm_rf = plot_cm(y_test_enc, rf_preds, "Random Forest (External Test)")
-cm_svm = plot_cm(y_test_enc, svm_preds, "SVM (External Test)")
+cm_rf = plot_cm(y_test_final, rf_preds, "Random Forest (External Test)")
+cm_svm = plot_cm(y_test_final, svm_preds, "SVM (External Test)")
+print("Random Forest Confusion Matrix (Raw):\n", cm_rf)
+print("SVM Confusion Matrix (Raw):\n", cm_svm)
 
+# --- Feature importances (RF only) ---
 importances = rf.feature_importances_
 indices = importances.argsort()[::-1]
-feature_names = np.array(symptom_vocab)
+feature_names = vectorizer.get_feature_names_out()
+
 plt.figure(figsize=(12, 5))
 plt.title("Top 10 Feature Importances (Random Forest)")
 plt.bar(range(10), importances[indices[:10]], align='center')
@@ -130,13 +135,14 @@ plt.tight_layout()
 plt.show()
 print("Top features:", [feature_names[i] for i in indices[:10]])
 
+# --- Save predictions for error analysis ---
 results = pd.DataFrame({
-    'Original_Text': df_test.loc[mask, 'text'].reset_index(drop=True),
-    'True_Disease': y_test_final.values,
+    'Original_Text': orig_test_texts_final[texts_test.name].values,
+    'True_Disease': labels_test_final,
     'RF_Prediction': le.inverse_transform(rf_preds),
     'SVM_Prediction': le.inverse_transform(svm_preds),
     'RF_Confidence': rf_probs.max(axis=1),
     'SVM_Confidence': svm_probs.max(axis=1)
 })
-results.to_csv('external_mixedsymptom_test_predictions_sampled.csv', index=False)
-print("Saved predictions to external_mixedsymptom_test_predictions_sampled.csv")
+results.to_csv('external_test_disease_predictions.csv', index=False)
+print("Saved predictions to external_test_disease_predictions.csv")
