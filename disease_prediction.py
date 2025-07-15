@@ -38,39 +38,48 @@ def preprocess_text(text):
 
 texts_clean = texts.apply(preprocess_text)
 
-# Try different values for max_features here (e.g., 100, 200, 300)
 vectorizer = TfidfVectorizer(
     binary=True,
     stop_words='english',
-    max_features=200, 
+    max_features=200,
     token_pattern=r'\b[a-zA-Z]{3,}\b'
 )
 X = vectorizer.fit_transform(texts_clean)
-
 le = LabelEncoder()
 y = le.fit_transform(labels)
 
-# Split into train/test sets
-X_train, X_test, y_train, y_test, texts_train, texts_test = train_test_split(
+# 1. Split into Train+Val and Test first
+X_temp, X_test, y_temp, y_test, texts_temp, texts_test = train_test_split(
     X, y, texts_clean, test_size=0.2, random_state=42, stratify=y
 )
+# 2. Split Train+Val into Train and Validation
+X_train, X_val, y_train, y_val, texts_train, texts_val = train_test_split(
+    X_temp, y_temp, texts_temp, test_size=0.2, random_state=42, stratify=y_temp
+)
+# Now: Train=64%, Val=16%, Test=20%
+
+print(f"Train samples: {X_train.shape[0]}, Val: {X_val.shape[0]}, Test: {X_test.shape[0]}")
 
 # ----- Model Training -----
-# Random Forest
+# Random Forest (fit on train, tune if needed using val, final eval on test)
 rf = RandomForestClassifier(n_estimators=100, random_state=42)
 rf.fit(X_train, y_train)
-rf_preds = rf.predict(X_test)
-rf_probs = rf.predict_proba(X_test)
+rf_val_preds = rf.predict(X_val)
+rf_test_preds = rf.predict(X_test)
 
-# SVM with parameter tuning
+# SVM with parameter tuning (GridSearch on validation set only!)
 param_grid = {'C': [0.1, 1, 10], 'gamma': ['scale', 0.01, 0.1, 1]}
 svm = SVC(kernel='rbf', probability=True, random_state=42)
 grid = GridSearchCV(svm, param_grid, cv=3, scoring='accuracy', n_jobs=-1)
 grid.fit(X_train, y_train)
 svm_best = grid.best_estimator_
-svm_preds = svm_best.predict(X_test)
-svm_probs = svm_best.predict_proba(X_test)
-print("Best SVM params:", grid.best_params_)
+
+# Evaluate on validation set
+svm_val_preds = svm_best.predict(X_val)
+print("Best SVM params (by val set):", grid.best_params_)
+
+# Now test on *never-seen* test set
+svm_test_preds = svm_best.predict(X_test)
 
 # ----- Evaluation Functions -----
 def print_metrics(name, y_true, y_pred):
@@ -85,10 +94,13 @@ def print_metrics(name, y_true, y_pred):
     print("\nClassification Report:")
     print(classification_report(y_true, y_pred, target_names=le.classes_))
 
-print_metrics("Random Forest", y_test, rf_preds)
-print_metrics("SVM", y_test, svm_preds)
+# ----- Print results -----
+print_metrics("Random Forest (Val)", y_val, rf_val_preds)
+print_metrics("Random Forest (Test)", y_test, rf_test_preds)
+print_metrics("SVM (Val)", y_val, svm_val_preds)
+print_metrics("SVM (Test)", y_test, svm_test_preds)
 
-# Confusion matrices (heatmaps and raw)
+# Confusion matrices (for test set)
 def plot_cm(y_true, y_pred, model_name):
     cm = confusion_matrix(y_true, y_pred)
     plt.figure(figsize=(14, 12))
@@ -100,13 +112,10 @@ def plot_cm(y_true, y_pred, model_name):
     plt.show()
     return cm
 
-cm_rf = plot_cm(y_test, rf_preds, "Random Forest")
-cm_svm = plot_cm(y_test, svm_preds, "SVM")
+print("\nRandom Forest Test Confusion Matrix (Raw):\n", plot_cm(y_test, rf_test_preds, "Random Forest (Test)"))
+print("\nSVM Test Confusion Matrix (Raw):\n", plot_cm(y_test, svm_test_preds, "SVM (Test)"))
 
-print("Random Forest Confusion Matrix (Raw):\n", cm_rf)
-print("SVM Confusion Matrix (Raw):\n", cm_svm)
-
-# Top-10 feature importances (Random Forest)
+# Top-10 feature importances (Random Forest on test set)
 importances = rf.feature_importances_
 indices = importances.argsort()[::-1]
 feature_names = vectorizer.get_feature_names_out()
@@ -119,64 +128,12 @@ plt.tight_layout()
 plt.show()
 print("Top features:", [feature_names[i] for i in indices[:10]])
 
-# Save predictions and probabilities for visual error analysis
+# Save predictions for visual error analysis
 results = pd.DataFrame({
     'Original_Text': texts_test.values,
     'True_Disease': le.inverse_transform(y_test),
-    'RF_Prediction': le.inverse_transform(rf_preds),
-    'SVM_Prediction': le.inverse_transform(svm_preds),
-    'RF_Confidence': rf_probs.max(axis=1),
-    'SVM_Confidence': svm_probs.max(axis=1)
+    'RF_Prediction': le.inverse_transform(rf_test_preds),
+    'SVM_Prediction': le.inverse_transform(svm_test_preds),
 })
-results.to_csv('disease_predictions.csv', index=False)
-print("Saved predictions to disease_predictions.csv")
-
-# # ----- Interactive User Prediction and Evaluation -----
-# # Store all interactive predictions for evaluation
-# user_true_labels = []
-# user_rf_preds = []
-# user_svm_preds = []
-
-# def predict_user_input():
-#     while True:
-#         user_text = input("\nEnter your symptom description (or type 'exit' to finish):\n")
-#         if user_text.lower().strip() == 'exit':
-#             break
-#         true_disease = input("What is the *true* disease label? (for evaluation):\n").strip()
-#         # Preprocess input
-#         text_clean = preprocess_text(user_text)
-#         X_input = vectorizer.transform([text_clean])
-#         rf_pred = le.inverse_transform(rf.predict(X_input))[0]
-#         svm_pred = le.inverse_transform(svm_best.predict(X_input))[0]
-#         print(f"\nRandom Forest prediction: {rf_pred}")
-#         print(f"SVM prediction: {svm_pred}")
-#         # Show top-3 likely diseases from Random Forest
-#         top3_idx = rf.predict_proba(X_input)[0].argsort()[-3:][::-1]
-#         print("Top 3 probable diseases (RF):")
-#         for i in top3_idx:
-#             print(f" - {le.inverse_transform([i])[0]} ({rf.predict_proba(X_input)[0][i]*100:.1f}%)")
-#         # Record for confusion matrix and metrics
-#         user_true_labels.append(true_disease)
-#         user_rf_preds.append(rf_pred)
-#         user_svm_preds.append(svm_pred)
-
-# print("\n---- User Input Mode ----")
-# print("Enter your symptom descriptions to get predictions. Type 'exit' to stop and evaluate.")
-# predict_user_input()
-
-# if user_true_labels:
-#     # Convert user true labels to numeric
-#     user_true_y = le.transform(user_true_labels)
-#     user_rf_y = le.transform(user_rf_preds)
-#     user_svm_y = le.transform(user_svm_preds)
-
-#     print("\nUser Input Evaluation (Random Forest):")
-#     print_metrics("Random Forest (User)", user_true_y, user_rf_y)
-#     print("\nUser Input Evaluation (SVM):")
-#     print_metrics("SVM (User)", user_true_y, user_svm_y)
-
-#     # Plot confusion matrices for user session
-#     plot_cm(user_true_y, user_rf_y, "Random Forest (User Input)")
-#     plot_cm(user_true_y, user_svm_y, "SVM (User Input)")
-# else:
-#     print("No user predictions to evaluate.")
+results.to_csv('disease_predictions_split.csv', index=False)
+print("Saved predictions to disease_predictions_split.csv")
