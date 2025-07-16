@@ -1,241 +1,418 @@
-Original_Text,True_Disease,RF_Prediction,SVM_Prediction,RF_Confidence,SVM_Confidence
-"I've been experiencing chills, feel really exhausted, and my cough just won't go away. When I cough, my chest aches and my heart is pounding. It's a disgusting brownish hue, the mucous I'm coming up.",Pneumonia,Pneumonia,Pneumonia,0.7,0.534854289004449
-"I've had intense itching all over my body, accompanied by chills and vomiting. My fever is really high and I've been sweating excessively. I also have a headache and feel nauseous. My muscles are really painful.",Malaria,Malaria,Malaria,0.64,0.36756064817347184
-"I have been feeling extremely tired and fatigued, and I have no energy to do anything. The fatigue is so severe that I struggle to get out of bed. I have noticed small red spots on my arms and legs. ",Dengue,Varicose Veins,Chicken pox,0.37,0.58130344140788
-I'm having a lot of trouble with my bowel movements lately. It's hard to go and it hurts when I do. My anus is really sore and it's been bleeding when I go. It's really painful and I'm really uncomfortable.,Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,0.95,0.8544073960287045
-My neck has been very tight and my muscles have felt quite weak recently. it's tough on behalf of me to maneuver around while not changing into stiff thanks to my swollen joints. Walking has additionally been very uncomfortable.,Arthritis,Arthritis,Arthritis,1.0,0.8278050629236265
-"I've been feeling scratchy, sick, and worn out. I also had a high fever and lost weight. Both my skin and my urine have become yellow. Additional stomach pain that I've been having",Jaundice,Jaundice,Jaundice,0.98,0.8077187681105706
-Blood has been found in my urination. I sometimes have nausea when urinating. I regularly feel like I'm almost feverish.,urinary tract infection,drug reaction,drug reaction,0.28,0.2662276567967906
-I always get a tickle in my throat and feel fatigued. My skin has begun to feel dry as well. I have ocular edema on occasion.,allergy,allergy,diabetes,0.39,0.37267507525356414
-"Extreme itchiness, nausea, and fatigue have been troubling me. In moreover, I experienced a fever and lost weight. My pee is black, and I've developed a yellow rash. The ache in my stomach is also present.",Jaundice,Jaundice,Jaundice,0.83,0.6395119205920714
-"I'm coughing nonstop and I'm shivering terribly. I have a stuffy nose and my face is under strain. In addition, my throat is coughing up some nasty gunk, and my chest hurts. My muscles hurt a lot, and I can't smell anything.",Common Cold,Common Cold,Common Cold,0.44,0.8757503217959364
-I've recently been dealing with an itching rash on my skin. It's covered in pus-filled pimples and blackheads. My skin has also been quite sensitive.,Acne,Acne,Acne,0.94,0.7645069580539112
-"Initially, I developed small red sores near my nose and neck. Now, I am having a high fever and the sores have become more painful and inflamed over the past few days.",Impetigo,Impetigo,Impetigo,0.69,0.9156549471879836
-I have slow healing of wounds and cuts. I have this tingling sensation in my hand and numbness in both my hands and feet,diabetes,diabetes,diabetes,0.8,0.9001281991267482
-"I've had intense aches in my chest, a headache that won't go away, and I've been feeling dizzy and unsteady.",Hypertension,Hypertension,Hypertension,0.63,0.759580772446504
-I feel tired every day. There are red spots all over my arms and back and it itches if I touch them. I am really worried and not sure what to do.,Chicken pox,Chicken pox,Chicken pox,0.62,0.8622806337689097
-"I am experiencing skin rashes with burning sores. The blistering sores are fluid-filled, elevated, red colored lesions that are unpleasant to touch. I also have a high fever.",Impetigo,Impetigo,Impetigo,0.5,0.8531714969039501
-"A rash has developed around my nose and lips, with huge red lesions that are painful and emit a yellow rust-colored fluid.",Impetigo,Impetigo,Impetigo,0.51,0.7893577900100969
-"I developed a minor rash near my nose a few days ago. Now, the rash is accompanied by a burning sensation and redness of the skin. I feel it is some kind of an infection.",Impetigo,Impetigo,Impetigo,0.48,0.8389745632893573
-"My whole body is paining a lot and I don’t feel like eating anything. I have mild fever and get chills every night. Also, there are some red spots developing on my back and neck.",Dengue,Chicken pox,Chicken pox,0.34,0.6483445347311622
-"A skin rash with several pus-filled pimples and blackheads has been bothering me lately. Additionally, my skin has been scurring a lot.",Acne,Acne,Acne,1.0,0.7937598134032907
-"I have trouble breathing and easily get out of breath. My face and torso are swollen, my eyes hurt, and I have a dry, hacking cough.",allergy,allergy,allergy,0.55,0.7852832297914323
-"With a high temperature, shortness of breath, sweating, chills, and intense exhaustion, I've been feeling quite poorly. I've been coughing up a lot of brownish phlegm and my pulse rate is racing.",Pneumonia,Pneumonia,Pneumonia,0.62,0.7181169973603702
-"I've had a terrible cough and cold for days. My face is tired and my sinuses are blocked. In addition, my chest hurts from the phlegm I've been coughing up. I can't smell, and my muscles are in terrible pain.",Common Cold,Common Cold,Common Cold,0.65,0.7534366710679108
-"My appetite has decreased, and I've been having swallowing issues. I have a sore throat, and my nose has been running.",allergy,allergy,allergy,0.79,0.8494031845770794
-"I have been experiencing acidity, indigestion, headaches, and blurred and distorted vision, as well as excessive hunger, a stiff neck, depression, irritability, and visual disturbance. These symptoms have been affecting my daily life and causing me discomfort.",Migraine,Migraine,Migraine,0.96,0.8493167647097117
-"I have developed diarrhea. It is accompanied by severe pain in my belly area. I don't feel like eating anything, and most of the time, I have a mild headache.",Typhoid,Dengue,Typhoid,0.36,0.4876301473692705
-"Recently, my calves have been cramping up frequently, especially when I am walking or standing for long periods of time. Also, the veins are very noticeable.",Varicose Veins,Varicose Veins,Varicose Veins,0.62,0.4449771743140088
-"I've been having a tough time with this constant cough, difficulty breathing, and fatigue. My fever is high, and I've been coughing up a lot of thick, mucoid sputum. It's all been rather draining and exhausting, and I'm feeling quite sick at the moment.",Bronchial Asthma,Bronchial Asthma,Bronchial Asthma,0.73,0.7641018603937761
-"My skin rash has extended to other areas of my body, including my chest and belly. It is irritating and unpleasant, and it is frequently worst at night. I'm also experiencing skin flaking.",Psoriasis,drug reaction,Psoriasis,0.64,0.5309818223670557
-The skin around the veins on my legs is red and inflamed. I believe I can see some of the swollen blood vessels. I am really worried about it.,Varicose Veins,Varicose Veins,Varicose Veins,0.64,0.8759155627849173
-"There are rashy areas all over my skin, which has been really irritating. Additionally, I have some bumps that are fairly firm and some patches that are a different colour from the rest of my skin.",Fungal infection,Fungal infection,Fungal infection,0.95,0.9320606675423757
-There is severe nausea and chest discomfort. My chest has been aching lately. I'm really nervous and shiver a lot of the time.,drug reaction,drug reaction,drug reaction,0.58,0.8312639619487693
-I have been experiencing severe joint pain that is making my day very difficult. I feel like vomiting all the time and have a mild headache too.,Dengue,Dengue,Dengue,0.37,0.564755563771269
-"My neck has been really stiff, and I've had terrible muscle weakness. Due to the swelling in my joints, it has been challenging to move about. Walking has been quite unpleasant.",Arthritis,Arthritis,Arthritis,0.94,0.4306015449985569
-"I suffer migraines and headaches, and I've been having trouble falling asleep. My muscles have been trembling and twitching. I sometimes feel dizzy.",drug reaction,drug reaction,drug reaction,0.5,0.3813956539269873
-My legs are causing a lot of discomforts when I exercise. I get frequent cramps and the blood vessels have become quite noticeable.,Varicose Veins,Varicose Veins,Varicose Veins,0.95,0.911688435359105
-"Back pain, a productive cough, and limb weakness have been bothering me. I have balance and dizzy concerns, and my neck hurts.",Cervical spondylosis,Cervical spondylosis,Cervical spondylosis,0.97,0.9524256105686948
-"I've acquired skin rashes with blistering sores. The blistering sores are fluid-filled, elevated lesions that are unpleasant to touch. I'm also running a high fever.",Impetigo,Impetigo,Impetigo,0.4,0.8322428779828626
-"My stomach only feels worse when I stoop or recline. After eating particular meals, such as spicy or acidic cuisine, I have discomfort. This occasionally causes me to have loose stools.",peptic ulcer disease,peptic ulcer disease,peptic ulcer disease,0.69,0.8902044686408901
-"I've been experiencing really low moods and very bad urine odour. I can't seem to keep my urine back, and the area near my kidneys hurts a lot. I frequently experience these irrational cravings.",urinary tract infection,urinary tract infection,urinary tract infection,0.43,0.41900799667158756
-I can't stop sneezing and I feel really tired and crummy. My throat is really sore and I have a lot of gunky stuff in my nose and throat. My neck feels swollen and puffy too.,Common Cold,Common Cold,Common Cold,0.62,0.870276626634724
-"Along with headaches, indigestion, acid reflux, excessive appetite, a sore neck, sadness, impatience, and visual disturbance, I have also been experiencing blurred and distorted vision.",Migraine,Migraine,Migraine,0.98,0.9803579048682389
-I've been feeling really weak in my muscles and my neck has been really stiff. My joints have been swelling up and it's hard for me to move around without feeling stiff. Walking has been really painful too.,Arthritis,Arthritis,Arthritis,1.0,0.8016808601963463
-"Along with a chronic cough and limb weakness, I've been dealing with excruciating back discomfort. I've been experiencing neck pain as well as vertigo and instability.",Cervical spondylosis,Cervical spondylosis,Cervical spondylosis,0.81,0.7690433757678463
-"I have a cough that has continued for days, and I feel really weak and tired. My fever is high, and my breath has become strained. When I cough, I also generate a lot of mucus.",Bronchial Asthma,Bronchial Asthma,Bronchial Asthma,0.72,0.8801589191771554
-"When I have a temperature, I feel pretty nauseous and lightheaded. My heart is pounding, and my mind is absolutely foggy. Everything feels a little hazy to me, and I'm having difficulties thinking clearly.",drug reaction,Pneumonia,drug reaction,0.27,0.3506771279682288
-"I have a high fever, chills, and severe itching. I have a headache and am also perspiring a lot. I've been bothered by nausea as well as muscle ache.",Malaria,Malaria,Malaria,0.94,0.9470468907332522
-"Even when I don't have anything acidic in my stomach, I constantly have a sour taste in my mouth. I frequently have hiccups and a lump in my throat.",gastroesophageal reflux disease,gastroesophageal reflux disease,gastroesophageal reflux disease,0.92,0.9434263587663162
-I've been having a lot of trouble with my bowel movements lately. It's hard to go and it hurts when I do. My anus is really sore and it's been bleeding when I go. It's really painful and I'm really uncomfortable.,Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,0.95,0.8544073960287045
-" regularly have indigestion and heartburn, especially after eating spicy or fatty foods. My chest pain is worse when I hunch over or lie down. Additionally, my chest hurts a lot.",gastroesophageal reflux disease,gastroesophageal reflux disease,gastroesophageal reflux disease,0.77,0.8825073608154319
-"I've been having this constant itch and there are these red and bumpy spots on my skin. There are also some patches that are a different color than the rest of my skin, and I've had some bumps that are kind of like little lumps.",Fungal infection,Fungal infection,Fungal infection,0.87,0.9414207075671973
-"I constantly have a dry cough. My infections don't seem to be healing, and I have palpitations. My throat hurts occasionally, but it does appear to get better.",diabetes,diabetes,diabetes,0.7,0.6151611104368228
-"I've been experiencing a high fever, a persistent cough, and shortness of breath. I've also been producing a lot of thick, mucoid sputum, and I'm feeling very tired and weak.",Bronchial Asthma,Bronchial Asthma,Bronchial Asthma,0.93,0.8680058946947906
-"I have developed a skin rash that covers my entire body and is accompanied by intense itching. My body pains and I have a mild fever, acompanied with headache and chills.",Dengue,Dengue,Dengue,0.39,0.8960899238007303
-Both my water intake and frequency of urination have increased. My mouth and throat regularly feel dry. My appetite and hunger have both increased recently.,diabetes,diabetes,diabetes,0.86,0.8792619098543604
-I hace difficulty in breething and shortness of breath. I cough uncontrollably and get itchy eyes and swelling on my face and other body parts,allergy,allergy,allergy,0.51,0.8018699343854662
-"My neck has been really tight, and my muscles have been rather weak. I have swelling joints that make it hard for me to move without getting stiff. Additionally, walking has been quite unpleasant.",Arthritis,Arthritis,Arthritis,0.97,0.5403507526762296
-"Back pain, a persistent cough, and numbness in my arms and legs have been bothering me. I've had trouble staying balanced and experiencing dizziness, and my neck hurts.",Cervical spondylosis,Cervical spondylosis,Cervical spondylosis,0.95,0.8787613625709328
-"The joint pain I have been experiencing is severe and feels like a constant ache. My head aches most of the time and I am starting to develope mild fever, accompanied with chills. ",Dengue,Dengue,Dengue,0.39,0.8979180192883252
-I have bloating and a feeling of uneasiness. I have been experiencing weight loss and a loss of appetite. Sometimes I have dark and tarry stools and blood in my vomit,peptic ulcer disease,peptic ulcer disease,peptic ulcer disease,0.55,0.4619343785945325
-"With my persistent cough, respiratory issues, and exhaustion, I've been struggling. I have a high fever and have been producing a lot of thick, mucoid sputum while coughing. I currently feel rather sick as a result of how draining and tiresome everything has been.",Bronchial Asthma,Bronchial Asthma,Bronchial Asthma,0.9,0.6632564138443335
-"I've been feeling extremely scratchy, sick, and worn out. In addition, I've lost weight and have a temperature. My urine is dark, and my skin has turned yellow. Additionally, I have been experiencing stomach pain.",Jaundice,Jaundice,Jaundice,1.0,0.8039283564703719
-"I recently experienced a severe skin rash. Blackheads and pimples filled with pus are clogging it. Additionally, my skin has been quite irritated.",Acne,Acne,Acne,0.88,0.46631119323493936
-"The rashes on my skin are not healing. Moreover, I have noticed a sudden peeling of the skin, especially the skin on my elbows and knees. I am really worried about this.",Psoriasis,Psoriasis,Psoriasis,0.39,0.5325377997317089
-"Recently, I've been itching myself a lot, and my skin is covered with rashy patches. Furthermore, there are a few regions where my skin doesn't appear to be its usual tone, and I've experienced a few lumps that are exceptionally painful.",Fungal infection,Fungal infection,Fungal infection,0.72,0.8942679117876849
-I've been feeling really sick and I've had a lot of fatigue. I've had a really bad cough and my throat has been really sore. I've had a lot of sinus pressure and my nose has been really congested. I just feel really run down and miserable.,Common Cold,Common Cold,Common Cold,0.53,0.7959378782485982
-"I have a chronic bad breath and a sour taste in my mouth, It sometimes gets difficult to swallow food because of this tingling sensation in my throat",gastroesophageal reflux disease,gastroesophageal reflux disease,gastroesophageal reflux disease,0.78,0.9571019616784316
-"I have noticed that the sores on my face are healing more slowly and are more likely to become infected. My cheek sores are large, painful to the touch, and extremely difficult to handle. I can't seem to get rid of these sores.",Impetigo,Impetigo,Impetigo,0.86,0.8082598082566218
-"I frequently have exhaustion, a terrible taste in my mouth, and throat itchiness. My muscles are also burning and uncomfortable. Sometimes I have cramps all throughout my body.",allergy,allergy,allergy,0.36,0.3523363640537207
-"I've also been suffering from diarrhea, which has been really uncomfortable. It comes and goes, and it's accompanied by stomach aches and vomiting.",Typhoid,Typhoid,Typhoid,0.47,0.5788393641570952
-"I'm drenched with sweat and struggling to breathe. I don't feel well and have a lot of mucous in my throat. My chest aches, and my heart is racing. I'm coughing up mucus that is crimson in colour.",Pneumonia,Pneumonia,Pneumonia,0.94,0.8888352361272895
-"Even when I don't have anything acidic in my stomach, I constantly have a sour taste in my mouth. I frequently have a lump in my throat and the hiccups.",gastroesophageal reflux disease,gastroesophageal reflux disease,gastroesophageal reflux disease,0.92,0.9434263587663162
-"I'm drinking more water and urinating more frequently. My throat and mouth are frequently dry. Recently, my appetite and hunger have both grown.",diabetes,diabetes,diabetes,0.82,0.9107437870213084
-I have unintended weight loss and difficulty gaining weight. I have pain and discomfort that is relieved by taking antacids. My mouth tastes very bad,peptic ulcer disease,peptic ulcer disease,peptic ulcer disease,0.61,0.4626988766887877
-I've been dealing with a really nasty rash on my skin lately. It's covered in blackheads and pimples that are packed with pus. My skin has also been really scurrying.,Acne,Acne,Acne,1.0,0.8436122372856741
-"I've been losing weight and experiencing severe itching, nausea, and exhaustion. My skin has become yellow, and I have a severe fever. I have dark urine, and I've been having stomach pain.",Jaundice,Jaundice,Jaundice,0.95,0.84277840093488
-"I've had a lot of bloating and constipation, which has been really painful. There is a lot of pressure and pain in my stomach area. I get a high fever and chills every night.",Typhoid,Typhoid,Typhoid,0.7,0.9229765592603874
-"In addition to feeling dizzy and lightheaded, I've been having problems keeping my equilibrium. My capacity to concentrate and focus has also been slipping, I've noticed.",Hypertension,Hypertension,Hypertension,0.69,0.5631969139093917
-"Strong itchiness, chills, nausea, and a high fever are all part of my current condition. In addition, I have a headache and have been perspiring a lot. I've been suffering from nausea as well as muscle ache.",Malaria,Malaria,Malaria,1.0,0.7233526095507415
-"My neck has been so tense, and I've been feeling like my muscles are incredibly weak. I have trouble moving since my joints have enlarged. To walk has been quite painful.",Arthritis,Arthritis,Arthritis,0.54,0.18823657245696873
-"I've been experiencing balance issues, a headache, chest pain, and dizziness. My ability to concentrate and focus has also been challenging.",Hypertension,Hypertension,Hypertension,0.93,0.9763723885355707
-"My balance has been off, and I have a headache, chest pain, and dizziness. I've also observed that it's hard for me to concentrate.",Hypertension,Hypertension,Hypertension,1.0,0.9765385687957607
-I often feel sick after eating and puke up the entire meal. I constantly get excruciating acid reflux and severe stomach pain.,gastroesophageal reflux disease,gastroesophageal reflux disease,gastroesophageal reflux disease,0.58,0.7138465225864137
-My skin has simply nonheritable a nasty rash. It's packed with pus-filled pimples and blackheads. My skin has been very sensitive moreover.,Acne,Acne,Acne,0.97,0.9625104083214635
-"I have been experiencing intense itching, vomiting, and fatigue. I have also lost weight and have a high fever. My skin has turned yellow and my urine is dark. I have been having abdominal pain as well.",Jaundice,Jaundice,Jaundice,1.0,0.8910531650620417
-I've been noticing a really nasty rash on my skin lately. It's covered in blackheads and pimples that are packed with pus. My skin has also been really scurrying.,Acne,Acne,Acne,1.0,0.8436122372856741
-There are now red blotches all over my body where I have been itching horribly all over. A few of the patches also differ in complexion from my natural skin. And these lumps or bumps have developed on my skin.,Fungal infection,Fungal infection,Fungal infection,0.77,0.9101251816195474
-I'm always worn out and experiencing a tingle in my throat. I've also started to have dry skin. My eyes occasionally swell up,allergy,allergy,allergy,0.74,0.9268386839840239
-"I have been experiencing acidity, indigestion, and frequent headaches, as well as blurred and distorted vision, excessive hunger, a stiff neck, depression, irritability, and visual disturbance.",Migraine,Migraine,Migraine,1.0,0.9450483249605512
-"I've felt really scratchy, nauseated, and worn out. I also had a high fever and lost weight. Both my skin and my urine have become yellow. I've also been experiencing stomach pain.",Jaundice,Jaundice,Jaundice,0.99,0.8603104319063463
-"I have developed skin rashes made up of blistering sores. The blistering sores are raised, fluid-filled lesions and they are painful to touch. I am also suffering from a high fever.",Impetigo,Impetigo,Impetigo,0.45,0.7967744277174047
-I have been experiencing a rash on my legs that is causing a lot of irritation and discomfort. It is red and inflamed and appears to be spreading.,Varicose Veins,Varicose Veins,Chicken pox,0.51,0.5051398723969541
-I can't seem to catch my breath and I'm sweating a lot. I feel really sick and have a lot of phlegm in my throat. My chest hurts and my heart is racing. The mucus I'm coughing up is brownish and stringy.,Pneumonia,Pneumonia,Pneumonia,0.99,0.9614536458131077
-"Along with excessive appetite, a stiff neck, depression, impatience, and visual disturbance, I've also been having indigestion, headaches, blurred vision, and acid reflux. These symptoms have been bothering me and interfering with my usual activities.",Migraine,Migraine,Migraine,0.99,0.9400253621096339
-"Periodically, the tingling in my throat, poor breath, and bad taste in my mouth make it difficult for me to swallow meals.",gastroesophageal reflux disease,gastroesophageal reflux disease,gastroesophageal reflux disease,0.84,0.8668849004221297
-"Bending down or reclining down only makes my stomach feel more. I have pain after eating some foods, such as hot or acidic food. I occasionally get loose stools as a result of this.",peptic ulcer disease,peptic ulcer disease,peptic ulcer disease,0.6,0.9364996823329386
-"Hey, I've got a dry cough, trouble breathing, and a high fever. I'm producing a lot of mucus and am feeling quite weak and exhausted.",Bronchial Asthma,Bronchial Asthma,Bronchial Asthma,0.95,0.8968810398562119
-"Constipation has made it quite difficult for me to use the restroom. My stool has been bloody when I do go, and it hurts. In addition, my anus has been quite itchy and inflamed, and I've been experiencing some butt soreness.",Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,0.96,0.7674602411366063
-I have a high fever and a mild headache. I'm tired most of the time and completely lost my appetite.,Chicken pox,Typhoid,Chicken pox,0.34,0.2774252414944849
-"The abdominal pain has been coming and going, and it's been really unpleasant. It's been accompanied by constipation and vomiting. I feel really concerned about my health.",Typhoid,Typhoid,Typhoid,0.91,0.9866033999045648
-"The diarrhea has been quite fluid and smelly, and it has been accompanied by severe abdominal pain and headache. Most of the time, I feel like vomiting.",Typhoid,Typhoid,Typhoid,0.53,0.9091092873891936
-"My back hurts, and I have rashes on my arms and armpits. The back of my eyeballs hurt a lot. I also have a mild fever, which is making us concerned about my health. ",Dengue,Dengue,Dengue,0.14,0.3395059416927035
-I've been feeling really weak in my muscles and my neck has been really stiff. My joints have been swelling up and I've been having a lot of stiffness when I move around. It's also been really painful to walk.,Arthritis,Arthritis,Arthritis,0.89,0.6005375898273613
-"My pee has a strong odour and a hazy look. Since these symptoms started, I've had high temperatures and frequent nighttime urges to urinate.",urinary tract infection,urinary tract infection,urinary tract infection,0.98,0.9639221001906163
-"I am experiencing extreme belly pain and constipation. Every night, I have a severe fever along with chills and headaches. The last couple of days has been really uncomfortable.",Typhoid,Typhoid,Typhoid,0.67,0.9103083731784051
-"I've been experiencing intense itching, chills, vomiting, and a high fever. I'm also sweating a lot and have a headache. Nausea and muscle pain have been making me feel miserable.",Malaria,Malaria,Malaria,0.99,0.8421238908444812
-I have been vomiting frequently and have lost my appetite as a result. My joints and back pain all the time.,Dengue,Dengue,Dengue,0.35,0.9081549787748765
-"I get symptoms of asthma, such as wheezing and breathing problems. I frequently have headaches and fever. All the time, I feel exhausted.",allergy,allergy,allergy,0.49,0.35072395898587116
-"Sometimes my skin starts to flake off from my rashes. I'm more prone to becoming sick as a result. On occasion, my hands begin to quiver and I begin to tremble.",drug reaction,drug reaction,drug reaction,0.44,0.5435023119919022
-"I've been experiencing severe weariness and a sickly sensation. My throat has been really painful and I've had a fairly severe cough. My nose has been quite stuffy, and I've had significant sinus pressure. I'm really miserable and extremely exhausted.",Common Cold,Common Cold,Common Cold,0.42,0.8139291319911501
-"The veins on my calves have become very prominent and causing discomfort. I can't stand for long periods of time, as it causes pain in my legs, similar to cramps.",Varicose Veins,Varicose Veins,Varicose Veins,0.95,0.9885801411726803
-"I constantly sneeze and have a dry cough. My infections don't seem to be healing, and I have palpitations. My throat does ache occasionally, but it usually gets better.",diabetes,diabetes,diabetes,0.62,0.5002137441528522
-"Recently, I've been having a lot of difficulty using the restroom. My bowel movements have been extremely uncomfortable and difficult for me to have.  My anus has been quite inflamed, and my stool has been extremely bloody.",Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,0.97,0.9097295393758502
-"I'm having a lot of trouble breathing and am really uneasy. I'm feeling unwell and am perspiring a lot. My chest hurts and I have a lot of mucus in my throat. My heart is racing, and the hue of the mucus I'm coughing up is off.",Pneumonia,Pneumonia,Pneumonia,0.8,0.9270694206669964
-"Lately, my neck has been tight and my muscles have been weakened. I have swelling joints that make it difficult for me to move about without getting stiff. It has also been agonisingly painful to walk.",Arthritis,Arthritis,Arthritis,0.83,0.46510470688820416
-"Back pain, a persistent cough, and arm and leg weakness have been bothering me. I've been experiencing neck pain, balance issues, and dizziness.",Cervical spondylosis,Cervical spondylosis,Cervical spondylosis,0.92,0.9456634830357724
-"I am experiencing constipation and stomach ache. The discomfort has gotten worse, and it is seriously interfering with my everyday life. I feel like I have lost my appetite to eat anything.",Typhoid,Typhoid,Typhoid,0.58,0.8776591963453547
-"I have been experiencing a headache that feels like a sharp pain in my temples, along with chest pain and dizziness.",Hypertension,Hypertension,Hypertension,0.91,0.9531368204370032
-"I have respiratory issues and experience breathlessness. My face and torso are swollen, my eyes are itching, and I have a dry, hacking cough.",allergy,allergy,allergy,0.35,0.4061397431993505
-"I get wheezing and breathing difficulties, which are asthma symptoms. I frequently have headaches and fever. I'm continuously exhausted.",allergy,allergy,allergy,0.33,0.3164384776385389
-"Stomach acid, indigestion, frequent headaches, hazy and distorted vision, increased appetite, stiff neck, depression, irritation, and visual distortion have all been bothering me.",Migraine,Migraine,Migraine,0.91,0.867255225893203
-"I unintentionally lose weight and find it challenging to gain it back. To relieve the pain and discomfort I feel, I take antacids. My mouth hurts so severely right now.",peptic ulcer disease,peptic ulcer disease,peptic ulcer disease,0.71,0.8859588329901243
-"Doctor Due to a high fever, I haven't been able to breathe via my nose or mouth for a few days and feelinf too tired. Please recommend some medications for me.",Bronchial Asthma,Bronchial Asthma,Bronchial Asthma,0.46,0.3447525071779489
-"I've been rather itchy recently, and I have rashy blotches all over my skin. There are also certain regions that are more dark in color than the rest of my skin, and I've got some painful lumps.",Fungal infection,Fungal infection,Fungal infection,0.77,0.6526677048088168
-"I have been experiencing a skin rash on my arms, legs, and torso for the past few weeks. It is red, itchy, and covered in dry, scaly patches.",Psoriasis,Fungal infection,Psoriasis,0.36,0.4803308259212002
-I frequently get swallowing issues and the sensation that food is getting stuck in my throat. I regularly belch and feel bloated. My aftertaste is unpleasant all the time.,peptic ulcer disease,peptic ulcer disease,gastroesophageal reflux disease,0.47,0.1854774503917301
-"I've been having periodic coughing fits, terrible back pain, and limb weakness. I've been feeling neck pain as well as a dizzy and unstable sensation.",Cervical spondylosis,Cervical spondylosis,Cervical spondylosis,0.76,0.5920850535768848
-"For a few days now, I've been suffering from a headache and chest pain, but today the dizziness and lack of balance got considerably worse.",Hypertension,Hypertension,Hypertension,0.96,0.8888122502944369
-"I have a rash on my legs that is causing a lot of discomforts. It seems there is a cramp and I can see prominent veins on the calf. Also, I have been feeling very tired and fatigued in the past couple of days.",Varicose Veins,Varicose Veins,Varicose Veins,0.91,0.9347905140454884
-"I have been experiencing acidity, indigestion, headaches, and blurred and distorted vision, as well as excessive hunger, a stiff neck, depression, irritability, and visual disturbance. These symptoms have been affecting my daily life and causing me discomfort.",Migraine,Migraine,Migraine,0.96,0.8493167647097117
-I have a high fever along with a severe headache. The fever is accompanied by extreme body pain and chills. I am worried about my health and don’t know what to do.,Dengue,Dengue,Dengue,0.43,0.8130523402348332
-"I don't feel like eating, and swallowing is challenging. Even after little meals, I frequently get this lingering sensation of fullness. My normal symptoms include nausea, heartburn, and tingling in my throat.",gastroesophageal reflux disease,gastroesophageal reflux disease,gastroesophageal reflux disease,0.86,0.891873573047387
-"I've been quite exhausted and ill. My throat has been quite painful, and I've had a fairly nasty cough. I've got a lot of chills and a pretty high temperature. Simply put, I feel really run down and feeble.",Common Cold,Common Cold,Common Cold,0.61,0.895269848912326
-I've been experiencing balance issues in addition to feeling disoriented and dizzy. My headache has also been present nonstop.,Hypertension,Hypertension,Hypertension,0.62,0.6176680265298905
-"I have blurry vision, and it seems to be getting worse. I'm continuously fatigued and worn out. I also occasionally have acute lightheadedness and vertigo.",diabetes,diabetes,diabetes,0.53,0.8053174459784926
-"I'm feeling fatigued and have no energy. I can barely keep my eyes open during the day, and I've been feeling lethargic and unable to motivate myself.",Chicken pox,Chicken pox,Chicken pox,0.64,0.8425490950607316
-I have a feeling of tremors and muscle twitching. I have decreased sense of smell or taste and I feel fatigued. Sometimes I have a feeling of rapid hearbeat or palipatations,diabetes,diabetes,diabetes,0.59,0.5842983543786786
-"I feel bloated and uneasy at the same time. I've been losing weight, and I no longer like eating. I occasionally get bloody vomit and dark, tarry stools.",peptic ulcer disease,peptic ulcer disease,peptic ulcer disease,0.69,0.8308635572399096
-"I felt fine all day, but when I was driving home from work, I suddenly started to have headache, chest discomfort, and dizziness. Since then, it has been challenging for me to concentrate and focus while driving.",Hypertension,Hypertension,Hypertension,0.84,0.912424248493349
-"I've had a high fever for the past few days. I don't know what's causing it. Also, I noticed rashes on my skin and it's hard for me to resist scratching.",Chicken pox,Chicken pox,Chicken pox,0.5,0.6605930639599966
-"My pee frequently has an odd smell and is either red or black, or both. The frequent changes in my body temperature usually keep me awake at night.",urinary tract infection,urinary tract infection,urinary tract infection,0.79,0.8209652905593299
-"My pee looks cloudy and has storng and foul smell. I frequently get an urge to urinate at night, and have been getting high temperatures since these symptoms strted showing",urinary tract infection,urinary tract infection,urinary tract infection,0.97,0.9855974620614714
-"I've experienced severe itching, chills, nausea, and a high fever. Besides having a headache, I'm also perspiring a lot. I've been terrible with nausea and muscle ache.",Malaria,Malaria,Malaria,1.0,0.8744470975100549
-"Along with severe body itchiness, chills, and nausea, I've been experiencing. I've been severely perspiring and have a very high fever. I'm feeling queasy and also have a headache. Really hurting muscles are me.",Malaria,Malaria,Malaria,0.78,0.8356855507854126
-"I woke up today to find that I had a major rash all over my body. There are lots of pimples filled with pus and blackheads everywhere, and my skin has been scurrying a lot.",Acne,Acne,Acne,0.98,0.9164765417990276
-I have fever and feel very dizzy and lightheaded. My heart is beating very fast and I feel very confused. I am not able to think very clearing and everything feels very foggy,drug reaction,drug reaction,drug reaction,0.45,0.341240341752741
-I awoke this morning to see that I had a horrible rash all over my skin. There are several blackheads and pimples loaded with pus. My skin has also been scurrying about.,Acne,Acne,Acne,1.0,0.8790540243102279
-"Blood is in my pee, and I have a low body temperature. I have practically continual headaches and often strong, uncontrollable need to urinate. In addition, I've started having lower back pain.",urinary tract infection,urinary tract infection,urinary tract infection,0.76,0.8957643369903097
-"Along with excessive appetite, a stiff neck, headaches, indigestion, and acid reflux, I've also been experiencing sadness, impatience, and visual distortion.",Migraine,Migraine,Migraine,0.94,0.9347865182266365
-"I get skin irritations and rashes, especially in my skin's crevices. Cuts and bruises on my skin also take a while to heal.",diabetes,diabetes,diabetes,0.86,0.5743072094983295
-"I have been experiencing diarrhea and have had loose, watery stools several times a day. I have lost my appetite and feel nauseated all the time. I am starting to get a mild fever too.",Typhoid,Chicken pox,Chicken pox,0.34,0.3531564044039546
-"I've got a high fever and can't seem to catch my breath. I've been sweating profusely and generally feeling ill and weak. I've also had some quite thick and black phlegm. My chest aches, and my heart has been racing rapidly.",Pneumonia,Pneumonia,Pneumonia,0.75,0.8543567117112262
-"I've been feeling extremely scratchy, sick, and worn out. In addition, I've lost weight and have a temperature. My urine is dark, and my skin has turned yellow. Additionally, I have been experiencing stomach pain.",Jaundice,Jaundice,Jaundice,1.0,0.8039283564703719
-"I am having a lot of trouble sleeping because of the high fever and the headache. Moreover, I have constant belly pain, because of which I can't go to work.",Typhoid,Typhoid,Typhoid,0.51,0.3219420847046398
-"I'm not in the mood to eat, and swallowing is difficult. I often have this lingering feeling of fullness even after little meals. My typical symptoms include heartburn, nausea, and throat tingling.",gastroesophageal reflux disease,gastroesophageal reflux disease,gastroesophageal reflux disease,0.86,0.9002529106422132
-"I have a metallic taste in my mouth, and also have a sense of change of taste and smell. Sometimes get very unbearable joint pain and muscle pain",drug reaction,drug reaction,drug reaction,0.66,0.736421666824755
-"I get breathing issues and wheezing, which are asthma symptoms. I regularly have fevers and headaches. I'm always worn out.",allergy,allergy,allergy,0.49,0.6903309729829974
-"I've had a scratchy stomach and been throwing up. Aside from losing weight, I am also really exhausted. I have a high fever and yellow skin. Besides having stomach ache, my pee is black.",Jaundice,Jaundice,Jaundice,0.87,0.73706770037799
-"I have a high fever, severe itching, chills, and vomiting. I also have a headache and have been perspiring a lot. Additionally hurting me have been nausea and muscle soreness.",Malaria,Malaria,Malaria,0.97,0.9320879611045434
-"I can't stop sneezing and my nose is really runny. I'm also really cold and tired all the time, and I've been coughing a lot. My fever is really high too, like way above normal.",Common Cold,Common Cold,Common Cold,0.67,0.8743269173051377
-"The veins in my calves are protruding out quite unusually. I am worried about it. Also, I am overweight and I believe this is the reason behind all of this.",Varicose Veins,Varicose Veins,Varicose Veins,0.73,0.7076028366135587
-"I've felt really scratchy, nauseated, and worn out. I also had a high fever and lost weight. Both my skin and my urine have become yellow. I've also been experiencing stomach pain.",Jaundice,Jaundice,Jaundice,0.99,0.8603104319063463
-"My skin frequently develops itchy bumps that can occasionally turn red or rough. Aside from that, my skin occasionally develops strange pimples that resemble small balls and some odd spots that are a different hue from the rest of my skin.",Fungal infection,Fungal infection,Fungal infection,0.88,0.9034319207386192
-I have difficulty in maintianing concentration and very low mental clarity. I often forget things and in general have difficulty remembering things,drug reaction,drug reaction,drug reaction,0.34,0.5320622047059318
-"I have a high fever and red spots and rashes all over my body. I feel exhausted and have completely lost my appetite, which has made me weak and lethargic. I am really worried.",Chicken pox,Chicken pox,Chicken pox,0.52,0.935687930715139
-My eyes have been really red and my sinuses feel congested. I just don't have any energy and my throat has been really itchy. I've also noticed my lymph nodes are swollen and I've been coughing up a lot of phlegm.,Common Cold,Common Cold,Common Cold,0.69,0.8865464379288414
-I'm having a lot of trouble going to the bathroom and it's really painful when I do. My stool has been bloody and I've had some pain in my butt. My anus has been really itchy and irritated too.,Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,0.95,0.8779551126033217
-"The skin on my genitals is red and inflamed. It is often itchy, burning, and uncomfortable. There are rashes on different parts of the body too.",Psoriasis,Fungal infection,Psoriasis,0.36,0.40883843141968196
-"I've had low temps and bloody urine for the past four days. My pee smells terrible, and my head hurts like hell. I scarcely have any control over when I urinate, and the urges strike without warning.",urinary tract infection,urinary tract infection,urinary tract infection,0.9,0.9661132649516156
-"I have been dealing with back pain, a persistent cough, and weakness in my limbs. My neck is sore and I have had issues with dizziness and loss of balance.",Cervical spondylosis,Cervical spondylosis,Cervical spondylosis,0.89,0.8235577265927118
-"I've been finding it incredibly difficult recently to use the restroom. I can only go sporadically because it hurts so much. My anus and the surrounding region are also quite painful. My anus feels really aggravated, and my stool has been extremely bloody.",Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,0.94,0.915521127994486
-"Especially after eating, my throat regularly feels like it is burning. I also occasionally get a bitter or sour aftertaste, which makes me feel sick.",gastroesophageal reflux disease,gastroesophageal reflux disease,gastroesophageal reflux disease,0.85,0.9068974244740946
-"Along with a headache and chest pain, I also experienced fainting and balance issues. Additionally, I've discovered that it's hard for me to focus.",Hypertension,Hypertension,Hypertension,0.91,0.7463004310255652
-"Yesterday, I noticed an enormous rash all over my skin. There are a lot of pus-filled pimples and blackheads all over my face, and my skin has been scurrying a lot.",Acne,Acne,Acne,0.99,0.5099443139232813
-"I've been experiencing balance issues along with feeling dizzy and lightheaded. Additionally, I've seen a drop in my concentration and focus.",Hypertension,Hypertension,Hypertension,0.46,0.49699863615051837
-"My skin always itches, and occasionally it becomes quite rough and red. In addition, I occasionally get little pimples that resemble tiny balls and certain spots that are a different colour from the rest of my skin. It severely irritates me and itches.",Fungal infection,Fungal infection,Fungal infection,0.84,0.8524387563020142
-"I've been itching a lot, and it's been accompanied with a rash that looks to be getting worse over time. There are also some patches of skin that are different colours from the rest of the skin, as well as some lumps that resemble little nodes.",Fungal infection,Fungal infection,Fungal infection,0.9,0.9379048632043274
-"Along with excessive appetite, a stiff neck, depression, impatience, and visual disturbance, I've also been having indigestion, headaches, blurred vision, and acid reflux.",Migraine,Migraine,Migraine,0.98,0.9732866241126386
-"Since I've been constipated, using the restroom has been quite challenging. When I do go, it aches and I've had blood in my stool. My anus has been quite itchy and irritating, and I've also been experiencing some discomfort in my butt.",Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,0.97,0.8788694880639246
-The cramps in my calves have been making it difficult for me to walk and do my daily activities. They come on suddenly and last for several minutes.,Varicose Veins,Varicose Veins,Varicose Veins,0.91,0.9435210345291778
-I've been struggling with a really nasty rash on my skin lately. It's covered in blackheads and pimples that are packed with pus. My skin has also been really scurrying.,Acne,Acne,Acne,1.0,0.8436122372856741
-"I've been getting chills, feeling tired, and I can't seem to shake this cough. My chest aches and my heart feels like it's racing at a million miles per hour when I cough. I'm coughing out a foul rusty phlegm.",Pneumonia,Pneumonia,Pneumonia,0.92,0.8051179502065073
-"I am starting to have rashes on my arms and neck. The rash often bleeds and hurts when I scratch it. I have also developed small dents in my nails, which is very strange.",Psoriasis,Dengue,Psoriasis,0.25,0.7172710568564081
-"I've been having diarrhoea and loose, watery stools many times a day. I've lost my appetite and am always sick. I'm also developing a mild fever. Also, my abdominal part pains a lot. I don't know what the reason behind all of these is.",Typhoid,Typhoid,Typhoid,0.24,0.5786669651563883
-"I feel I have a skin condition. My face has rashes and little blisters around my nose. The wounds have turned red and painful, and a yellow liquid is oozing from them.",Impetigo,Impetigo,Impetigo,0.6,0.6585456917668638
-"I'm having trouble breathing, and my fever is really high. I'm drenched in sweat and shivering from the chill. My heart is thumping rapidly, and I'm quite exhausted. Additionally, I'm about to have some brownish phlegm.",Pneumonia,Pneumonia,Pneumonia,0.7,0.7912571399254681
-"I have been feeling excessively hungry, even after eating, and have had a stiff neck.",Migraine,Migraine,gastroesophageal reflux disease,0.34,0.20130848263625223
-"My muscles lack strength, and I have been experiencing back pain and a dry cough. I've been experiencing neck pain and feeling lightheaded and unstable on my feet.",Cervical spondylosis,Cervical spondylosis,Cervical spondylosis,0.83,0.8670971591513261
-"I get blood in my pee sometimes and sometimes get nauseous whie peeing. I also have a bad smell in my pee and sometimes get high temperatures at nights, help me",urinary tract infection,urinary tract infection,urinary tract infection,0.83,0.8807344132237162
-"There is strange pain in my joints. Also, I have noticed strange peeling of skin in different parts of my body. I am afraid there is something wrong going on with my body.",Psoriasis,Psoriasis,Psoriasis,0.58,0.6371166557267297
-"I've been struggling with fatigue and a constant cough that's been making it difficult to breathe. My fever is high, and I've been coughing up a lot of thick, mucoid sputum.",Bronchial Asthma,Bronchial Asthma,Bronchial Asthma,0.98,0.8921883114533138
-"My eyes are always red and swollen, and I feel like there's something blocking my sinuses. I've been coughing up a lot of goo and my chest feels really heavy. I can't smell anything and my muscles are really sore",Common Cold,Common Cold,Common Cold,0.67,0.9096899100557022
-"My rashes occasionally cause my skin to peel off. I'm more susceptible to illnesses as a result. I start to tremble sometimes, and my hands start to shake.",drug reaction,drug reaction,drug reaction,0.79,0.9475023408482829
-"I have a high fever, severe itching, chills, and vomiting. I also have a headache and have been perspiring a lot. Additionally hurting me have been nausea and muscle soreness.",Malaria,Malaria,Malaria,0.97,0.9320879611045434
-"My bowel motions have been really difficult for me recently. Going is difficult, and it aches when I do. When I go, my anus bleeds and is really uncomfortable. I'm in a lot of discomfort and it hurts extremely bad.",Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,0.99,0.8645737592475562
-"I have been struggling with back pain, a cough that won't go away, and weakness in my extremities. My neck hurts and I have had problems with dizziness and losing my balance.",Cervical spondylosis,Cervical spondylosis,Cervical spondylosis,0.89,0.7777571404342029
-"My neck has been extremely tight and my muscles have been feeling extremely weak. My joints have been swollen and I've been walking around with a lot of stiffness. Additionally, walking has been extremely uneasy.",Arthritis,Arthritis,Arthritis,0.81,0.6567589757109085
-"I'm running a temperature and can't seem to catch my breath. I've been sweating tremendously and feeling overall unwell and weak. I've also had some thick, black phlegm. My heart has been beating frantically, and my chest hurts.",Pneumonia,Pneumonia,Pneumonia,0.68,0.7170139977395629
-"I feel as though acid or food is backing up into my throat. My chest hurts, and lying down makes it worse. After eating, I frequently have heartburn or indigestion and throw up.",gastroesophageal reflux disease,gastroesophageal reflux disease,gastroesophageal reflux disease,0.93,0.9568323930703543
-The high fever I have been experiencing is accompanied by sweating and weakness. My muscles pain as a result I cannot work all day. ,Dengue,Dengue,Dengue,0.18,0.5000434391705654
-"I have persistant, gnawing hunger and apetite. Sometimes I get abdominal cramps and spasms. There is bloating and gas after eating which causes me a great deal of uneasiness",peptic ulcer disease,Typhoid,peptic ulcer disease,0.25,0.43826753252239686
-"My nose feels quite clogged, and my eyes are constantly very red and runny. In addition, my chest hurts and I've been having a lot of breathing problems. In addition, my muscles feel quite painful, and I can't smell anything.",Common Cold,Common Cold,Common Cold,0.52,0.8919756673029985
-"I am quite queasy and dizzy when I have a temperature. My brain is completely cloudy, and my heart is racing. I'm having trouble thinking straight, and everything seems a little fuzzy.",drug reaction,Pneumonia,drug reaction,0.45,0.33062273232885225
-"I've been struggling with back pain, a chronic cough, and limb weakness. I've been feeling disoriented and weak on my feet, and my neck hurts.",Cervical spondylosis,Cervical spondylosis,Cervical spondylosis,0.92,0.8901974747872302
-"I feel really fatigued and weak, and I have a bad cough. My fever is really high, and my breathing has become shallow. When I cough, a lot of saliva comes out as well.",Bronchial Asthma,Bronchial Asthma,Bronchial Asthma,0.76,0.4556349668451706
-"I'm dripping with perspiration and can't seem to catch my breath. My throat is filled with a lot of phlegm, and I feel awful. My heart is pounding, and my chest aches. I'm coughing up a stringy, brownish mucous.",Pneumonia,Pneumonia,Pneumonia,0.98,0.917599034086709
-"I'm suffering from severe itching, chills, vomiting, and a high fever. I've also been sweating a lot and have a headache. Nausea and muscle pain have also been causing me discomfort.",Malaria,Malaria,Malaria,0.93,0.8052442696412593
-"My urine often has a weird odour, is crimson or black in colour, and both. My body's temperature has been fluctuating often, which typically keeps me up at night.",urinary tract infection,urinary tract infection,urinary tract infection,0.56,0.5763436893452094
-I have no energy and have lost my appetite. I have a high fever and severe headache and don't know what's wrong.,Chicken pox,Typhoid,Chicken pox,0.31,0.4480222666021893
-"Constipation and soreness with bowel motions have been bothering me lately. When I go, my anus bleeds and is really uncomfortable. I'm in a lot of discomfort and it hurts extremely bad.",Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,0.93,0.76490503893733
-"Over the last two days, the rash on my face has gotten more severe and inflamed, and the blisters have begun to bleed clear pus. It is really painful to deal with.",Impetigo,Impetigo,Impetigo,0.35,0.5320909170128734
-The rash on my skin is worse in the winter months when the air is dry. I find that I have to moisturize more frequently and use humidifiers to keep my skin hydrated.,Psoriasis,Psoriasis,Psoriasis,0.41,0.5329068981376007
-"I am currently dealing with a number of health issues, including a dry cough, difficulty breathing, a high fever, and increased mucus production. I am also feeling very weak and tired",Bronchial Asthma,Bronchial Asthma,Bronchial Asthma,0.89,0.8897678943745793
-"I am experiencing too many cramps in the last couple of days. I think something is not right. I believe there is a small bruise on my calves, but I am not sure about it.",Varicose Veins,Varicose Veins,Varicose Veins,0.74,0.5320608669807069
-"I have a high fever, severe itching, chills, and vomiting. In addition, I've been perspiring a lot and have a headache. I've also been bothered by nausea and muscle ache.",Malaria,Malaria,Malaria,1.0,0.9365390477666358
-There are red sores on my face and near my nose. I have noticed that the rash is spreading more quickly on my neck and chest.,Impetigo,Impetigo,Impetigo,0.8,0.9738278275239315
-"There are red swollen spots all over my body. It itches if I touch them. Moreover, I also have a high fever and headache and always feel exhausted.",Chicken pox,Chicken pox,Chicken pox,0.46,0.7963480907763171
-"I have been experiencing chills and shivering, despite being in a warm environment. My back pains all the time and there are red spots on my arms.",Dengue,Dengue,Dengue,0.28,0.8732702908776963
-"My body has been itching terribly all over, and there are now red spots everywhere. Some of the patches also differ in tone from my natural complexion. And there are these lumps or pimples that have appeared on my skin.",Fungal infection,Fungal infection,Fungal infection,0.75,0.9562943480651332
-My veins of legs have become more visible and swollen than normal. They are visible through my skin and it hurts when I move.,Varicose Veins,Varicose Veins,Varicose Veins,0.75,0.8074053254062654
-"I've had a mild fever for the past few days, and it's starting to worry me. The fever has been accompanied by a severe headache. I feel weak and lethargic.",Chicken pox,Dengue,Dengue,0.26,0.47385518015896416
-"My muscles have been feeling really weak, and my neck has been extremely tight. My joints have swollen, making it difficult for me to move. It has hurt a lot to walk.",Arthritis,Arthritis,Arthritis,0.72,0.5832546070448495
-"I'm feeling really sick and lost my appetite. I've seen little red patches on my arms, neck and face that itch when I touch them.",Chicken pox,Chicken pox,Chicken pox,0.29,0.6612319870393077
-"I'm feeling really lightheaded and dizzy when I have a temperature. My mind is completely muddled, and my heart is racing. I find it difficult to think clearly, and everything seems quite hazy.",drug reaction,Pneumonia,Pneumonia,0.43,0.21841238983447506
-"I've had terrible back pain, a persistent cough, and weakness in my arms and legs. I have issues with dizziness and balance loss, and my neck hurts.",Cervical spondylosis,Cervical spondylosis,Cervical spondylosis,0.78,0.8772200836249342
-I have been getting blood in my pee. Sometimes I get nauseous while peeing. This often almost coincides with me having a high temperature,urinary tract infection,urinary tract infection,urinary tract infection,0.8,0.9058984297084085
-I have been having bloody stools which has resulted in bloos loss and loss of iron. Thiis has caused me anemia and I feel very weak in general,peptic ulcer disease,peptic ulcer disease,peptic ulcer disease,0.77,0.7509395279245343
-"I have been experiencing digestive issues, including acidity and indigestion, as well as regular headaches and distorted vision, excessive hunger, a stiff neck, depression, irritability, and visual disturbance.",Migraine,Migraine,Migraine,0.99,0.9249826053847973
-I've been feeling truly frail in my muscles recently and my neck has been truly solid. It has been difficult for me to move around because my joints have been swelling. Walking has also been extremely painful.,Arthritis,Arthritis,Arthritis,0.92,0.6547645153171188
-"I have noticed a sudden peeling of skin at different parts of my body, mainly arms, legs and back. Also, I face severe joint pain and skin rashes.",Psoriasis,Psoriasis,Psoriasis,0.47,0.6821747870811912
-"I have experienced difficulty sleeping due to the itching and discomfort caused by the rash. There are small dents in my nails, which is really concerning.",Psoriasis,Chicken pox,Psoriasis,0.31,0.42530421795075674
-"I regularly have trouble swallowing, and I sometimes feel like food is becoming trapped in my throat. I frequently feel bloated and belch. Every time, I have a bad aftertaste.",peptic ulcer disease,gastroesophageal reflux disease,gastroesophageal reflux disease,0.38,0.45226816093330846
-"I've been exhausted and experiencing nausea and itching. In addition, I've lost weight and have a temperature. My urine is dark, and my skin has turned yellow. Additionally, I've been having stomach pain.",Jaundice,Jaundice,Jaundice,1.0,0.8821582623702188
-"I have noticed that my skin has become more sensitive than it used to be. There is a silver like dusting on my skin, especially on my back and elbows.",Psoriasis,Psoriasis,Psoriasis,0.88,0.6358830693623891
-"My throat and mouth are dry. I've also been getting hungry more and more. I do, however, occasionally feel rather exhausted.",diabetes,diabetes,diabetes,0.57,0.8543497955944022
-"My emotions fluctuate, and it's hard for me to concentrate. My mind can be foggy and foggy at times, making it difficult for me to perform even simple chores.",diabetes,Hypertension,diabetes,0.43,0.4266668445503636
-"I have lost my appetite completely and can't seem to eat anything. I feel like vomiting and feel exhausted. I noticed rashes on my skin, which is really concerning me.",Chicken pox,Dengue,Chicken pox,0.26,0.5565117331518934
-"I've been constipated and it's really hard to go to the bathroom. When I do go, it hurts and my stool has been bloody. I've also been having some pain in my butt and my anus has been really itchy and irritated.",Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,Dimorphic Hemorrhoids,0.97,0.8713246972707033
-" must confess that I've been experiencing shortness of breath, a persistent cough, and a high fever. I've also been producing a lot of thick, mucoid sputum, and I'm feeling quite drained and exhausted. It's all been rather tough to deal with, and I'm feeling quite sick at the moment",Bronchial Asthma,Bronchial Asthma,Bronchial Asthma,0.87,0.8128616868018723
-"Recently, my skin has been quite itchy, and I have a rash all over my body. My skin also has a few spots where the hue is altered and some lumps and knot-like pimples.",Fungal infection,Fungal infection,Fungal infection,0.71,0.9532956707327431
+Text,True,RF_Pred,SVM_Pred,RF_Conf,SVM_Conf
+"itching,vomiting,fatigue,weight_loss,high_fever,yellowish_skin,dark_urine,abdominal_pain",541,541,541,1.0,0.22493507441018898
+"fatigue,weight_loss,restlessness,sweating,diarrhoea,fast_heart_rate,excessive_hunger,muscle_weakness,irritability,abnormal_menstruation",502,502,502,1.0,0.1297333726191499
+"constipation,pain_during_bowel_movements,pain_in_anal_region,bloody_stool,irritation_in_anus",297,297,297,1.0,0.0954716542410667
+"chills,vomiting,fatigue,weight_loss,cough,high_fever,sweating,loss_of_appetite,mild_fever,yellowing_of_eyes,swelled_lymph_nodes,malaise,phlegm,chest_pain,blood_in_sputum",1019,1019,1019,0.99,0.06087983053219536
+"vomiting,yellowish_skin,abdominal_pain,swelling_of_stomach,distention_of_abdomen,history_of_alcohol_consumption,fluid_overload",33,33,33,0.813405843307451,0.1375796378719456
+"vomiting,breathlessness,sweating,chest_pain",447,447,447,1.0,0.1664226565069108
+"stomach_pain,acidity,ulcers_on_tongue,vomiting,cough,chest_pain",412,412,412,1.0,0.10598104444588897
+"skin_rash,chills,joint_pain,vomiting,fatigue,high_fever,headache,nausea,loss_of_appetite,pain_behind_the_eyes,back_pain,malaise,muscle_pain,red_spots_over_body",275,275,275,1.0,0.19860485441973016
+"vomiting,headache,altered_sensorium",718,718,718,1.0,0.06188929516888387
+"burning_micturition,bladder_discomfort,continuous_feel_of_urine",1035,1035,1035,0.20899708444452325,0.12657156333923705
+"skin_rash,high_fever,blister,red_sore_around_nose,yellow_crust_ooze",515,515,515,1.0,0.15065932865584375
+"itching,yellowish_skin,nausea,loss_of_appetite,abdominal_pain,yellowing_of_eyes",207,207,207,0.9333333333333335,0.11840029628559628
+I have abdominal pain or discomfort that is worse when I eat or drink. I have a loss of appetite and feel fatigued after going to the bathroom. I feel very tired all the time,736,275,736,0.18,0.07194678253731476
+"I have a burning feeling in my stomach. It's worse when I eat or drink. I also get heartburn, indigestion, and nausea.",736,736,736,0.59,0.043461197711522896
+"chills,vomiting,high_fever,sweating,headache,nausea,diarrhoea,muscle_pain",596,596,596,1.0,0.20528343146188485
+"skin_rash,high_fever,blister,red_sore_around_nose,yellow_crust_ooze",515,515,515,1.0,0.15065932865584375
+"vomiting,sunken_eyes,dehydration,diarrhoea",402,402,402,1.0,0.22766959323749905
+"itching,vomiting,fatigue,weight_loss,high_fever,yellowish_skin,dark_urine,abdominal_pain",541,541,541,1.0,0.22493507441018898
+"stomach_pain,acidity,ulcers_on_tongue,vomiting,cough,chest_pain",412,412,412,1.0,0.10598104444588897
+"fatigue,cramps,bruising,obesity,swollen_legs,prominent_veins_on_calf",1047,1047,1047,1.0,0.19639852472516353
+"joint_pain,fatigue,high_fever,yellowish_skin,dark_urine,nausea,loss_of_appetite,abdominal_pain,yellowing_of_eyes,acute_liver_failure,coma,stomach_bleeding",468,468,468,0.91,0.08785050037056212
+"fatigue,yellowish_skin,nausea,loss_of_appetite,yellowing_of_eyes,family_history",466,466,466,0.946485127003531,0.0961181942067755
+"pus_filled_pimples,blackheads,scurring",7,7,7,1.0,0.11469330125868822
+"joint_pain,vomiting,fatigue,yellowish_skin,dark_urine,nausea,loss_of_appetite,abdominal_pain,yellowing_of_eyes",467,467,467,1.0,0.18220371300238217
+"vomiting,headache,weakness_of_one_body_side",718,718,718,1.0,0.06188929516888387
+"continuous_sneezing,shivering,chills,watering_from_eyes",35,35,35,1.0,0.1369006238546456
+"vomiting,headache,nausea,spinning_movements,loss_of_balance,unsteadiness",0,0,0,1.0,0.23826397164175792
+"joint_pain,neck_pain,knee_pain,hip_joint_pain,swelling_joints,painful_walking",700,1035,1035,0.20899708444452325,0.12657156333923705
+"My skin has been acting up recently, it's been itchy and I've been getting rashes. There are also some spots that are a different color than the rest of my skin, and I have these lumps or bumps that weren't there before.",394,394,394,0.94,0.12274823265638748
+"fatigue,cramps,bruising,obesity,swollen_legs,swollen_blood_vessels,prominent_veins_on_calf",1047,1047,1047,1.0,0.19639852472516353
+"skin_rash,joint_pain,skin_peeling,silver_like_dusting,small_dents_in_nails,inflammatory_nails",822,1035,1035,0.20899708444452325,0.12657156333923705
+"itching,skin_rash,stomach_pain,burning_micturition,spotting__urination",308,308,308,0.519437756823908,0.1623942951216768
+"vomiting,headache,weakness_of_one_body_side,altered_sensorium",718,718,718,1.0,0.06188929516888387
+"itching,skin_rash,dischromic__patches",394,308,308,0.519437756823908,0.1623942951216768
+"fatigue,restlessness,lethargy,irregular_sugar_level,blurred_and_distorted_vision,obesity,excessive_hunger,increased_appetite,polyuria",285,285,285,1.0,0.22544475472187542
+"fatigue,weight_loss,restlessness,lethargy,irregular_sugar_level,blurred_and_distorted_vision,obesity,excessive_hunger,increased_appetite,polyuria",285,285,285,1.0,0.22544475472187542
+"stomach_pain,ulcers_on_tongue,vomiting,cough,chest_pain",412,412,412,1.0,0.10530235928005455
+"fatigue,yellowish_skin,nausea,loss_of_appetite,yellowing_of_eyes,family_history",466,466,466,0.946485127003531,0.0961181942067755
+"fatigue,yellowish_skin,nausea,loss_of_appetite,yellowing_of_eyes,family_history",466,466,466,0.946485127003531,0.0961181942067755
+"I have heartburn and indigestion. I frequently vomit everything I eat, and I have trouble swallowing food because it gets caught in my throat. My upper abdomen is bothering me.",403,403,403,0.72,0.039731595681760934
+"fatigue,weight_gain,cold_hands_and_feets,mood_swings,lethargy,dizziness,puffy_face_and_eyes,enlarged_thyroid,brittle_nails,swollen_extremeties,depression,irritability,abnormal_menstruation",511,511,511,1.0,0.20681887004277272
+"vomiting,indigestion,loss_of_appetite,abdominal_pain,passage_of_gases,internal_itching",735,735,735,1.0,0.13092117526178101
+"joint_pain,yellowish_skin,dark_urine,nausea,loss_of_appetite,abdominal_pain,diarrhoea,mild_fever,yellowing_of_eyes,muscle_pain",464,464,464,0.99,0.11952726453189266
+"I have a constant hunger and appetite. Sometimes my stomach will cramp and spasm. After I eat, I feel bloated and gassy.",736,736,736,0.4,0.04992386919201489
+"vomiting,fatigue,anxiety,sweating,headache,nausea,blurred_and_distorted_vision,excessive_hunger,drying_and_tingling_lips,slurred_speech,irritability,palpitations",504,504,504,1.0,0.14435042157436925
+"stomach_pain,acidity,ulcers_on_tongue,vomiting,cough,chest_pain",412,412,412,1.0,0.10598104444588897
+"skin_rash,joint_pain,skin_peeling,silver_like_dusting,small_dents_in_nails,inflammatory_nails",822,1035,1035,0.20899708444452325,0.12657156333923705
+"vomiting,breathlessness,chest_pain",447,447,447,0.99,0.051104943994070715
+My skin sometimes peels off because of my rashes. I get sick more often because of it. My hands sometimes shake and I get shaky.,308,308,308,0.5000617283950618,0.1200310215128259
+"vomiting,breathlessness,sweating,chest_pain",447,447,447,1.0,0.1664226565069108
+"joint_pain,neck_pain,knee_pain,hip_joint_pain,swelling_joints,painful_walking",700,1035,1035,0.20899708444452325,0.12657156333923705
+"chills,vomiting,fatigue,high_fever,headache,nausea,constipation,abdominal_pain,diarrhoea,toxic_look_(typhos),belly_pain",1026,1026,1026,1.0,0.18882345150566623
+I have been feeling very thirsty and hungry lately. I also feel very tired at times.,284,284,284,0.45,0.0405537302200451
+"stiff_neck,swelling_joints,movement_stiffness,painful_walking",72,1035,1035,0.20899708444452325,0.12657156333923705
+"vomiting,fatigue,anxiety,sweating,headache,nausea,blurred_and_distorted_vision,excessive_hunger,slurred_speech,irritability,palpitations",504,504,504,1.0,0.14435042157436925
+"joint_pain,vomiting,fatigue,high_fever,yellowish_skin,dark_urine,nausea,loss_of_appetite,abdominal_pain,yellowing_of_eyes,acute_liver_failure,coma,stomach_bleeding",468,468,468,1.0,0.15459976254538835
+"continuous_sneezing,shivering,watering_from_eyes",35,35,35,1.0,0.14025773556104323
+"vomiting,headache,weakness_of_one_body_side,altered_sensorium",718,718,718,1.0,0.06188929516888387
+"fatigue,mood_swings,weight_loss,restlessness,sweating,diarrhoea,fast_heart_rate,excessive_hunger,muscle_weakness,irritability,abnormal_menstruation",502,502,502,1.0,0.1297333726191499
+"stomach_pain,acidity,ulcers_on_tongue,cough,chest_pain",412,412,412,1.0,0.10142765220013045
+"vomiting,yellowish_skin,abdominal_pain,swelling_of_stomach,distention_of_abdomen,history_of_alcohol_consumption,fluid_overload",33,33,33,0.813405843307451,0.1375796378719456
+"fatigue,weight_loss,restlessness,lethargy,irregular_sugar_level,blurred_and_distorted_vision,obesity,excessive_hunger,increased_appetite,polyuria",285,285,285,1.0,0.22544475472187542
+"skin_rash,blackheads,scurring",7,7,7,1.0,0.11469330125868822
+"muscle_weakness,stiff_neck,swelling_joints,movement_stiffness,painful_walking",72,1035,1035,0.20899708444452325,0.12657156333923705
+"chills,high_fever,sweating,headache,nausea,diarrhoea,muscle_pain",596,596,596,0.99,0.16596816018824517
+"I've been feeling really sick lately. I've been getting chills and I'm always tired. I have this cough that just won't go away. It's really hard to breathe when I cough and my chest hurts. I've also been coughing up this really gross, rusty phlegm.",766,766,766,0.67,0.17662502994256946
+"vomiting,fatigue,anxiety,sweating,headache,nausea,blurred_and_distorted_vision,excessive_hunger,drying_and_tingling_lips,slurred_speech,irritability,palpitations",504,504,504,1.0,0.14435042157436925
+"itching,vomiting,yellowish_skin,nausea,loss_of_appetite,abdominal_pain,yellowing_of_eyes",207,207,207,1.0,0.1573000364902646
+I have been experiencing a high fever for the past few days. I also feel weak and my muscles pain. I cannot work all day because of this.,275,275,275,0.23,0.18341977241617277
+"muscle_weakness,stiff_neck,swelling_joints,movement_stiffness,painful_walking",72,1035,1035,0.20899708444452325,0.12657156333923705
+"fatigue,cramps,bruising,obesity,swollen_legs,swollen_blood_vessels,prominent_veins_on_calf",1047,1047,1047,1.0,0.19639852472516353
+"I've been feeling very sick. I have a high fever, shortness of breath, and I'm sweating and shivering. I've also been coughing up a lot of brownish phlegm and my heart is racing.",766,766,766,0.83,0.17199061810341978
+"itching,skin_rash,stomach_pain,burning_micturition",308,308,308,0.519437756823908,0.1623942951216768
+"stomach_pain,acidity,ulcers_on_tongue,vomiting,cough,chest_pain",412,412,412,1.0,0.10598104444588897
+"skin_rash,pus_filled_pimples,blackheads",7,7,7,1.0,0.11350818732586486
+"itching,skin_rash,stomach_pain,burning_micturition,spotting__urination",308,308,308,0.519437756823908,0.1623942951216768
+"chills,vomiting,high_fever,sweating,headache,diarrhoea,muscle_pain",596,596,596,0.94,0.15975464936340286
+My neck has been extremely stiff and my muscles have been extremely weak. I have difficulty moving around without feeling stiff because of the swelling in my joints. Walking is also very difficult.,72,72,72,0.8231208750523163,0.08905690839855138
+"chills,vomiting,fatigue,weight_loss,cough,high_fever,breathlessness,sweating,loss_of_appetite,mild_fever,yellowing_of_eyes,swelled_lymph_nodes,malaise,phlegm,chest_pain,blood_in_sputum",1019,1019,1019,1.0,0.2204896623915311
+"indigestion,loss_of_appetite,abdominal_pain,passage_of_gases,internal_itching",735,735,735,0.99,0.044888998835986474
+I have a really strong appetite and I'm always hungry. My stomach sometimes aches and cramps. I have really painful gas and bloating after eating.,736,736,736,0.39,0.07346181260345071
+"vomiting,headache,weakness_of_one_body_side,altered_sensorium",718,718,718,1.0,0.06188929516888387
+"itching,skin_rash,nodal_skin_eruptions,dischromic__patches",394,308,308,0.519437756823908,0.1623942951216768
+"chills,vomiting,high_fever,sweating,headache,nausea,diarrhoea,muscle_pain",596,596,596,1.0,0.20528343146188485
+"itching,vomiting,fatigue,weight_loss,high_fever,yellowish_skin,dark_urine,abdominal_pain",541,541,541,1.0,0.22493507441018898
+"vomiting,indigestion,loss_of_appetite,abdominal_pain,passage_of_gases,internal_itching",735,735,735,1.0,0.13092117526178101
+"skin_rash,joint_pain,skin_peeling,silver_like_dusting,small_dents_in_nails,inflammatory_nails",822,1035,1035,0.20899708444452325,0.12657156333923705
+"weakness_in_limbs,neck_pain,dizziness,loss_of_balance",186,186,186,0.900801763535173,0.19132317802862187
+"fatigue,high_fever,breathlessness,family_history,mucoid_sputum",149,149,149,0.98,0.154166203262213
+"chills,vomiting,high_fever,sweating,headache,nausea,diarrhoea,muscle_pain",596,596,596,1.0,0.20528343146188485
+"vomiting,yellowish_skin,abdominal_pain,swelling_of_stomach,distention_of_abdomen,history_of_alcohol_consumption,fluid_overload",33,33,33,0.813405843307451,0.1375796378719456
+I've been coughing a lot and it's hard to breathe. I've been coughing up a lot of mucus and my fever is high.,149,149,149,0.43,0.08961242502966991
+I have been experiencing a lot of itching and redness on my skin. I have also noticed that my nails are becoming brittle and have started to develop dents. I am worried that this could be a sign of something more serious.,822,822,822,0.17,0.13363470405929562
+"itching,skin_rash,nodal_skin_eruptions,dischromic__patches",394,308,308,0.519437756823908,0.1623942951216768
+"acidity,indigestion,headache,blurred_and_distorted_vision,stiff_neck,depression,irritability,visual_disturbances",630,630,630,1.0,0.17386924727851588
+"headache,chest_pain,dizziness,loss_of_balance,lack_of_concentration",501,501,501,1.0,0.08870444082442505
+"joint_pain,vomiting,yellowish_skin,dark_urine,nausea,loss_of_appetite,abdominal_pain,diarrhoea,mild_fever,yellowing_of_eyes,muscle_pain",464,464,464,1.0,0.15132334131647915
+"fatigue,cough,high_fever,breathlessness,family_history,mucoid_sputum",149,149,149,1.0,0.21033812295556015
+"constipation,pain_during_bowel_movements,pain_in_anal_region,bloody_stool,irritation_in_anus",297,297,297,1.0,0.0954716542410667
+"I've been having a hard time breathing lately. I feel like I can't get enough air, and I'm always coughing. I've also been really tired, and I've been coughing up a lot of mucus. I'm not sure what's wrong with me, but I'm really worried.",149,149,149,0.69,0.19819895133307527
+"vomiting,nausea,spinning_movements,loss_of_balance,unsteadiness",0,0,0,0.99,0.06476010336769643
+I have a metallic taste in my mouth and my tongue feels weird. I also have joint and muscle pain.,308,308,308,0.32,0.1254441037453048
+"fatigue,cramps,bruising,obesity,swollen_legs,prominent_veins_on_calf",1047,1047,1047,1.0,0.19639852472516353
+"joint_pain,vomiting,yellowish_skin,dark_urine,nausea,abdominal_pain,diarrhoea,mild_fever,yellowing_of_eyes,muscle_pain",464,464,464,1.0,0.15132334131647915
+"constipation,pain_in_anal_region,bloody_stool,irritation_in_anus",297,297,297,1.0,0.0954716542410667
+"muscle_weakness,stiff_neck,swelling_joints,movement_stiffness,painful_walking",72,1035,1035,0.20899708444452325,0.12657156333923705
+"vomiting,sweating,chest_pain",447,447,447,0.97,0.050762409621029465
+"stomach_pain,acidity,ulcers_on_tongue,vomiting,cough,chest_pain",412,412,412,1.0,0.10598104444588897
+"muscle_weakness,stiff_neck,swelling_joints,movement_stiffness,painful_walking",72,1035,1035,0.20899708444452325,0.12657156333923705
+"chills,fatigue,cough,high_fever,breathlessness,malaise,phlegm,chest_pain,fast_heart_rate,rusty_sputum",766,766,766,1.0,0.21173297092509513
+"skin_rash,pus_filled_pimples,blackheads,scurring",7,7,7,1.0,0.11469330125868822
+"joint_pain,vomiting,yellowish_skin,dark_urine,nausea,loss_of_appetite,abdominal_pain,diarrhoea,mild_fever,yellowing_of_eyes,muscle_pain",464,464,464,1.0,0.15132334131647915
+"I've been feeling really down lately, and my pee smells like rotten eggs. My kidney area hurts, and I can't seem to hold my urine in. I have to go to the bathroom all the time.",1035,1035,1035,0.59,0.05458818968678729
+"itching,fatigue,lethargy,yellowish_skin,dark_urine,loss_of_appetite,abdominal_pain,yellow_urine,yellowing_of_eyes,malaise,receiving_blood_transfusion,receiving_unsterile_injections",465,465,465,0.9432110176303824,0.27152303903305686
+"vomiting,yellowish_skin,abdominal_pain,swelling_of_stomach,distention_of_abdomen,history_of_alcohol_consumption,fluid_overload",33,33,33,0.813405843307451,0.1375796378719456
+"joint_pain,vomiting,fatigue,high_fever,yellowish_skin,dark_urine,nausea,loss_of_appetite,abdominal_pain,yellowing_of_eyes,coma,stomach_bleeding",468,468,468,1.0,0.15459976254538835
+"joint_pain,vomiting,fatigue,high_fever,yellowish_skin,dark_urine,nausea,loss_of_appetite,abdominal_pain,yellowing_of_eyes,acute_liver_failure,coma,stomach_bleeding",468,468,468,1.0,0.15459976254538835
+"vomiting,breathlessness,sweating,chest_pain",447,447,447,1.0,0.1664226565069108
+"vomiting,breathlessness,sweating,chest_pain",447,447,447,1.0,0.1664226565069108
+"vomiting,headache,nausea,spinning_movements,loss_of_balance,unsteadiness",0,0,0,1.0,0.23826397164175792
+"I have a really high fever, I'm so itchy, I'm shaking and I've been throwing up. I've also got a headache and I've been sweating a lot. I'm also feeling really sick to my stomach and my muscles are aching.",596,596,596,0.49,0.141709339146556
+"constipation,pain_during_bowel_movements,pain_in_anal_region,bloody_stool,irritation_in_anus",297,297,297,1.0,0.0954716542410667
+"joint_pain,vomiting,fatigue,yellowish_skin,dark_urine,nausea,loss_of_appetite,abdominal_pain",467,467,467,1.0,0.18220371300238217
+"fatigue,weight_gain,cold_hands_and_feets,mood_swings,lethargy,dizziness,enlarged_thyroid,brittle_nails,swollen_extremeties,depression,irritability,abnormal_menstruation",511,511,511,1.0,0.20681887004277272
+"yellowish_skin,nausea,loss_of_appetite,yellowing_of_eyes,family_history",466,466,466,1.0,0.11811590384260917
+"constipation,pain_during_bowel_movements,pain_in_anal_region,bloody_stool,irritation_in_anus",297,297,297,1.0,0.0954716542410667
+"chills,vomiting,high_fever,sweating,headache,nausea,diarrhoea,muscle_pain",596,596,596,1.0,0.20528343146188485
+"joint_pain,vomiting,fatigue,high_fever,yellowish_skin,dark_urine,nausea,loss_of_appetite,abdominal_pain,yellowing_of_eyes,acute_liver_failure,coma,stomach_bleeding",468,468,468,1.0,0.15459976254538835
+"joint_pain,neck_pain,knee_pain,hip_joint_pain,swelling_joints,painful_walking",700,1035,1035,0.20899708444452325,0.12657156333923705
+"I've been feeling really sick lately. My nose is running like crazy, and I can't stop sneezing. I'm also exhausted and have a fever.",234,234,234,0.26,0.205911147374431
+"constipation,pain_during_bowel_movements,bloody_stool,irritation_in_anus",297,297,297,1.0,0.0954716542410667
+"vomiting,fatigue,anxiety,sweating,headache,nausea,blurred_and_distorted_vision,excessive_hunger,drying_and_tingling_lips,slurred_speech,irritability,palpitations",504,504,504,1.0,0.14435042157436925
+"weakness_in_limbs,neck_pain,dizziness,loss_of_balance",186,186,186,0.900801763535173,0.19132317802862187
+"itching,skin_rash,fatigue,lethargy,high_fever,headache,loss_of_appetite,mild_fever,swelled_lymph_nodes,malaise,red_spots_over_body",193,193,193,1.0,0.184351338321149
+"vomiting,sunken_eyes,dehydration,diarrhoea",402,402,402,1.0,0.22766959323749905
+"vomiting,sweating,chest_pain",447,447,447,0.97,0.050762409621029465
+"vomiting,dehydration,diarrhoea",402,402,402,1.0,0.22766959323749905
+"acidity,indigestion,headache,blurred_and_distorted_vision,excessive_hunger,depression,irritability,visual_disturbances",630,630,630,1.0,0.17386924727851588
+"acidity,indigestion,headache,blurred_and_distorted_vision,excessive_hunger,depression,irritability,visual_disturbances",630,630,630,1.0,0.17386924727851588
+"joint_pain,vomiting,fatigue,high_fever,yellowish_skin,dark_urine,nausea,loss_of_appetite,abdominal_pain,yellowing_of_eyes,acute_liver_failure,coma,stomach_bleeding",468,468,468,1.0,0.15459976254538835
+"vomiting,headache,weakness_of_one_body_side,altered_sensorium",718,718,718,1.0,0.06188929516888387
+"itching,vomiting,fatigue,weight_loss,high_fever,yellowish_skin,dark_urine,abdominal_pain",541,541,541,1.0,0.22493507441018898
+"headache,chest_pain,dizziness,loss_of_balance,lack_of_concentration",501,501,501,1.0,0.08870444082442505
+"chills,vomiting,fatigue,weight_loss,cough,high_fever,breathlessness,sweating,loss_of_appetite,mild_fever,yellowing_of_eyes,swelled_lymph_nodes,malaise,phlegm,chest_pain,blood_in_sputum",1019,1019,1019,1.0,0.2204896623915311
+"skin_rash,joint_pain,skin_peeling,silver_like_dusting,small_dents_in_nails,inflammatory_nails",822,1035,1035,0.20899708444452325,0.12657156333923705
+"continuous_sneezing,shivering,chills,watering_from_eyes",35,35,35,1.0,0.1369006238546456
+I have a rash on my face that is not healing. I have tried some medications but it is not helping much. I also have small sores near my nose that are painful and difficult to handle.,515,515,515,0.89,0.1351089901318378
+"muscle_wasting,patches_in_throat,high_fever,extra_marital_contacts",27,1035,1035,0.20899708444452325,0.12657156333923705
+"vomiting,indigestion,loss_of_appetite,abdominal_pain,passage_of_gases,internal_itching",735,735,735,1.0,0.13092117526178101
+"vomiting,headache,nausea,spinning_movements,loss_of_balance,unsteadiness",0,0,0,1.0,0.23826397164175792
+"fatigue,weight_loss,restlessness,lethargy,irregular_sugar_level,blurred_and_distorted_vision,obesity,excessive_hunger,increased_appetite,polyuria",285,285,285,1.0,0.22544475472187542
+"joint_pain,vomiting,fatigue,high_fever,yellowish_skin,dark_urine,nausea,loss_of_appetite,abdominal_pain,yellowing_of_eyes,acute_liver_failure,coma,stomach_bleeding",468,468,468,1.0,0.15459976254538835
+"I have a mild fever and blood in my urine. My head hurts almost constantly, and I frequently have to urinate very badly. I also have a pain in my lower back.",1035,1035,1035,0.30429333863723,0.0566173678217342
+"continuous_sneezing,chills,watering_from_eyes",35,35,35,1.0,0.13982270456805784
+"fatigue,weight_loss,restlessness,lethargy,irregular_sugar_level,blurred_and_distorted_vision,obesity,excessive_hunger,increased_appetite,polyuria",285,285,285,1.0,0.22544475472187542
+"skin_rash,chills,joint_pain,vomiting,fatigue,high_fever,headache,nausea,loss_of_appetite,pain_behind_the_eyes,back_pain,malaise,muscle_pain,red_spots_over_body",275,275,275,1.0,0.19860485441973016
+"headache,dizziness,loss_of_balance,lack_of_concentration",501,501,501,1.0,0.08870444082442505
+"vomiting,breathlessness,sweating,chest_pain",447,447,447,1.0,0.1664226565069108
+"joint_pain,vomiting,fatigue,yellowish_skin,dark_urine,loss_of_appetite,abdominal_pain,yellowing_of_eyes",467,541,541,0.6163228715728719,0.15829550822043478
+"chills,cough,high_fever,breathlessness,sweating,malaise,phlegm,chest_pain,fast_heart_rate,rusty_sputum",766,766,766,0.9893333333333334,0.21275358416533763
+"vomiting,fatigue,anxiety,sweating,headache,nausea,blurred_and_distorted_vision,excessive_hunger,drying_and_tingling_lips,slurred_speech,irritability,palpitations",504,504,504,1.0,0.14435042157436925
+"chills,fatigue,cough,high_fever,breathlessness,sweating,malaise,phlegm,chest_pain,fast_heart_rate,rusty_sputum",766,766,766,0.9615683075787856,0.22491013439422206
+"breathlessness,sweating,chest_pain",447,447,447,1.0,0.050240003897539846
+"fatigue,yellowish_skin,nausea,loss_of_appetite,yellowing_of_eyes,family_history",466,466,466,0.946485127003531,0.0961181942067755
+"skin_rash,high_fever,blister,red_sore_around_nose",515,515,515,1.0,0.15065932865584375
+"chills,fatigue,cough,high_fever,breathlessness,sweating,malaise,phlegm,chest_pain,fast_heart_rate,rusty_sputum",766,766,766,0.9615683075787856,0.22491013439422206
+"vomiting,headache,weakness_of_one_body_side,altered_sensorium",718,718,718,1.0,0.06188929516888387
+"skin_rash,blackheads,scurring",7,7,7,1.0,0.11469330125868822
+"I've been having trouble breathing lately. I've been coughing a lot, and my chest feels tight. I've also been feeling very tired and weak.",149,149,149,0.66,0.1662578163247465
+"weakness_in_limbs,neck_pain,dizziness,loss_of_balance",186,186,186,0.900801763535173,0.19132317802862187
+"chills,fatigue,cough,breathlessness,sweating,malaise,phlegm,chest_pain,fast_heart_rate,rusty_sputum",766,766,766,0.9615683075787856,0.22491013439422206
+"skin_rash,pus_filled_pimples,blackheads,scurring",7,7,7,1.0,0.11469330125868822
+I have a rash around my nose and lips that is red and painful. It has some yellow fluid coming out of it.,515,515,515,0.6701101028433151,0.14738382377379725
+"fatigue,mood_swings,weight_loss,restlessness,sweating,diarrhoea,fast_heart_rate,excessive_hunger,muscle_weakness,irritability,abnormal_menstruation",502,502,502,1.0,0.1297333726191499
+"itching,skin_rash,fatigue,lethargy,high_fever,headache,loss_of_appetite,mild_fever,swelled_lymph_nodes,malaise,red_spots_over_body",193,193,193,1.0,0.184351338321149
+"skin_rash,high_fever,blister,red_sore_around_nose,yellow_crust_ooze",515,515,515,1.0,0.15065932865584375
+"vomiting,yellowish_skin,abdominal_pain,swelling_of_stomach,distention_of_abdomen,history_of_alcohol_consumption,fluid_overload",33,33,33,0.813405843307451,0.1375796378719456
+"burning_micturition,bladder_discomfort,foul_smell_of_urine,continuous_feel_of_urine",1035,1035,1035,0.20899708444452325,0.12657156333923705
+"muscle_weakness,stiff_neck,swelling_joints,movement_stiffness,painful_walking",72,1035,1035,0.20899708444452325,0.12657156333923705
+"itching,vomiting,yellowish_skin,nausea,loss_of_appetite,abdominal_pain,yellowing_of_eyes",207,207,207,1.0,0.1573000364902646
+"vomiting,fatigue,anxiety,sweating,headache,blurred_and_distorted_vision,excessive_hunger,drying_and_tingling_lips,slurred_speech,irritability,palpitations",504,504,504,0.99,0.0653305137905188
+"joint_pain,neck_pain,knee_pain,hip_joint_pain,swelling_joints,painful_walking",700,1035,1035,0.20899708444452325,0.12657156333923705
+"I have small dents in my nails. My joints are hurting a lot. I have a silver like dusting on my skin, especially on my back.",822,822,822,0.48278554344937546,0.13057488752200325
+I have been losing weight and having trouble gaining weight. I have pain and discomfort in my stomach that is relieved by taking antacids. My mouth tastes bad.,736,736,736,0.47,0.037636998312068466
+"fatigue,weight_gain,cold_hands_and_feets,mood_swings,lethargy,dizziness,puffy_face_and_eyes,enlarged_thyroid,brittle_nails,swollen_extremeties,depression,irritability,abnormal_menstruation",511,511,511,1.0,0.20681887004277272
+"skin_rash,high_fever,blister,red_sore_around_nose,yellow_crust_ooze",515,515,515,1.0,0.15065932865584375
+"vomiting,breathlessness,sweating,chest_pain",447,447,447,1.0,0.1664226565069108
+"joint_pain,vomiting,fatigue,yellowish_skin,dark_urine,nausea,loss_of_appetite,abdominal_pain,yellowing_of_eyes",467,467,467,1.0,0.18220371300238217
+"continuous_sneezing,chills,fatigue,cough,high_fever,headache,swelled_lymph_nodes,malaise,phlegm,throat_irritation,redness_of_eyes,sinus_pressure,runny_nose,congestion,chest_pain,loss_of_smell,muscle_pain",234,234,234,1.0,0.2018645503605553
+"joint_pain,vomiting,fatigue,yellowish_skin,dark_urine,nausea,loss_of_appetite,abdominal_pain,yellowing_of_eyes",467,467,467,1.0,0.18220371300238217
+I have a rash all over my body. It's really itchy and uncomfortable. I'm also feeling really tired and exhausted.,193,193,193,0.77,0.18491246955608984
+"skin_rash,joint_pain,skin_peeling,silver_like_dusting,small_dents_in_nails,inflammatory_nails",822,1035,1035,0.20899708444452325,0.12657156333923705
+"joint_pain,neck_pain,knee_pain,hip_joint_pain,swelling_joints,painful_walking",700,1035,1035,0.20899708444452325,0.12657156333923705
+"vomiting,breathlessness,sweating,chest_pain",447,447,447,1.0,0.1664226565069108
+"vomiting,headache,nausea,spinning_movements,loss_of_balance,unsteadiness",0,0,0,1.0,0.23826397164175792
+"itching,stomach_pain,burning_micturition,spotting__urination",308,308,308,0.519437756823908,0.1623942951216768
+"joint_pain,knee_pain,hip_joint_pain,swelling_joints,painful_walking",700,1035,1035,0.20899708444452325,0.12657156333923705
+"chills,vomiting,high_fever,headache,nausea,diarrhoea,muscle_pain",596,596,596,0.96,0.17087035800708167
+I have a rash all over my body that is itchy and red. Some of the patches are a different color than my skin and there are some lumps or pimples on my skin.,394,394,394,0.81,0.11733962401854256
+"skin_rash,high_fever,blister,red_sore_around_nose,yellow_crust_ooze",515,515,515,1.0,0.15065932865584375
+"joint_pain,neck_pain,knee_pain,hip_joint_pain,swelling_joints,painful_walking",700,1035,1035,0.20899708444452325,0.12657156333923705
+"stomach_pain,acidity,ulcers_on_tongue,vomiting,cough,chest_pain",412,412,412,1.0,0.10598104444588897
+"muscle_weakness,stiff_neck,swelling_joints,movement_stiffness,painful_walking",72,1035,1035,0.20899708444452325,0.12657156333923705
+"chills,vomiting,fatigue,high_fever,headache,nausea,constipation,diarrhoea,toxic_look_(typhos),belly_pain",1026,1026,1026,1.0,0.18882345150566623
+"joint_pain,vomiting,fatigue,yellowish_skin,dark_urine,loss_of_appetite,abdominal_pain,yellowing_of_eyes",467,541,541,0.6163228715728719,0.15829550822043478
+"itching,skin_rash,stomach_pain,burning_micturition,spotting__urination",308,308,308,0.519437756823908,0.1623942951216768
+"itching,skin_rash,stomach_pain,burning_micturition,spotting__urination",308,308,308,0.519437756823908,0.1623942951216768
+"fatigue,mood_swings,weight_loss,restlessness,sweating,diarrhoea,fast_heart_rate,excessive_hunger,muscle_weakness,irritability,abnormal_menstruation",502,502,502,1.0,0.1297333726191499
+"joint_pain,vomiting,yellowish_skin,nausea,loss_of_appetite,abdominal_pain,diarrhoea,mild_fever,yellowing_of_eyes,muscle_pain",464,464,464,1.0,0.15132334131647915
+"joint_pain,vomiting,fatigue,yellowish_skin,dark_urine,nausea,loss_of_appetite,abdominal_pain,yellowing_of_eyes",467,467,467,1.0,0.18220371300238217
+"joint_pain,vomiting,yellowish_skin,dark_urine,nausea,loss_of_appetite,abdominal_pain,diarrhoea,mild_fever,yellowing_of_eyes,muscle_pain",464,464,464,1.0,0.15132334131647915
+"I've been feeling really itchy all over, and I've been throwing up. I've also lost a lot of weight, and I'm always tired. My skin and my pee are both yellow, and my stomach hurts.",541,541,541,0.46,0.08198950740193306
+"vomiting,breathlessness,sweating,chest_pain",447,447,447,1.0,0.1664226565069108
+"fatigue,weight_gain,cold_hands_and_feets,mood_swings,lethargy,dizziness,puffy_face_and_eyes,enlarged_thyroid,brittle_nails,swollen_extremeties,depression,irritability,abnormal_menstruation",511,511,511,1.0,0.20681887004277272
+"I've gained a lot of weight and am now quite fat. My appetite varies, and I have cravings for various things.",308,308,308,0.5711457265951096,0.10612987330782978
+I have trouble breathing and my face and chest are swollen. My eyes are itchy and I have a dry cough.,35,35,35,0.33,0.15691904554710417
+"skin_rash,chills,joint_pain,vomiting,fatigue,high_fever,headache,nausea,loss_of_appetite,pain_behind_the_eyes,back_pain,malaise,muscle_pain,red_spots_over_body",275,275,275,1.0,0.19860485441973016
+I have a lot of itchy bumps on my skin that sometimes turn red or rough. I also have some strange pimples that look like little balls and some weird spots that are a different color than the rest of my skin.,394,394,394,0.97,0.11906306165931384
+"vomiting,weakness_of_one_body_side,altered_sensorium",718,33,33,0.813405843307451,0.1375796378719456
+"joint_pain,vomiting,yellowish_skin,dark_urine,nausea,loss_of_appetite,abdominal_pain,diarrhoea,mild_fever,yellowing_of_eyes,muscle_pain",464,464,464,1.0,0.15132334131647915
+"skin_rash,joint_pain,skin_peeling,silver_like_dusting,small_dents_in_nails,inflammatory_nails",822,1035,1035,0.20899708444452325,0.12657156333923705
+"chills,fatigue,cough,high_fever,breathlessness,sweating,malaise,chest_pain,fast_heart_rate,rusty_sputum",766,766,766,0.91,0.20832655494822752
+I have noticed that my legs are swollen and the blood vessels are visible. I have swollen legs and I can see a stream of swollen veins on my calves.,1047,1047,1047,0.93,0.18323383928220313
+"chills,vomiting,fatigue,weight_loss,cough,high_fever,breathlessness,sweating,loss_of_appetite,mild_fever,yellowing_of_eyes,swelled_lymph_nodes,malaise,phlegm,chest_pain,blood_in_sputum",1019,1019,1019,1.0,0.2204896623915311
+I have been having a lot of pain in my back and neck. I also have a cough that won't go away and I feel weak and dizzy.,186,186,186,0.9,0.19844740376800932
+"I've been feeling really sick. I have a fever, chills, nausea, and a headache. I've also been sweating a lot and my muscles ache.",596,596,596,0.96,0.163679287969551
+"back_pain,weakness_in_limbs,neck_pain,dizziness,loss_of_balance",186,186,186,0.900801763535173,0.19132317802862187
+"burning_micturition,bladder_discomfort,foul_smell_of_urine,continuous_feel_of_urine",1035,1035,1035,0.20899708444452325,0.12657156333923705
+"skin_rash,high_fever,red_sore_around_nose,yellow_crust_ooze",515,1035,1035,0.20899708444452325,0.12657156333923705
+"bladder_discomfort,foul_smell_of_urine,continuous_feel_of_urine",1035,1035,1035,0.20899708444452325,0.12657156333923705
+"fatigue,cough,high_fever,breathlessness,family_history,mucoid_sputum",149,149,149,1.0,0.21033812295556015
+"skin_rash,chills,joint_pain,vomiting,fatigue,high_fever,headache,nausea,loss_of_appetite,pain_behind_the_eyes,back_pain,malaise,muscle_pain,red_spots_over_body",275,275,275,1.0,0.19860485441973016
+"I've been feeling really sick and I've lost my appetite. I've also noticed some red spots on my arms, neck, and face that itch when I touch them.",193,275,275,0.27,0.19334035170296562
+"muscle_weakness,stiff_neck,swelling_joints,movement_stiffness,painful_walking",72,1035,1035,0.20899708444452325,0.12657156333923705
+"vomiting,yellowish_skin,abdominal_pain,swelling_of_stomach,distention_of_abdomen,history_of_alcohol_consumption,fluid_overload",33,33,33,0.813405843307451,0.1375796378719456
+"itching,vomiting,fatigue,weight_loss,high_fever,yellowish_skin,dark_urine,abdominal_pain",541,541,541,1.0,0.22493507441018898
+"fatigue,cough,high_fever,breathlessness,family_history,mucoid_sputum",149,149,149,1.0,0.21033812295556015
+"I have these large, bulging veins on my legs that are really painful. They're really visible and I'm worried about them.",1047,1047,1047,0.77,0.17735369824169944
+"chills,vomiting,fatigue,high_fever,headache,nausea,constipation,abdominal_pain,diarrhoea,toxic_look_(typhos),belly_pain",1026,1026,1026,1.0,0.18882345150566623
+I have been feeling really thirsty and have been urinating a lot more than usual. My mouth and throat are always dry. I have also been feeling really hungry and have been eating a lot more than usual.,284,234,284,0.34,0.031144835133794967
+"skin_rash,chills,joint_pain,vomiting,fatigue,high_fever,headache,nausea,loss_of_appetite,pain_behind_the_eyes,back_pain,malaise,muscle_pain,red_spots_over_body",275,275,275,1.0,0.19860485441973016
+"itching,skin_rash,nodal_skin_eruptions,dischromic__patches",394,308,308,0.519437756823908,0.1623942951216768
+"I've been scratching myself a lot lately, and my skin is covered in rashy places. I also have a few pimples that are pretty firm, and there are some spots on my body that are a different shade of brown than the rest of my skin.",394,394,394,0.25,0.1667604033630781
+"itching,skin_rash,nodal_skin_eruptions,dischromic__patches",394,308,308,0.519437756823908,0.1623942951216768
+"muscle_weakness,stiff_neck,swelling_joints,movement_stiffness,painful_walking",72,1035,1035,0.20899708444452325,0.12657156333923705
+"I'm having a hard time breathing. I'm not feeling well, and I'm sweating a lot. I have a lot of mucous in my throat and my chest hurts. My breathing is labored, and the phlegm I'm coughing up is a weird color.",766,766,766,0.7,0.18187370344677206
+"constipation,pain_in_anal_region,bloody_stool,irritation_in_anus",297,297,297,1.0,0.0954716542410667
+"vomiting,sunken_eyes,dehydration,diarrhoea",402,402,402,1.0,0.22766959323749905
+"chills,vomiting,weight_loss,cough,high_fever,breathlessness,sweating,loss_of_appetite,mild_fever,yellowing_of_eyes,swelled_lymph_nodes,malaise,phlegm,chest_pain,blood_in_sputum",1019,1019,1019,1.0,0.0602309183261232
+I have varicose veins in my legs. They are very painful and make it difficult to sleep at night. I also get cramps when I sprint.,1047,1047,1047,0.58,0.18618137492393977
+I have red spots on my arms and legs that are itchy and inflamed. I have been feeling sick to my stomach and have a constant urge to vomit. I also have a mild fever.,275,193,193,0.15,0.15866819660774742
+"vomiting,indigestion,abdominal_pain,passage_of_gases,internal_itching",735,735,735,1.0,0.13092117526178101
+"I have to pee a lot, and it's hard to hold it in. I feel dizzy and confused. I can't see very well.",284,308,308,0.7101116621208363,0.10550457358181521
+"vomiting,indigestion,abdominal_pain,passage_of_gases,internal_itching",735,735,735,1.0,0.13092117526178101
+"fatigue,cough,high_fever,breathlessness,family_history,mucoid_sputum",149,149,149,1.0,0.21033812295556015
+"fatigue,weight_loss,restlessness,lethargy,irregular_sugar_level,blurred_and_distorted_vision,obesity,excessive_hunger,increased_appetite,polyuria",285,285,285,1.0,0.22544475472187542
+"burning_micturition,bladder_discomfort,foul_smell_of_urine,continuous_feel_of_urine",1035,1035,1035,0.20899708444452325,0.12657156333923705
+"vomiting,headache,weakness_of_one_body_side,altered_sensorium",718,718,718,1.0,0.06188929516888387
+"I have a sour taste in my mouth all the time, even when I haven't eaten anything acidic. I also get hiccups and a lump in my throat a lot.",403,403,403,0.8,0.03357023238080383
+"burning_micturition,bladder_discomfort,foul_smell_of_urine,continuous_feel_of_urine",1035,1035,1035,0.20899708444452325,0.12657156333923705
+"vomiting,yellowish_skin,abdominal_pain,swelling_of_stomach,distention_of_abdomen,history_of_alcohol_consumption",33,33,33,0.813405843307451,0.1375796378719456
+"skin_rash,high_fever,blister,red_sore_around_nose,yellow_crust_ooze",515,515,515,1.0,0.15065932865584375
+"chills,vomiting,fatigue,high_fever,headache,nausea,constipation,abdominal_pain,diarrhoea,toxic_look_(typhos),belly_pain",1026,1026,1026,1.0,0.18882345150566623
+"I have a dry cough that won't go away. I also have palpitations and my infections don't seem to be getting better. Sometimes my throat hurts, but it seems to get better.",284,284,284,0.43,0.05238603783476035
+"vomiting,headache,nausea,spinning_movements,loss_of_balance,unsteadiness",0,0,0,1.0,0.23826397164175792
+"muscle_weakness,stiff_neck,swelling_joints,movement_stiffness,painful_walking",72,1035,1035,0.20899708444452325,0.12657156333923705
+"itching,stomach_pain,burning_micturition,spotting__urination",308,308,308,0.519437756823908,0.1623942951216768
+"muscle_wasting,patches_in_throat,high_fever,extra_marital_contacts",27,1035,1035,0.20899708444452325,0.12657156333923705
+I'm having trouble healing my wounds. My feet and hands are tingling and numb. I feel weak and fragile.,284,284,308,0.23,0.0954325024339942
+I have sores around my nose that are crusted over and hard to touch. They used to ooze a yellow-rust colored liquid. It is taking a long time to heal.,515,515,515,0.5601190590052147,0.20660872763187854
+"I've been itching and have rashy patches all over my skin recently. There are also some regions that don't appear to be the regular tone of my skin, and I've experienced some painful bumps.",394,394,394,0.2994270670596071,0.1610072440795578
+"fatigue,cough,high_fever,breathlessness,family_history",149,149,149,1.0,0.21033812295556015
+"continuous_sneezing,shivering,chills,watering_from_eyes",35,35,35,1.0,0.1369006238546456
+"itching,fatigue,lethargy,yellowish_skin,loss_of_appetite,abdominal_pain,yellow_urine,yellowing_of_eyes,malaise,receiving_blood_transfusion,receiving_unsterile_injections",465,465,465,0.9432110176303824,0.27152303903305686
+"joint_pain,neck_pain,knee_pain,hip_joint_pain,swelling_joints,painful_walking",700,1035,1035,0.20899708444452325,0.12657156333923705
+"itching,skin_rash,fatigue,lethargy,high_fever,headache,loss_of_appetite,mild_fever,swelled_lymph_nodes,malaise,red_spots_over_body",193,193,193,1.0,0.184351338321149
+"fatigue,cramps,bruising,obesity,swollen_blood_vessels,prominent_veins_on_calf",1047,1047,1047,1.0,0.19639852472516353
+"I'm always tired, and my mouth tastes terrible. My throat itches, and my muscles burn and ache. Sometimes I have cramps all over my body.",35,35,35,0.56,0.20629141712622817
+"fatigue,weight_gain,cold_hands_and_feets,lethargy,dizziness,puffy_face_and_eyes,enlarged_thyroid,brittle_nails,swollen_extremeties,depression,irritability,abnormal_menstruation",511,511,511,1.0,0.20681887004277272
+"joint_pain,neck_pain,knee_pain,hip_joint_pain,swelling_joints,painful_walking",700,1035,1035,0.20899708444452325,0.12657156333923705
+"chills,vomiting,fatigue,weight_loss,cough,high_fever,breathlessness,sweating,loss_of_appetite,mild_fever,yellowing_of_eyes,swelled_lymph_nodes,malaise,phlegm,chest_pain,blood_in_sputum",1019,1019,1019,1.0,0.2204896623915311
+"fatigue,cold_hands_and_feets,mood_swings,lethargy,dizziness,puffy_face_and_eyes,enlarged_thyroid,brittle_nails,swollen_extremeties,depression,irritability,abnormal_menstruation",511,511,511,1.0,0.20681887004277272
+"burning_micturition,bladder_discomfort,foul_smell_of_urine",1035,1035,1035,0.20899708444452325,0.12657156333923705
+"skin_rash,joint_pain,skin_peeling,silver_like_dusting,small_dents_in_nails,inflammatory_nails",822,1035,1035,0.20899708444452325,0.12657156333923705
+"I've been having abdominal pain for a few days now. It's been coming and going, but it's really unpleasant. I've also been constipated and vomiting. I'm really concerned about my health.",1026,1026,1026,0.32,0.17468265509450032
+"chills,vomiting,fatigue,high_fever,headache,nausea,constipation,abdominal_pain,diarrhoea,toxic_look_(typhos),belly_pain",1026,1026,1026,1.0,0.18882345150566623
+"itching,fatigue,lethargy,yellowish_skin,dark_urine,loss_of_appetite,abdominal_pain,yellow_urine,yellowing_of_eyes,malaise,receiving_blood_transfusion,receiving_unsterile_injections",465,465,465,0.9432110176303824,0.27152303903305686
+"vomiting,headache,weakness_of_one_body_side,altered_sensorium",718,718,718,1.0,0.06188929516888387
+"joint_pain,vomiting,yellowish_skin,dark_urine,nausea,loss_of_appetite,abdominal_pain,diarrhoea,mild_fever,yellowing_of_eyes,muscle_pain",464,464,464,1.0,0.15132334131647915
+"itching,vomiting,yellowish_skin,nausea,loss_of_appetite,abdominal_pain,yellowing_of_eyes",207,207,207,1.0,0.1573000364902646
+I've been feeling really weak in my muscles lately and my neck has been really stiff. My joints have been swollen and it's hard for me to move around. It's also been painful to walk.,72,72,72,0.85,0.07306980648052995
+I have a rash that is spreading all over my skin and it is very itchy. I also have some discolored spots and little bumps all over my skin.,394,394,394,0.31,0.13400749846233045
+"vomiting,sunken_eyes,diarrhoea",402,402,402,0.5834010370434518,0.07796925252462966
+"vomiting,dehydration,diarrhoea",402,402,402,1.0,0.22766959323749905
+"I've been really itchy all over my body, and I've been getting chills and vomiting. My fever is really high, and I've been sweating a lot. I also have a headache, and I feel nauseous. My muscles are really sore.",596,596,596,0.82,0.14139526971473715
+"itching,vomiting,fatigue,weight_loss,high_fever,yellowish_skin,abdominal_pain",541,541,541,1.0,0.22493507441018898
+"muscle_wasting,patches_in_throat,high_fever,extra_marital_contacts",27,1035,1035,0.20899708444452325,0.12657156333923705
+"joint_pain,vomiting,fatigue,high_fever,yellowish_skin,dark_urine,nausea,loss_of_appetite,abdominal_pain,yellowing_of_eyes,acute_liver_failure,coma,stomach_bleeding",468,468,468,1.0,0.15459976254538835
+"skin_rash,high_fever,blister,yellow_crust_ooze",515,515,515,1.0,0.15065932865584375
+"itching,skin_rash,stomach_pain,burning_micturition",308,308,308,0.519437756823908,0.1623942951216768
+"fatigue,weight_gain,cold_hands_and_feets,mood_swings,lethargy,dizziness,puffy_face_and_eyes,enlarged_thyroid,brittle_nails,swollen_extremeties,depression,irritability,abnormal_menstruation",511,511,511,1.0,0.20681887004277272
+"vomiting,yellowish_skin,abdominal_pain,swelling_of_stomach,distention_of_abdomen,history_of_alcohol_consumption,fluid_overload",33,33,33,0.813405843307451,0.1375796378719456
+"skin_rash,chills,joint_pain,fatigue,high_fever,headache,nausea,loss_of_appetite,pain_behind_the_eyes,back_pain,malaise,muscle_pain,red_spots_over_body",275,275,275,0.91,0.1939130950087204
+"chills,vomiting,fatigue,high_fever,headache,nausea,constipation,abdominal_pain,diarrhoea,toxic_look_(typhos),belly_pain",1026,1026,1026,1.0,0.18882345150566623
+"fatigue,weight_loss,restlessness,lethargy,irregular_sugar_level,blurred_and_distorted_vision,obesity,excessive_hunger,increased_appetite,polyuria",285,285,285,1.0,0.22544475472187542
+"continuous_sneezing,chills,fatigue,cough,high_fever,headache,swelled_lymph_nodes,malaise,phlegm,throat_irritation,redness_of_eyes,sinus_pressure,runny_nose,congestion,chest_pain,loss_of_smell,muscle_pain",234,234,234,1.0,0.2018645503605553
+"vomiting,fatigue,anxiety,sweating,headache,nausea,blurred_and_distorted_vision,excessive_hunger,drying_and_tingling_lips,slurred_speech,irritability,palpitations",504,504,504,1.0,0.14435042157436925
+"itching,vomiting,fatigue,weight_loss,yellowish_skin,dark_urine,abdominal_pain",541,541,541,1.0,0.22493507441018898
+"I have been experiencing a lot of belly pain and constipation. I also feel like I need to vomit, and I am feeling very weak.",1026,1026,275,0.28,0.07383300750699671
+"chills,fatigue,cough,high_fever,breathlessness,sweating,malaise,phlegm,chest_pain,fast_heart_rate,rusty_sputum",766,766,766,0.9615683075787856,0.22491013439422206
+"fatigue,cramps,obesity,swollen_legs,swollen_blood_vessels,prominent_veins_on_calf",1047,1047,1047,0.94,0.18745792632637925
+"fatigue,weight_loss,restlessness,sweating,diarrhoea,fast_heart_rate,excessive_hunger,muscle_weakness,irritability,abnormal_menstruation",502,502,502,1.0,0.1297333726191499
+"itching,fatigue,lethargy,high_fever,headache,loss_of_appetite,mild_fever,swelled_lymph_nodes,malaise,red_spots_over_body",193,193,193,1.0,0.184351338321149
+"fatigue,cramps,bruising,obesity,swollen_legs,swollen_blood_vessels,prominent_veins_on_calf",1047,1047,1047,1.0,0.19639852472516353
+"constipation,pain_during_bowel_movements,pain_in_anal_region,bloody_stool,irritation_in_anus",297,297,297,1.0,0.0954716542410667
+I have a sour taste in my mouth and I've been belching a lot. My upper abdomen feels full and pressed in.,736,736,736,0.74,0.0314840707663184
+"muscle_weakness,stiff_neck,swelling_joints,movement_stiffness,painful_walking",72,1035,1035,0.20899708444452325,0.12657156333923705
+"itching,skin_rash,stomach_pain,burning_micturition,spotting__urination",308,308,308,0.519437756823908,0.1623942951216768
+"mood_swings,weight_loss,restlessness,sweating,diarrhoea,fast_heart_rate,excessive_hunger,muscle_weakness,irritability,abnormal_menstruation",502,502,502,1.0,0.12416893194226208
+"vomiting,sunken_eyes,dehydration,diarrhoea",402,402,402,1.0,0.22766959323749905
+"I have been having severe belly pain and constipation for the past few days. I also have a fever, chills, and headaches every night. I am really uncomfortable.",1026,1026,1026,0.55,0.19220137059789977
+"chills,vomiting,high_fever,sweating,headache,nausea,diarrhoea,muscle_pain",596,596,596,1.0,0.20528343146188485
+"vomiting,fatigue,anxiety,sweating,headache,nausea,blurred_and_distorted_vision,excessive_hunger,drying_and_tingling_lips,slurred_speech,irritability,palpitations",504,504,504,1.0,0.14435042157436925
+"continuous_sneezing,chills,fatigue,cough,high_fever,swelled_lymph_nodes,malaise,phlegm,throat_irritation,redness_of_eyes,sinus_pressure,runny_nose,congestion,chest_pain,loss_of_smell,muscle_pain",234,234,234,1.0,0.2084348966172837
+"skin_rash,pus_filled_pimples,blackheads,scurring",7,7,7,1.0,0.11469330125868822
+"itching,fatigue,lethargy,yellowish_skin,dark_urine,loss_of_appetite,abdominal_pain,yellow_urine,yellowing_of_eyes,malaise,receiving_blood_transfusion,receiving_unsterile_injections",465,465,465,0.9432110176303824,0.27152303903305686
+"stomach_pain,acidity,ulcers_on_tongue,vomiting,cough,chest_pain",412,412,412,1.0,0.10598104444588897
+"fatigue,cough,high_fever,breathlessness,family_history,mucoid_sputum",149,149,149,1.0,0.21033812295556015
+"skin_rash,chills,vomiting,fatigue,high_fever,headache,nausea,loss_of_appetite,pain_behind_the_eyes,back_pain,malaise,muscle_pain,red_spots_over_body",275,275,275,1.0,0.19860485441973016
+"I have a metallic taste in my mouth, and also have a sense of change of taste and smell. Sometimes get very unbearable joint pain and muscle pain",308,308,308,0.6401204819277109,0.1066749932190032
+"itching,skin_rash,fatigue,lethargy,headache,loss_of_appetite,mild_fever,swelled_lymph_nodes,malaise,red_spots_over_body",193,193,193,1.0,0.184351338321149
+"itching,vomiting,fatigue,weight_loss,high_fever,yellowish_skin,abdominal_pain",541,541,541,1.0,0.22493507441018898
+"muscle_weakness,stiff_neck,swelling_joints,movement_stiffness,painful_walking",72,1035,1035,0.20899708444452325,0.12657156333923705
+"vomiting,fatigue,sweating,headache,nausea,blurred_and_distorted_vision,excessive_hunger,drying_and_tingling_lips,slurred_speech,irritability,palpitations",504,504,504,0.96,0.06618754218482045
+"Long-term infection with the hepatitis C virus is known as chronic hepatitis C. Chronic hepatitis C is usually a ""silent"" infection for many years, until the virus damages the liver enough to cause the signs and symptoms of liver disease. Signs and symptoms include:  Bleeding easily Bruising easily Fatigue Poor appetite Yellow discoloration of the skin and eyes (jaundice) Dark-colored urine Itchy skin Fluid buildup in your abdomen (ascites) Swelling in your legs Weight loss Confusion, drowsiness and slurred speech (hepatic encephalopathy) Spiderlike blood vessels on your skin (spider angiomas)  Every chronic hepatitis C infection starts with an acute phase. Acute hepatitis C usually goes undiagnosed because it rarely causes symptoms. When signs and symptoms are present, they may include jaundice, along with fatigue, nausea, fever and muscle aches. Acute symptoms appear one to three months after exposure to the virus and last two weeks to three months. Acute hepatitis C infection doesn't always become chronic. Some people clear HCV from their bodies after the acute phase, an outcome known as spontaneous viral clearance. In studies of people diagnosed with acute HCV, rates of spontaneous viral clearance have varied from 15% to 25%. Acute hepatitis C also responds well to antiviral therapy.",466,221,308,0.06,0.0859896032269414
+"itching,vomiting,yellowish_skin,nausea,loss_of_appetite,abdominal_pain,yellowing_of_eyes",207,207,207,1.0,0.1573000364902646
+"mood_swings,weight_loss,restlessness,sweating,diarrhoea,fast_heart_rate,excessive_hunger,muscle_weakness,irritability,abnormal_menstruation",502,502,502,1.0,0.12416893194226208
+"UTIs don't always cause symptoms. When they do, they may include: UTI  A strong urge to urinate that doesn't go away A burning feeling when urinating Urinating often, and passing small amounts of urine Urine that looks cloudy Urine that appears red, bright pink or cola-colored — signs of blood in the urine Strong-smelling urine Pelvic pain, in women — especially in the center of the pelvis and around the area of the pubic bone  In older adults, UTIs may be overlooked or mistaken for other conditions. UTI Types of urinary tract infections Each type of UTI may result in more-specific symptoms. The symptoms depend on which part of the urinary tract is affected. UTI     Part of urinary tract affected Signs and symptoms      Kidneys   Back or side pain High fever Shaking and chills Nausea Vomiting     Bladder   Pelvic pressure Lower belly discomfort Frequent, painful urination Blood in urine     Urethra   Burning with urination Discharge     ",1035,1028,275,0.03,0.07779118497899157
+"itching,lethargy,yellowish_skin,dark_urine,loss_of_appetite,abdominal_pain,yellow_urine,yellowing_of_eyes,malaise,receiving_blood_transfusion,receiving_unsterile_injections",465,465,465,0.9268620770676692,0.059169344650790184
+"headache,chest_pain,dizziness,loss_of_balance,lack_of_concentration",501,501,501,1.0,0.08870444082442505
+"I've been having a headache that feels like a sharp pain in my forehead, and I've also been feeling dizzy and having chest pain.",500,500,500,0.9,0.04097504582121428
+"skin_rash,blister,red_sore_around_nose,yellow_crust_ooze",515,515,515,1.0,0.15065932865584375
+"vomiting,breathlessness,chest_pain",447,447,447,0.99,0.051104943994070715
+"stomach_pain,ulcers_on_tongue,vomiting,cough,chest_pain",412,412,412,1.0,0.10530235928005455
+"fatigue,weight_gain,cold_hands_and_feets,mood_swings,lethargy,dizziness,puffy_face_and_eyes,enlarged_thyroid,brittle_nails,swollen_extremeties,depression,irritability,abnormal_menstruation",511,511,511,1.0,0.20681887004277272
+"skin_rash,chills,joint_pain,vomiting,fatigue,high_fever,headache,nausea,loss_of_appetite,pain_behind_the_eyes,back_pain,malaise,muscle_pain,red_spots_over_body",275,275,275,1.0,0.19860485441973016
+"chills,vomiting,high_fever,sweating,headache,nausea,diarrhoea,muscle_pain",596,596,596,1.0,0.20528343146188485
+"skin_rash,joint_pain,skin_peeling,silver_like_dusting,small_dents_in_nails,inflammatory_nails",822,1035,1035,0.20899708444452325,0.12657156333923705
+"vomiting,yellowish_skin,abdominal_pain,swelling_of_stomach,distention_of_abdomen,history_of_alcohol_consumption,fluid_overload",33,33,33,0.813405843307451,0.1375796378719456
+"stomach_pain,acidity,ulcers_on_tongue,vomiting,cough,chest_pain",412,412,412,1.0,0.10598104444588897
+"vomiting,yellowish_skin,abdominal_pain,swelling_of_stomach,distention_of_abdomen,fluid_overload",33,33,33,0.813405843307451,0.1375796378719456
+"joint_pain,vomiting,fatigue,high_fever,yellowish_skin,nausea,loss_of_appetite,abdominal_pain,yellowing_of_eyes,acute_liver_failure,coma,stomach_bleeding",468,468,468,1.0,0.15459976254538835
+"continuous_sneezing,shivering,chills",35,35,35,1.0,0.1369006238546456
+"itching,skin_rash,fatigue,lethargy,high_fever,headache,loss_of_appetite,swelled_lymph_nodes,malaise,red_spots_over_body",193,193,193,1.0,0.184351338321149
+"I've been having neck pain, instability, and balance concerns.",186,186,186,0.74,0.15981253780290813
+I have a rash that won't go away and it itches. I also have some color-different areas and bumps on my skin that resemble knots or lumps.,394,394,394,0.3406562939048814,0.16941151618271383
+"vomiting,fatigue,anxiety,sweating,headache,nausea,blurred_and_distorted_vision,excessive_hunger,drying_and_tingling_lips,slurred_speech,irritability,palpitations",504,504,504,1.0,0.14435042157436925
+"I have been experiencing eyesight problems, increased appetite, a sore neck, melancholy, irritability, regular headaches, acid reflux, indigestion, and frequent migraines. These symptoms have been making my regular activities more challenging and causing me a great deal of distress.",630,630,630,0.49,0.16629490512478134
+"fatigue,mood_swings,weight_loss,restlessness,sweating,diarrhoea,fast_heart_rate,excessive_hunger,muscle_weakness,irritability,abnormal_menstruation",502,502,502,1.0,0.1297333726191499
+"skin_rash,joint_pain,skin_peeling,silver_like_dusting,small_dents_in_nails,inflammatory_nails",822,1035,1035,0.20899708444452325,0.12657156333923705
+"chills,vomiting,high_fever,headache,nausea,diarrhoea,muscle_pain",596,596,596,0.96,0.17087035800708167
+"I have been having headaches for a while now. They are usually on the left side of my head and are very painful. I also get nausea, vomiting, and sensitivity to light and sound. I have tried taking over-the-counter pain relievers, but they don't seem to help much.",630,630,630,0.49,0.16457687548219135
+"I have blood in my urine and a low-grade fever. I've also been having headaches and a strong, uncontrollable urge to urinate. I've also started having lower back pain.",1035,1035,1035,0.3,0.05577919920809235
+"chills,vomiting,high_fever,sweating,headache,nausea,diarrhoea,muscle_pain",596,596,596,1.0,0.20528343146188485
+"constipation,pain_during_bowel_movements,pain_in_anal_region,bloody_stool,irritation_in_anus",297,297,297,1.0,0.0954716542410667
+"itching,skin_rash,dischromic__patches",394,308,308,0.519437756823908,0.1623942951216768
+"stomach_pain,acidity,ulcers_on_tongue,vomiting,cough,chest_pain",412,412,412,1.0,0.10598104444588897
+"chills,vomiting,fatigue,high_fever,headache,nausea,constipation,abdominal_pain,diarrhoea,toxic_look_(typhos),belly_pain",1026,1026,1026,1.0,0.18882345150566623
+"fatigue,weight_gain,cold_hands_and_feets,mood_swings,lethargy,dizziness,enlarged_thyroid,brittle_nails,swollen_extremeties,depression,irritability,abnormal_menstruation",511,511,511,1.0,0.20681887004277272
+"burning_micturition,foul_smell_of_urine,continuous_feel_of_urine",1035,1035,1035,0.20899708444452325,0.12657156333923705
+"continuous_sneezing,chills,fatigue,high_fever,headache,swelled_lymph_nodes,malaise,phlegm,throat_irritation,redness_of_eyes,sinus_pressure,runny_nose,congestion,chest_pain,loss_of_smell,muscle_pain",234,234,234,1.0,0.2008150240897116
+"skin_rash,pus_filled_pimples,blackheads,scurring",7,7,7,1.0,0.11469330125868822
+"skin_rash,high_fever,blister,red_sore_around_nose,yellow_crust_ooze",515,515,515,1.0,0.15065932865584375
+"fatigue,mood_swings,weight_loss,restlessness,sweating,diarrhoea,excessive_hunger,muscle_weakness,irritability,abnormal_menstruation",502,502,502,1.0,0.1297333726191499
+"vomiting,breathlessness,sweating",447,447,447,1.0,0.1664226565069108
+"itching,skin_rash,nodal_skin_eruptions,dischromic__patches",394,308,308,0.519437756823908,0.1623942951216768
+"high_fever,blister,red_sore_around_nose,yellow_crust_ooze",515,515,515,1.0,0.15065932865584375
+"itching,skin_rash,fatigue,lethargy,high_fever,headache,loss_of_appetite,mild_fever,swelled_lymph_nodes,malaise,red_spots_over_body",193,193,193,1.0,0.184351338321149
+"joint_pain,vomiting,fatigue,yellowish_skin,dark_urine,nausea,loss_of_appetite,yellowing_of_eyes",467,467,467,1.0,0.18220371300238217
+"muscle_weakness,stiff_neck,swelling_joints,movement_stiffness,painful_walking",72,1035,1035,0.20899708444452325,0.12657156333923705
+"bladder_discomfort,foul_smell_of_urine,continuous_feel_of_urine",1035,1035,1035,0.20899708444452325,0.12657156333923705
+"constipation,pain_during_bowel_movements,pain_in_anal_region,bloody_stool,irritation_in_anus",297,297,297,1.0,0.0954716542410667
+"itching,vomiting,fatigue,weight_loss,high_fever,yellowish_skin,dark_urine",541,541,541,1.0,0.22493507441018898
+"skin_rash,high_fever,red_sore_around_nose,yellow_crust_ooze",515,1035,1035,0.20899708444452325,0.12657156333923705
+"chills,fatigue,cough,high_fever,breathlessness,sweating,malaise,phlegm,chest_pain,fast_heart_rate,rusty_sputum",766,766,766,0.9615683075787856,0.22491013439422206
+"constipation,pain_during_bowel_movements,pain_in_anal_region,bloody_stool,irritation_in_anus",297,297,297,1.0,0.0954716542410667
+"continuous_sneezing,shivering,chills,watering_from_eyes",35,35,35,1.0,0.1369006238546456
+"vomiting,fatigue,sweating,headache,nausea,blurred_and_distorted_vision,excessive_hunger,drying_and_tingling_lips,slurred_speech,irritability,palpitations",504,504,504,0.96,0.06618754218482045
+"constipation,pain_during_bowel_movements,pain_in_anal_region,bloody_stool,irritation_in_anus",297,297,297,1.0,0.0954716542410667
+"I've been feeling really itchy all over, and I've been throwing up. I'm also really tired, and I've lost a lot of weight. My skin and my pee are both yellow, and my stomach hurts.",541,541,541,0.46,0.08198950740193306
+"I have a rash on my face that is red, swollen, and tender to the touch. It is also very uncomfortable to handle.",515,515,515,0.5501544380722051,0.18832311454906894
+"skin_rash,pus_filled_pimples,blackheads,scurring",7,7,7,1.0,0.11469330125868822
+"joint_pain,neck_pain,knee_pain,hip_joint_pain,swelling_joints,painful_walking",700,1035,1035,0.20899708444452325,0.12657156333923705
+"acidity,indigestion,headache,blurred_and_distorted_vision,excessive_hunger,stiff_neck,depression,irritability,visual_disturbances",630,630,630,1.0,0.17386924727851588
+"vomiting,headache,weakness_of_one_body_side,altered_sensorium",718,718,718,1.0,0.06188929516888387
+"I have been feeling bloated and uneasy for a while now. I've also been losing weight and I don't like eating as much as I used to. Sometimes I get bloody vomit and dark, tarry stools.",736,736,736,0.24,0.06750416909182996
+"skin_rash,chills,joint_pain,vomiting,fatigue,headache,nausea,loss_of_appetite,pain_behind_the_eyes,back_pain,malaise,muscle_pain,red_spots_over_body",275,275,275,1.0,0.19860485441973016
+"vomiting,sunken_eyes,dehydration,diarrhoea",402,402,402,1.0,0.22766959323749905
+"itching,vomiting,fatigue,weight_loss,high_fever,yellowish_skin,dark_urine,abdominal_pain",541,541,541,1.0,0.22493507441018898
+I have a lot of sneezing and a sore throat. My lips and the skin around my eyes will sometimes swell up. I can't stop sneezing once I start.,35,35,35,0.66,0.15115742882655328
+"chills,vomiting,high_fever,sweating,headache,nausea,diarrhoea,muscle_pain",596,596,596,1.0,0.20528343146188485
+"stomach_pain,acidity,ulcers_on_tongue,vomiting,cough,chest_pain",412,412,412,1.0,0.10598104444588897
+"vomiting,indigestion,loss_of_appetite,abdominal_pain,passage_of_gases,internal_itching",735,735,735,1.0,0.13092117526178101
+"constipation,pain_during_bowel_movements,bloody_stool,irritation_in_anus",297,297,297,1.0,0.0954716542410667
+I have some strange veins on my legs that I'm not sure about. I'm a bit overweight and I'm worried about them.,1047,1047,1047,0.97,0.19407520139685486
+"I've been feeling really sick and exhausted lately. My throat is scratchy, and my nose is running a lot. I also have a headache and my neck feels swollen.",234,234,234,0.55,0.20152570252460886
+"chills,vomiting,high_fever,sweating,headache,nausea,diarrhoea,muscle_pain",596,596,596,1.0,0.20528343146188485
+"vomiting,yellowish_skin,swelling_of_stomach,distention_of_abdomen,history_of_alcohol_consumption,fluid_overload",33,33,33,0.813405843307451,0.1375796378719456
+"joint_pain,fatigue,high_fever,yellowish_skin,dark_urine,nausea,loss_of_appetite,abdominal_pain,yellowing_of_eyes,acute_liver_failure,coma,stomach_bleeding",468,468,468,0.91,0.08785050037056212
+"vomiting,indigestion,abdominal_pain,passage_of_gases,internal_itching",735,735,735,1.0,0.13092117526178101
+"itching,fatigue,lethargy,yellowish_skin,dark_urine,loss_of_appetite,abdominal_pain,yellow_urine,yellowing_of_eyes,malaise,receiving_blood_transfusion,receiving_unsterile_injections",465,465,465,0.9432110176303824,0.27152303903305686
+"skin_rash,joint_pain,skin_peeling,silver_like_dusting,inflammatory_nails",822,1035,1035,0.20899708444452325,0.12657156333923705
+"joint_pain,neck_pain,knee_pain,hip_joint_pain,swelling_joints,painful_walking",700,1035,1035,0.20899708444452325,0.12657156333923705
+"skin_rash,stomach_pain,burning_micturition,spotting__urination",308,1035,1035,0.20899708444452325,0.12657156333923705
+"vomiting,headache,nausea,spinning_movements,loss_of_balance,unsteadiness",0,0,0,1.0,0.23826397164175792
+"joint_pain,fatigue,high_fever,yellowish_skin,dark_urine,nausea,loss_of_appetite,abdominal_pain,yellowing_of_eyes,acute_liver_failure,coma,stomach_bleeding",468,468,468,0.91,0.08785050037056212
+"fatigue,mood_swings,weight_loss,restlessness,sweating,diarrhoea,fast_heart_rate,excessive_hunger,muscle_weakness,irritability,abnormal_menstruation",502,502,502,1.0,0.1297333726191499

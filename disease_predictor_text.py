@@ -13,44 +13,55 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
 from sklearn.metrics import (
-    accuracy_score, classification_report, confusion_matrix,
-    f1_score, precision_score, recall_score
+    accuracy_score, precision_score, recall_score,
+    f1_score, classification_report, confusion_matrix
 )
 from sklearn.feature_extraction.text import TfidfVectorizer
+from collections import Counter
 
-# Download NLTK resources
+# -----------------------------
+# 1. DOWNLOAD NLTK RESOURCES
+# -----------------------------
 nltk.download('punkt_tab')
 nltk.download('wordnet')
 
-# --- Define robust preprocessing ---
+# -----------------------------
+# 2. TEXT PREPROCESSING
+# -----------------------------
 lemmatizer = WordNetLemmatizer()
+
 def preprocess_text(text):
     text = str(text).lower()
-    text = re.sub(r'\d+', '', text)
-    words = nltk.word_tokenize(text)
-    words = [w for w in words if w.isalpha() and len(w) > 2]
-    words = [lemmatizer.lemmatize(w) for w in words]
-    return ' '.join(words)
+    text = re.sub(r'\d+', '', text)               # remove digits
+    tokens = nltk.word_tokenize(text)
+    tokens = [t for t in tokens if t.isalpha() and len(t) > 2]  # keep alphabetic tokens >=3 chars
+    tokens = [lemmatizer.lemmatize(t) for t in tokens]
+    return ' '.join(tokens)
 
-# --- Load train dataset (robust to various column names) ---
+# -----------------------------
+# 3. LOAD & PREPARE CSV
+# -----------------------------
 def load_and_prepare_csv(path):
     df = pd.read_csv(path)
-    # Find possible text/label column names
-    text_col = next((col for col in df.columns if 'text' in col.lower() or 'desc' in col.lower()), None)
-    label_col = next((col for col in df.columns if 'label' in col.lower() or 'disease' in col.lower()), None)
+    # autodetect text and label columns
+    cols = [c.lower() for c in df.columns]
+    text_col  = next((c for c in df.columns if 'text' in c.lower() or 'desc' in c.lower()), None)
+    label_col = next((c for c in df.columns if 'label' in c.lower() or 'disease' in c.lower()), None)
     if text_col is None or label_col is None:
-        raise ValueError(f"Could not find appropriate text/label columns in {path}")
-    texts = df[text_col].astype(str).apply(preprocess_text)
+        raise ValueError(f"Cannot find text/label columns in {path}")
+    texts  = df[text_col].astype(str).apply(preprocess_text)
     labels = df[label_col].astype(str)
     return texts, labels, df
 
-train_path = 'symptom-disease-train-dataset.csv'
-test_path = 'symptom-disease-test-dataset.csv'
+train_path = 'symptom-disease-train-dataset_1.csv'
+test_path  = 'symptom-disease-test-dataset_1.csv'
 
-texts_train, labels_train, df_train_raw = load_and_prepare_csv(train_path)
-texts_test, labels_test, df_test_raw = load_and_prepare_csv(test_path)
+texts_train, labels_train, df_train = load_and_prepare_csv(train_path)
+texts_test,  labels_test,  df_test  = load_and_prepare_csv(test_path)
 
-# --- Fit vectorizer and encoder only on train, transform test ---
+# -----------------------------
+# 4. VECTORIZE & ENCODE
+# -----------------------------
 vectorizer = TfidfVectorizer(
     binary=True,
     stop_words='english',
@@ -58,73 +69,126 @@ vectorizer = TfidfVectorizer(
     token_pattern=r'\b[a-zA-Z]{3,}\b'
 )
 X_train = vectorizer.fit_transform(texts_train)
-X_test = vectorizer.transform(texts_test)
+X_test  = vectorizer.transform(texts_test)
 
 le = LabelEncoder()
 y_train = le.fit_transform(labels_train)
 
-# --- Align test labels: ignore test diseases not in training set ---
-test_label_map = {label: idx for idx, label in enumerate(le.classes_)}
-mask = [lbl in test_label_map for lbl in labels_test]
-X_test_final = X_test[mask]
+# -----------------------------
+# 5. ALIGN TEST LABELS
+# -----------------------------
+# Only keep test rows whose labels appear in the training set
+label_map = {lbl: idx for idx, lbl in enumerate(le.classes_)}
+mask = np.array([lbl in label_map for lbl in labels_test])
+X_test_final      = X_test[mask]
 labels_test_final = labels_test[mask].values
-y_test_final = [test_label_map[lbl] for lbl in labels_test_final]
-orig_test_texts_final = df_test_raw.iloc[np.where(mask)[0]]  # for saving results
+y_test_final      = np.array([label_map[lbl] for lbl in labels_test_final])
+texts_test_final  = df_test.iloc[np.where(mask)[0]][texts_test.name]
 
-print(f"Test samples evaluated: {len(y_test_final)} / {len(labels_test)} (only diseases seen in training set)")
+print(f"Evaluating on {len(y_test_final)} / {len(labels_test)} test samples (labels seen in training).")
 
-# --- Model training (Random Forest & SVM) ---
+# -----------------------------
+# 6. MODEL TRAINING
+# -----------------------------
+# 6a. Random Forest
 rf = RandomForestClassifier(n_estimators=100, random_state=42)
 rf.fit(X_train, y_train)
 rf_preds = rf.predict(X_test_final)
 rf_probs = rf.predict_proba(X_test_final)
 
-# SVM (optional: set probability=False for speed if confidence not needed)
-param_grid = {'C': [1], 'gamma': ['scale']}  # Keep grid small for speed; adjust as needed!
+# 6b. SVM with light GridSearch
+param_grid = {'C': [1], 'gamma': ['scale']}
 svm = SVC(kernel='rbf', probability=True, random_state=42)
 grid = GridSearchCV(svm, param_grid, cv=3, scoring='accuracy', n_jobs=-1)
 grid.fit(X_train, y_train)
-svm_best = grid.best_estimator_
+svm_best  = grid.best_estimator_
 svm_preds = svm_best.predict(X_test_final)
 svm_probs = svm_best.predict_proba(X_test_final)
 print("Best SVM params:", grid.best_params_)
 
-# --- Metrics and reporting ---
-def print_metrics(name, y_true, y_pred):
-    print(f"\n{name} Metrics:")
-    print(f"Accuracy: {accuracy_score(y_true, y_pred):.2%}")
-    print("Macro Precision: {:.2%}".format(precision_score(y_true, y_pred, average='macro')))
-    print("Weighted Precision: {:.2%}".format(precision_score(y_true, y_pred, average='weighted')))
-    print("Macro Recall: {:.2%}".format(recall_score(y_true, y_pred, average='macro')))
-    print("Weighted Recall: {:.2%}".format(recall_score(y_true, y_pred, average='weighted')))
-    print("Macro F1-score: {:.2%}".format(f1_score(y_true, y_pred, average='macro')))
-    print("Weighted F1-score: {:.2%}".format(f1_score(y_true, y_pred, average='weighted')))
+# -----------------------------
+# 7. METRICS & REPORTING
+# -----------------------------
+def print_metrics(name, y_true, y_pred, encoder):
+    print(f"\n=== {name} ===")
+    print(f"Accuracy:          {accuracy_score(y_true, y_pred):.2%}")
+    print(f"Macro Precision:   {precision_score(y_true, y_pred, average='macro'):.2%}")
+    print(f"Weighted Precision:{precision_score(y_true, y_pred, average='weighted'):.2%}")
+    print(f"Macro Recall:      {recall_score(y_true, y_pred, average='macro'):.2%}")
+    print(f"Weighted Recall:   {recall_score(y_true, y_pred, average='weighted'):.2%}")
+    print(f"Macro F1-score:    {f1_score(y_true, y_pred, average='macro'):.2%}")
+    print(f"Weighted F1-score: {f1_score(y_true, y_pred, average='weighted'):.2%}")
+    # restrict to classes present in y_true
+    present = sorted(set(y_true))
+    names   = [encoder.classes_[i] for i in present]
     print("\nClassification Report:")
-    print(classification_report(y_true, y_pred, target_names=le.classes_))
+    print(classification_report(
+        y_true, y_pred,
+        labels=present,
+        target_names=names,
+        zero_division=0
+    ))
 
-print_metrics("Random Forest (External Test)", y_test_final, rf_preds)
-print_metrics("SVM (External Test)", y_test_final, svm_preds)
+print_metrics("Random Forest (External Test)", y_test_final, rf_preds, le)
+print_metrics("SVM (External Test)",           y_test_final, svm_preds, le)
 
-# --- Confusion matrices ---
-def plot_cm(y_true, y_pred, model_name):
-    cm = confusion_matrix(y_true, y_pred)
-    plt.figure(figsize=(14, 12))
-    sns.heatmap(cm, cmap="Blues", xticklabels=le.classes_, yticklabels=le.classes_, annot=False)
-    plt.title(f"Confusion Matrix - {model_name}")
-    plt.xlabel('Predicted')
-    plt.ylabel('Actual')
+# -----------------------------
+# 8. CONFUSION MATRICES
+# -----------------------------
+def plot_top_n_cm(y_true, y_pred, encoder, n=20, model_name="Model"):
+    # 1) Identify the n most common label values in y_true
+    freq       = Counter(y_true)
+    top_n_vals = [lab for lab,_ in freq.most_common(n)]
+    
+    # 2) Determine the full set of unique labels and map them to row/col idx
+    unique_vals = sorted(set(y_true))
+    val_to_pos  = {val: i for i, val in enumerate(unique_vals)}
+    
+    # 3) Build the full confusion matrix in that unique_vals order
+    cm_full = confusion_matrix(y_true, y_pred, labels=unique_vals)
+    
+    # 4) Compute the positions of our top-n labels in that matrix
+    idx = [val_to_pos[val] for val in top_n_vals]
+    
+    # 5) Slice out the top-n × top-n block
+    cm_n = cm_full[np.ix_(idx, idx)]
+    
+    # 6) Convert label values back to names
+    class_names = [encoder.classes_[val] for val in top_n_vals]
+    
+    # 7) Plot with annotation
+    size = max(8, n * 0.4)
+    plt.figure(figsize=(size, size))
+    sns.heatmap(
+        cm_n,
+        cmap="Blues",
+        xticklabels=class_names,
+        yticklabels=class_names,
+        annot=True,
+        fmt="d"
+    )
+    plt.xticks(rotation=90, fontsize=6)
+    plt.yticks(rotation=0, fontsize=6)
+    plt.title(f"Top {n} Confusion Matrix – {model_name}")
+    plt.xlabel("Predicted")
+    plt.ylabel("Actual")
     plt.tight_layout()
     plt.show()
-    return cm
 
-cm_rf = plot_cm(y_test_final, rf_preds, "Random Forest (External Test)")
-cm_svm = plot_cm(y_test_final, svm_preds, "SVM (External Test)")
-print("Random Forest Confusion Matrix (Raw):\n", cm_rf)
-print("SVM Confusion Matrix (Raw):\n", cm_svm)
+    return cm_n
 
-# --- Feature importances (RF only) ---
-importances = rf.feature_importances_
-indices = importances.argsort()[::-1]
+# Then call it like this:
+cm_rf_top20  = plot_top_n_cm(y_test_final, rf_preds,  le, n=20, model_name="Random Forest")
+cm_svm_top20 = plot_top_n_cm(y_test_final, svm_preds, le, n=20, model_name="SVM")
+
+print("RF Top-20 CM:\n", cm_rf_top20)
+print("SVM Top-20 CM:\n", cm_svm_top20)
+
+# -----------------------------
+# 9. FEATURE IMPORTANCES
+# -----------------------------
+importances   = rf.feature_importances_
+indices       = importances.argsort()[::-1]
 feature_names = vectorizer.get_feature_names_out()
 
 plt.figure(figsize=(12, 5))
@@ -135,14 +199,16 @@ plt.tight_layout()
 plt.show()
 print("Top features:", [feature_names[i] for i in indices[:10]])
 
-# --- Save predictions for error analysis ---
+# -----------------------------
+# 10. SAVE RESULTS
+# -----------------------------
 results = pd.DataFrame({
-    'Original_Text': orig_test_texts_final[texts_test.name].values,
-    'True_Disease': labels_test_final,
-    'RF_Prediction': le.inverse_transform(rf_preds),
-    'SVM_Prediction': le.inverse_transform(svm_preds),
-    'RF_Confidence': rf_probs.max(axis=1),
-    'SVM_Confidence': svm_probs.max(axis=1)
+    'Text':      texts_test_final.values,
+    'True':      labels_test_final,
+    'RF_Pred':   le.inverse_transform(rf_preds),
+    'SVM_Pred':  le.inverse_transform(svm_preds),
+    'RF_Conf':   rf_probs.max(axis=1),
+    'SVM_Conf':  svm_probs.max(axis=1)
 })
 results.to_csv('external_test_disease_predictions.csv', index=False)
-print("Saved predictions to external_test_disease_predictions.csv")
+print("Saved external_test_disease_predictions.csv")
