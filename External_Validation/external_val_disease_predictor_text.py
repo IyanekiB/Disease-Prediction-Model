@@ -19,15 +19,35 @@ from sklearn.metrics import (
 from sklearn.feature_extraction.text import TfidfVectorizer
 from collections import Counter
 
-# -----------------------------
-# 1. DOWNLOAD NLTK RESOURCES
-# -----------------------------
+# Make sure mapping uses *string* keys:
+CODE_TO_DISEASE = {
+    "515": "Impetigo",
+    "596": "Malaria",
+    "72":  "Rheumatoid Arthritis",
+    "447":"Myocardial Infarction",
+    "394":"Urticaria (Hives)",
+    "308":"Migraine",
+    "297":"Hemorrhoids",
+    "412":"GERD",
+    "1035":"UTI",
+    "541":"Hepatitis",
+    "822":"Psoriasis",
+    "33":"Liver Cirrhosis",
+    "275":"Dengue Fever",
+    "718":"Stroke",
+    "1047":"Deep Vein Thrombosis",
+    "468":"Acute Liver Failure",
+    "700":"Osteoarthritis",
+    "504":"Hypoglycemia",
+    "766":"Pneumonia",
+    "502":"Hyperthyroidism",
+}
+
+# DOWNLOAD NLTK RESOURCES
 nltk.download('punkt_tab')
 nltk.download('wordnet')
 
-# -----------------------------
-# 2. TEXT PREPROCESSING
-# -----------------------------
+# TEXT PREPROCESSING
 lemmatizer = WordNetLemmatizer()
 
 def preprocess_text(text):
@@ -38,9 +58,9 @@ def preprocess_text(text):
     tokens = [lemmatizer.lemmatize(t) for t in tokens]
     return ' '.join(tokens)
 
-# -----------------------------
-# 3. LOAD & PREPARE CSV
-# -----------------------------
+
+# LOAD & PREPARE CSV
+
 def load_and_prepare_csv(path):
     df = pd.read_csv(path)
     # autodetect text and label columns
@@ -62,9 +82,9 @@ test_path  = 'Datasets/symptom-disease-test-reformat.csv'
 texts_train, labels_train, df_train = load_and_prepare_csv(train_path)
 texts_test,  labels_test,  df_test  = load_and_prepare_csv(test_path)
 
-# -----------------------------
-# 4. VECTORIZE & ENCODE
-# -----------------------------
+
+# VECTORIZE & ENCODE
+
 vectorizer = TfidfVectorizer(
     binary=True,
     stop_words='english',
@@ -77,9 +97,9 @@ X_test  = vectorizer.transform(texts_test)
 le = LabelEncoder()
 y_train = le.fit_transform(labels_train)
 
-# -----------------------------
-# 5. ALIGN TEST LABELS
-# -----------------------------
+
+# ALIGN TEST LABELS
+
 # Only keep test rows whose labels appear in the training set
 label_map = {lbl: idx for idx, lbl in enumerate(le.classes_)}
 mask = np.array([lbl in label_map for lbl in labels_test])
@@ -90,16 +110,16 @@ texts_test_final  = df_test.iloc[np.where(mask)[0]][texts_test.name]
 
 print(f"Evaluating on {len(y_test_final)} / {len(labels_test)} test samples (labels seen in training).")
 
-# -----------------------------
-# 6. MODEL TRAINING
-# -----------------------------
-# 6a. Random Forest
+
+# MODEL TRAINING
+
+# Random Forest
 rf = RandomForestClassifier(n_estimators=100, random_state=42)
 rf.fit(X_train, y_train)
 rf_preds = rf.predict(X_test_final)
 rf_probs = rf.predict_proba(X_test_final)
 
-# 6b. SVM with light GridSearch
+# SVM with GridSearch
 param_grid = {'C': [0.1, 1, 10], 'gamma': ['scale', 0.01, 0.1, 1]}
 svm = SVC(kernel='rbf', probability=True, random_state=42)
 grid = GridSearchCV(svm, param_grid, cv=3, scoring='accuracy', n_jobs=-1)
@@ -109,10 +129,15 @@ svm_preds = svm_best.predict(X_test_final)
 svm_probs = svm_best.predict_proba(X_test_final)
 print("Best SVM params:", grid.best_params_)
 
-# -----------------------------
-# 7. METRICS & REPORTING
-# -----------------------------
-def print_metrics(name, y_true, y_pred, encoder):
+
+# METRICS & REPORTING
+
+def print_metrics(name, y_true, y_pred, encoder, top_n=20):
+    """
+    Prints overall metrics and then a classification report for the top_n
+    most frequent classes in y_true, mapping each class-code to its
+    disease name via code_to_disease.
+    """
     print(f"\n=== {name} ===")
     print(f"Accuracy:          {accuracy_score(y_true, y_pred):.2%}")
     print(f"Macro Precision:   {precision_score(y_true, y_pred, average='macro'):.2%}")
@@ -121,23 +146,33 @@ def print_metrics(name, y_true, y_pred, encoder):
     print(f"Weighted Recall:   {recall_score(y_true, y_pred, average='weighted'):.2%}")
     print(f"Macro F1-score:    {f1_score(y_true, y_pred, average='macro'):.2%}")
     print(f"Weighted F1-score: {f1_score(y_true, y_pred, average='weighted'):.2%}")
-    # restrict to classes present in y_true
-    present = sorted(set(y_true))
-    names   = [encoder.classes_[i] for i in present]
-    print("\nClassification Report:")
+
+    # 1) Find top_n most frequent true labels
+    freq       = Counter(y_true)
+    top_labels = [label for label,_ in freq.most_common(top_n)]
+
+    # 2) Map each encoded label -> string code -> disease name
+    target_names = []
+    for lbl in top_labels:
+        code_str = encoder.classes_[lbl]               # e.g. "515"
+        disease  = CODE_TO_DISEASE.get(code_str, code_str)
+        target_names.append(disease)
+
+    # 3) Print classification report for only those top_n labels
+    print(f"\nClassification Report (Top {top_n} classes by support):")
     print(classification_report(
         y_true, y_pred,
-        labels=present,
-        target_names=names,
+        labels=top_labels,
+        target_names=target_names,
         zero_division=0
     ))
 
-print_metrics("Random Forest (External Test)", y_test_final, rf_preds, le)
-print_metrics("SVM (External Test)",           y_test_final, svm_preds, le)
+print_metrics("Random Forest (External Test)", y_test_final, rf_preds, le, top_n=20)
+print_metrics("SVM (External Test)",           y_test_final, svm_preds, le, top_n=20)
 
-# -----------------------------
-# 8. CONFUSION MATRICES
-# -----------------------------
+
+# CONFUSION MATRICES
+
 # def plot_top_n_cm(y_true, y_pred, encoder, n=20, model_name="Model"):
 #     # 1) Identify the n most common label values in y_true
 #     freq       = Counter(y_true)
@@ -185,7 +220,7 @@ print_metrics("SVM (External Test)",           y_test_final, svm_preds, le)
 # cm_rf_top20  = plot_top_n_cm(y_test_final, rf_preds,  le, n=20, model_name="Random Forest")
 # cm_svm_top20 = plot_top_n_cm(y_test_final, svm_preds, le, n=20, model_name="SVM")
 
-def plot_top_n_cm(y_true, y_pred, encoder, code_to_disease, n=20, model_name="Model"):
+def plot_top_n_cm(y_true, y_pred, encoder, n=20, model_name="Model"):
     # 1) find the n most frequent *encoded* labels
     freq        = Counter(y_true)
     top_n_vals  = [lab for lab,_ in freq.most_common(n)]
@@ -203,7 +238,7 @@ def plot_top_n_cm(y_true, y_pred, encoder, code_to_disease, n=20, model_name="Mo
     class_names = []
     for v in top_n_vals:
         code_str = encoder.classes_[v]                 # e.g. "515"
-        disease  = code_to_disease.get(code_str, code_str)
+        disease  = CODE_TO_DISEASE.get(code_str, code_str)
         class_names.append(disease)
     
     # 5) plot
@@ -229,40 +264,16 @@ def plot_top_n_cm(y_true, y_pred, encoder, code_to_disease, n=20, model_name="Mo
     
     return cm_n
 
-# Make sure your mapping uses *string* keys:
-code_to_disease = {
-    "515": "Impetigo",
-    "596": "Malaria",
-    "72":  "Rheumatoid Arthritis",
-    "447":"Myocardial Infarction",
-    "394":"Urticaria (Hives)",
-    "308":"Migraine",
-    "297":"Hemorrhoids",
-    "412":"GERD",
-    "1035":"UTI",
-    "541":"Hepatitis",
-    "822":"Psoriasis",
-    "33":"Liver Cirrhosis",
-    "275":"Dengue Fever",
-    "718":"Stroke",
-    "1047":"Deep Vein Thrombosis",
-    "468":"Acute Liver Failure",
-    "700":"Osteoarthritis",
-    "504":"Hypoglycemia",
-    "766":"Pneumonia",
-    "502":"Hyperthyroidism",
-}
-
 # Then call:
-cm_rf_top20 = plot_top_n_cm(y_test_final, rf_preds,  le, code_to_disease, n=20, model_name="Random Forest")
-cm_svm_top20= plot_top_n_cm(y_test_final, svm_preds, le, code_to_disease, n=20, model_name="SVM")
+cm_rf_top20 = plot_top_n_cm(y_test_final, rf_preds,  le, n=20, model_name="Random Forest")
+cm_svm_top20= plot_top_n_cm(y_test_final, svm_preds, le, n=20, model_name="SVM")
 
 print("RF Top-20 CM:\n", cm_rf_top20)
 print("SVM Top-20 CM:\n", cm_svm_top20)
 
-# -----------------------------
-# 9. FEATURE IMPORTANCES
-# -----------------------------
+
+# FEATURE IMPORTANCES
+
 importances   = rf.feature_importances_
 indices       = importances.argsort()[::-1]
 feature_names = vectorizer.get_feature_names_out()
@@ -275,9 +286,9 @@ plt.tight_layout()
 plt.show()
 print("Top features:", [feature_names[i] for i in indices[:10]])
 
-# -----------------------------
-# 10. SAVE RESULTS
-# -----------------------------
+
+# SAVE RESULTS
+
 results = pd.DataFrame({
     'Text':      texts_test_final.values,
     'True':      labels_test_final,
