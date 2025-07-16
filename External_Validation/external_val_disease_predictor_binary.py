@@ -15,8 +15,8 @@ from sklearn.metrics import (
 )
 
 # --- LOAD TRAINING DATA ---
-train_df = pd.read_csv('training_data.csv')
-test_df = pd.read_csv('test_data.csv')
+train_df = pd.read_csv('Datasets/external_val_training_data_binary.csv')
+test_df = pd.read_csv('Datasets/external_val_test_data_binary.csv')
 
 # Remove unnamed or extra columns if present
 if 'Unnamed: 133' in train_df.columns:
@@ -116,5 +116,5 @@ results = pd.DataFrame({
     'RF_Confidence': rf_probs.max(axis=1),
     'SVM_Confidence': svm_probs.max(axis=1)
 })
-results.to_csv('external_structured_test_predictions.csv', index=False)
+results.to_csv('Outputs/external_structured_test_predictions.csv', index=False)
 print("Saved predictions to external_structured_test_predictions.csv")

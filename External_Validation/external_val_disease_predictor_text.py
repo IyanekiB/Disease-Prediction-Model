@@ -32,7 +32,7 @@ lemmatizer = WordNetLemmatizer()
 
 def preprocess_text(text):
     text = str(text).lower()
-    text = re.sub(r'\d+', '', text)               # remove digits
+    text = re.sub(r'\d+', '', text)    # remove digits
     tokens = nltk.word_tokenize(text)
     tokens = [t for t in tokens if t.isalpha() and len(t) > 2]  # keep alphabetic tokens >=3 chars
     tokens = [lemmatizer.lemmatize(t) for t in tokens]
@@ -53,8 +53,8 @@ def load_and_prepare_csv(path):
     labels = df[label_col].astype(str)
     return texts, labels, df
 
-train_path = 'symptom-disease-train-dataset_1.csv'
-test_path  = 'symptom-disease-test-dataset_1.csv'
+train_path = 'Datasets/symptom-disease-train-reformat.csv'
+test_path  = 'Datasets/symptom-disease-test-reformat.csv'
 
 texts_train, labels_train, df_train = load_and_prepare_csv(train_path)
 texts_test,  labels_test,  df_test  = load_and_prepare_csv(test_path)
@@ -210,5 +210,5 @@ results = pd.DataFrame({
     'RF_Conf':   rf_probs.max(axis=1),
     'SVM_Conf':  svm_probs.max(axis=1)
 })
-results.to_csv('external_test_disease_predictions.csv', index=False)
+results.to_csv('Outputs/external_test_disease_predictions.csv', index=False)
 print("Saved external_test_disease_predictions.csv")
