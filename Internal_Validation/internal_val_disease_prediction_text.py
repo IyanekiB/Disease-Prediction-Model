@@ -23,7 +23,7 @@ nltk.download('punkt_tab')
 nltk.download('wordnet')
 
 # ----- Data Loading and Preprocessing -----
-df = pd.read_csv('Symptom2Disease.csv')
+df = pd.read_csv('Datasets/Symptom2Disease.csv')
 texts = df['text'].astype(str)
 labels = df['label']
 
@@ -135,5 +135,5 @@ results = pd.DataFrame({
     'RF_Prediction': le.inverse_transform(rf_test_preds),
     'SVM_Prediction': le.inverse_transform(svm_test_preds),
 })
-results.to_csv('disease_predictions_split.csv', index=False)
-print("Saved predictions to disease_predictions_split.csv")
+results.to_csv('Outputs/internal_disease_predictions_split.csv', index=False)
+print("Saved predictions to internal_disease_predictions_split.csv")
