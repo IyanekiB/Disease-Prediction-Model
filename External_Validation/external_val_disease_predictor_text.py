@@ -56,6 +56,9 @@ def load_and_prepare_csv(path):
 train_path = 'Datasets/symptom-disease-train-reformat.csv'
 test_path  = 'Datasets/symptom-disease-test-reformat.csv'
 
+# train_path = 'Datasets/symptom-disease-train-dataset.csv'
+# test_path  = 'Datasets/symptom-disease-test-dataset.csv'
+
 texts_train, labels_train, df_train = load_and_prepare_csv(train_path)
 texts_test,  labels_test,  df_test  = load_and_prepare_csv(test_path)
 
@@ -135,51 +138,124 @@ print_metrics("SVM (External Test)",           y_test_final, svm_preds, le)
 # -----------------------------
 # 8. CONFUSION MATRICES
 # -----------------------------
-def plot_top_n_cm(y_true, y_pred, encoder, n=20, model_name="Model"):
-    # 1) Identify the n most common label values in y_true
-    freq       = Counter(y_true)
-    top_n_vals = [lab for lab,_ in freq.most_common(n)]
+# def plot_top_n_cm(y_true, y_pred, encoder, n=20, model_name="Model"):
+#     # 1) Identify the n most common label values in y_true
+#     freq       = Counter(y_true)
+#     top_n_vals = [lab for lab,_ in freq.most_common(n)]
     
-    # 2) Determine the full set of unique labels and map them to row/col idx
+#     # 2) Determine the full set of unique labels and map them to row/col idx
+#     unique_vals = sorted(set(y_true))
+#     val_to_pos  = {val: i for i, val in enumerate(unique_vals)}
+    
+#     # 3) Build the full confusion matrix in that unique_vals order
+#     cm_full = confusion_matrix(y_true, y_pred, labels=unique_vals)
+    
+#     # 4) Compute the positions of our top-n labels in that matrix
+#     idx = [val_to_pos[val] for val in top_n_vals]
+    
+#     # 5) Slice out the top-n × top-n block
+#     cm_n = cm_full[np.ix_(idx, idx)]
+    
+#     # 6) Convert label values back to names
+#     class_names = [encoder.classes_[val] for val in top_n_vals]
+    
+#     # 7) Plot with annotation
+#     size = max(8, n * 0.4)
+#     plt.figure(figsize=(size, size))
+#     sns.heatmap(
+#         cm_n,
+#         cmap="Blues",
+#         xticklabels=class_names,
+#         yticklabels=class_names,
+#         annot=True,
+#         fmt="d",
+#         cbar_kws={'label': 'Count'}
+#     )
+#     plt.xticks(rotation=90, fontsize=6)
+#     plt.yticks(rotation=0, fontsize=6)
+#     plt.title(f"Top {n} Confusion Matrix – {model_name}")
+#     plt.xlabel("Predicted")
+#     plt.ylabel("Actual")
+#     plt.tight_layout()
+#     plt.show()
+
+#     return cm_n
+
+# # Then call it like this:
+# cm_rf_top20  = plot_top_n_cm(y_test_final, rf_preds,  le, n=20, model_name="Random Forest")
+# cm_svm_top20 = plot_top_n_cm(y_test_final, svm_preds, le, n=20, model_name="SVM")
+
+def plot_top_n_cm(y_true, y_pred, encoder, code_to_disease, n=20, model_name="Model"):
+    # 1) find the n most frequent *encoded* labels
+    freq        = Counter(y_true)
+    top_n_vals  = [lab for lab,_ in freq.most_common(n)]
+    
+    # 2) build the full confusion matrix over the unique encoded labels
     unique_vals = sorted(set(y_true))
-    val_to_pos  = {val: i for i, val in enumerate(unique_vals)}
+    cm_full     = confusion_matrix(y_true, y_pred, labels=unique_vals)
     
-    # 3) Build the full confusion matrix in that unique_vals order
-    cm_full = confusion_matrix(y_true, y_pred, labels=unique_vals)
+    # 3) map encoded label -> position in the matrix
+    val_to_pos  = {val:i for i,val in enumerate(unique_vals)}
+    idx         = [val_to_pos[v] for v in top_n_vals]
+    cm_n        = cm_full[np.ix_(idx, idx)]
     
-    # 4) Compute the positions of our top-n labels in that matrix
-    idx = [val_to_pos[val] for val in top_n_vals]
+    # 4) recover the *string* code for each encoded label, then map to disease name
+    class_names = []
+    for v in top_n_vals:
+        code_str = encoder.classes_[v]                 # e.g. "515"
+        disease  = code_to_disease.get(code_str, code_str)
+        class_names.append(disease)
     
-    # 5) Slice out the top-n × top-n block
-    cm_n = cm_full[np.ix_(idx, idx)]
-    
-    # 6) Convert label values back to names
-    class_names = [encoder.classes_[val] for val in top_n_vals]
-    
-    # 7) Plot with annotation
+    # 5) plot
     size = max(8, n * 0.4)
-    plt.figure(figsize=(size, size))
+    fig, ax = plt.subplots(figsize=(size, size))
     sns.heatmap(
         cm_n,
         cmap="Blues",
         xticklabels=class_names,
         yticklabels=class_names,
         annot=True,
-        fmt="d"
+        fmt="d",
+        cbar_kws={'label': 'Count'},
+        ax=ax
     )
+    ax.set_title(f"Top {n} Confusion Matrix – {model_name}")
+    ax.set_xlabel("Predicted Disease")
+    ax.set_ylabel("Actual Disease")
     plt.xticks(rotation=90, fontsize=6)
     plt.yticks(rotation=0, fontsize=6)
-    plt.title(f"Top {n} Confusion Matrix – {model_name}")
-    plt.xlabel("Predicted")
-    plt.ylabel("Actual")
     plt.tight_layout()
     plt.show()
-
+    
     return cm_n
 
-# Then call it like this:
-cm_rf_top20  = plot_top_n_cm(y_test_final, rf_preds,  le, n=20, model_name="Random Forest")
-cm_svm_top20 = plot_top_n_cm(y_test_final, svm_preds, le, n=20, model_name="SVM")
+# Make sure your mapping uses *string* keys:
+code_to_disease = {
+    "515": "Impetigo",
+    "596": "Malaria",
+    "72":  "Rheumatoid Arthritis",
+    "447":"Myocardial Infarction",
+    "394":"Urticaria (Hives)",
+    "308":"Migraine",
+    "297":"Hemorrhoids",
+    "412":"GERD",
+    "1035":"UTI",
+    "541":"Hepatitis",
+    "822":"Psoriasis",
+    "33":"Liver Cirrhosis",
+    "275":"Dengue Fever",
+    "718":"Stroke",
+    "1047":"Deep Vein Thrombosis",
+    "468":"Acute Liver Failure",
+    "700":"Osteoarthritis",
+    "504":"Hypoglycemia",
+    "766":"Pneumonia",
+    "502":"Hyperthyroidism",
+}
+
+# Then call:
+cm_rf_top20 = plot_top_n_cm(y_test_final, rf_preds,  le, code_to_disease, n=20, model_name="Random Forest")
+cm_svm_top20= plot_top_n_cm(y_test_final, svm_preds, le, code_to_disease, n=20, model_name="SVM")
 
 print("RF Top-20 CM:\n", cm_rf_top20)
 print("SVM Top-20 CM:\n", cm_svm_top20)

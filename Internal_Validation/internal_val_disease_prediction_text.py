@@ -104,7 +104,12 @@ print_metrics("SVM (Test)", y_test, svm_test_preds)
 def plot_cm(y_true, y_pred, model_name):
     cm = confusion_matrix(y_true, y_pred)
     plt.figure(figsize=(14, 12))
-    sns.heatmap(cm, cmap="Blues", xticklabels=le.classes_, yticklabels=le.classes_, annot=False)
+    sns.heatmap(cm, cmap="Blues", 
+                xticklabels=le.classes_, 
+                yticklabels=le.classes_, 
+                annot=True,
+                fmt='d',
+                cbar_kws={'label': 'Count'})
     plt.title(f"Confusion Matrix - {model_name}")
     plt.xlabel('Predicted')
     plt.ylabel('Actual')
