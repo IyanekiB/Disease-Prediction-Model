@@ -97,7 +97,7 @@ rf_preds = rf.predict(X_test_final)
 rf_probs = rf.predict_proba(X_test_final)
 
 # 6b. SVM with light GridSearch
-param_grid = {'C': [1], 'gamma': ['scale']}
+param_grid = {'C': [0.1, 1, 10], 'gamma': ['scale', 0.01, 0.1, 1]}
 svm = SVC(kernel='rbf', probability=True, random_state=42)
 grid = GridSearchCV(svm, param_grid, cv=3, scoring='accuracy', n_jobs=-1)
 grid.fit(X_train, y_train)
