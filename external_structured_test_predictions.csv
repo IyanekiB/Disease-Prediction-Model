@@ -1,0 +1,43 @@
+True_Disease,RF_Prediction,SVM_Prediction,RF_Confidence,SVM_Confidence
+Fungal infection,Fungal infection,Fungal infection,1.0,0.8796755128788584
+Allergy,Allergy,Allergy,1.0,0.8513804856934158
+GERD,GERD,GERD,1.0,0.8755585610237883
+Chronic cholestasis,Chronic cholestasis,Chronic cholestasis,1.0,0.8905401324223634
+Drug Reaction,Drug Reaction,Drug Reaction,1.0,0.8922732263074408
+Peptic ulcer diseae,Peptic ulcer diseae,Peptic ulcer diseae,1.0,0.8563394249469413
+AIDS,AIDS,AIDS,1.0,0.8473434397212465
+Diabetes ,Diabetes ,Diabetes ,1.0,0.8120225335301736
+Gastroenteritis,Gastroenteritis,Gastroenteritis,1.0,0.861118333541301
+Bronchial Asthma,Bronchial Asthma,Bronchial Asthma,1.0,0.8458618897903827
+Hypertension ,Hypertension ,Hypertension ,1.0,0.8715839143104113
+Migraine,Migraine,Migraine,1.0,0.8290977132578183
+Cervical spondylosis,Cervical spondylosis,Cervical spondylosis,1.0,0.8595800917761742
+Paralysis (brain hemorrhage),Paralysis (brain hemorrhage),Paralysis (brain hemorrhage),1.0,0.8619237222321912
+Jaundice,Jaundice,Jaundice,1.0,0.8538724622705298
+Malaria,Malaria,Malaria,1.0,0.8502972034645203
+Chicken pox,Chicken pox,Chicken pox,1.0,0.8239675396701734
+Dengue,Dengue,Dengue,1.0,0.8241786162863288
+Typhoid,Typhoid,Typhoid,1.0,0.8373991017925685
+hepatitis A,hepatitis A,hepatitis A,1.0,0.8934886304331352
+Hepatitis B,Hepatitis B,Hepatitis B,1.0,0.8362853516717588
+Hepatitis C,Hepatitis C,Hepatitis C,1.0,0.8698810382172296
+Hepatitis D,Hepatitis D,Hepatitis D,1.0,0.9102755273018428
+Hepatitis E,Hepatitis E,Hepatitis E,1.0,0.8891062063821547
+Alcoholic hepatitis,Alcoholic hepatitis,Alcoholic hepatitis,1.0,0.8432675663685061
+Tuberculosis,Tuberculosis,Tuberculosis,1.0,0.813133199358314
+Common Cold,Common Cold,Common Cold,1.0,0.7992100845430006
+Pneumonia,Pneumonia,Pneumonia,1.0,0.8297376981393733
+Dimorphic hemmorhoids(piles),Dimorphic hemmorhoids(piles),Dimorphic hemmorhoids(piles),1.0,0.8272299840427878
+Heart attack,Heart attack,Heart attack,1.0,0.8591609190157665
+Varicose veins,Varicose veins,Varicose veins,1.0,0.8297373384077871
+Hypothyroidism,Hypothyroidism,Hypothyroidism,1.0,0.7999982185876665
+Hyperthyroidism,Hyperthyroidism,Hyperthyroidism,1.0,0.8096704898340497
+Hypoglycemia,Hypoglycemia,Hypoglycemia,1.0,0.8133038874513241
+Osteoarthristis,Osteoarthristis,Osteoarthristis,1.0,0.8380229264047676
+Arthritis,Arthritis,Arthritis,1.0,0.8320618650936868
+(vertigo) Paroymsal  Positional Vertigo,(vertigo) Paroymsal  Positional Vertigo,(vertigo) Paroymsal  Positional Vertigo,1.0,0.8646954258192556
+Acne,Acne,Acne,1.0,0.8646224383698131
+Urinary tract infection,Urinary tract infection,Urinary tract infection,1.0,0.8519509304296538
+Psoriasis,Psoriasis,Psoriasis,1.0,0.8395309316576001
+Impetigo,Impetigo,Impetigo,1.0,0.858813984843221
+Fungal infection,Impetigo,Fungal infection,0.28,0.13231731961405488
