@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import re
 import nltk
+import os
 from nltk.stem import WordNetLemmatizer
 import warnings
 warnings.filterwarnings('ignore')
@@ -12,11 +13,13 @@ from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.preprocessing import LabelEncoder
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
+from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import (
     accuracy_score, classification_report, confusion_matrix,
     f1_score, precision_score, recall_score
 )
 from sklearn.feature_extraction.text import TfidfVectorizer
+from collections import Counter
 
 # Download NLTK resources
 nltk.download('punkt_tab')
@@ -81,8 +84,22 @@ print("Best SVM params (by val set):", grid.best_params_)
 # Now test on *never-seen* test set
 svm_test_preds = svm_best.predict(X_test)
 
+# ----- MLPClassifier (Neural Network) -----
+mlp = MLPClassifier(hidden_layer_sizes=(100,), max_iter=500, random_state=42)
+mlp.fit(X_train, y_train)
+mlp_val_preds = mlp.predict(X_val)
+mlp_test_preds = mlp.predict(X_test)
+
+# ----- Utility: Get Top N Class Indices by Frequency -----
+def get_top_n_classes(y_true, n=20):
+    freq = Counter(y_true)
+    return [label for label, _ in freq.most_common(n)]
+
 # ----- Evaluation Functions -----
-def print_metrics(name, y_true, y_pred):
+def print_metrics_top_n(name, y_true, y_pred, encoder, top_n=20):
+    """
+    Prints metrics and classification report for the top_n most frequent classes.
+    """
     print(f"\n{name} Metrics:")
     print(f"Accuracy: {accuracy_score(y_true, y_pred):.2%}")
     print("Macro Precision: {:.2%}".format(precision_score(y_true, y_pred, average='macro')))
@@ -91,34 +108,50 @@ def print_metrics(name, y_true, y_pred):
     print("Weighted Recall: {:.2%}".format(recall_score(y_true, y_pred, average='weighted')))
     print("Macro F1-score: {:.2%}".format(f1_score(y_true, y_pred, average='macro')))
     print("Weighted F1-score: {:.2%}".format(f1_score(y_true, y_pred, average='weighted')))
-    print("\nClassification Report:")
-    print(classification_report(y_true, y_pred, target_names=le.classes_))
+    # Only show top_n most common classes in y_true
+    top_classes = get_top_n_classes(y_true, top_n)
+    target_names = [encoder.classes_[i] for i in top_classes]
+    print(f"\nClassification Report (Top {top_n} by support):")
+    print(classification_report(
+        y_true, y_pred,
+        labels=top_classes,
+        target_names=target_names,
+        zero_division=0
+    ))
 
-# ----- Print results -----
-print_metrics("Random Forest (Val)", y_val, rf_val_preds)
-print_metrics("Random Forest (Test)", y_test, rf_test_preds)
-print_metrics("SVM (Val)", y_val, svm_val_preds)
-print_metrics("SVM (Test)", y_test, svm_test_preds)
+# ----- Print results (on test set, for top 20) -----
+print_metrics_top_n("Random Forest (Test)", y_test, rf_test_preds, le, top_n=20)
+print_metrics_top_n("SVM (Test)", y_test, svm_test_preds, le, top_n=20)
+print_metrics_top_n("MLP (Test)", y_test, mlp_test_preds, le, top_n=20)
 
-# Confusion matrices (for test set)
-def plot_cm(y_true, y_pred, model_name):
-    cm = confusion_matrix(y_true, y_pred)
-    plt.figure(figsize=(14, 12))
-    sns.heatmap(cm, cmap="Blues", 
-                xticklabels=le.classes_, 
-                yticklabels=le.classes_, 
+# ----- Confusion matrices (for test set, top 20) -----
+def plot_cm_top_n(y_true, y_pred, encoder, top_n=20, model_name="Model", save_path=None):
+    top_classes = get_top_n_classes(y_true, top_n)
+    cm = confusion_matrix(y_true, y_pred, labels=top_classes)
+    class_names = [encoder.classes_[i] for i in top_classes]
+    plt.figure(figsize=(12, 10))
+    sns.heatmap(cm, cmap="Blues",
+                xticklabels=class_names,
+                yticklabels=class_names,
                 annot=True,
                 fmt='d',
                 cbar_kws={'label': 'Count'})
-    plt.title(f"Confusion Matrix - {model_name}")
+    plt.title(f"Confusion Matrix (Top {top_n}) - {model_name}")
     plt.xlabel('Predicted')
     plt.ylabel('Actual')
     plt.tight_layout()
+    if save_path is not None:
+        folder = os.path.dirname(save_path)
+        if folder and not os.path.exists(folder):
+            os.makedirs(folder)
+        plt.savefig(save_path, dpi=300)
+        print(f"Confusion matrix saved to {save_path}")
     plt.show()
     return cm
 
-print("\nRandom Forest Test Confusion Matrix (Raw):\n", plot_cm(y_test, rf_test_preds, "Random Forest (Test)"))
-print("\nSVM Test Confusion Matrix (Raw):\n", plot_cm(y_test, svm_test_preds, "SVM (Test)"))
+print("\nRandom Forest Test Confusion Matrix (Top 20):\n", plot_cm_top_n(y_test, rf_test_preds, le, top_n=20, model_name="Random Forest", save_path="Outputs/Internal_cms/internal_rf_confusion_matrix_top20.png"))
+print("\nSVM Test Confusion Matrix (Top 20):\n", plot_cm_top_n(y_test, svm_test_preds, le, top_n=20, model_name="SVM", save_path="Outputs/Internal_cms/internal_svm_confusion_matrix_top20.png"))
+print("\nMLP Test Confusion Matrix (Top 20):\n", plot_cm_top_n(y_test, mlp_test_preds, le, top_n=20, model_name="MLP", save_path="Outputs/Internal_cms/internal_mlp_confusion_matrix_top20.png"))
 
 # Top-10 feature importances (Random Forest on test set)
 importances = rf.feature_importances_
@@ -139,6 +172,7 @@ results = pd.DataFrame({
     'True_Disease': le.inverse_transform(y_test),
     'RF_Prediction': le.inverse_transform(rf_test_preds),
     'SVM_Prediction': le.inverse_transform(svm_test_preds),
+    'MLP_Prediction': le.inverse_transform(mlp_test_preds),
 })
 results.to_csv('Outputs/internal_disease_predictions_split.csv', index=False)
 print("Saved predictions to internal_disease_predictions_split.csv")

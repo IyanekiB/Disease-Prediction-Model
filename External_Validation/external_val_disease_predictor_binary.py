@@ -9,20 +9,23 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.preprocessing import LabelEncoder
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
+from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import (
     accuracy_score, classification_report, confusion_matrix,
     f1_score, precision_score, recall_score
 )
+import os
 
 # --- LOAD TRAINING DATA ---
 train_df = pd.read_csv('Datasets/external_val_training_data_binary.csv')
 test_df = pd.read_csv('Datasets/external_val_test_data_binary.csv')
 
 # Remove unnamed or extra columns if present
-if 'Unnamed: 133' in train_df.columns:
-    train_df = train_df.drop('Unnamed: 133', axis=1)
-if 'Unnamed: 133' in test_df.columns:
-    test_df = test_df.drop('Unnamed: 133', axis=1)
+for col in ['Unnamed: 133', 'Unnamed: 0']:
+    if col in train_df.columns:
+        train_df = train_df.drop(col, axis=1)
+    if col in test_df.columns:
+        test_df = test_df.drop(col, axis=1)
 
 # Features: All columns except 'prognosis'
 feature_cols = [c for c in train_df.columns if c != 'prognosis']
@@ -50,8 +53,7 @@ rf.fit(X_train, y_train_enc)
 rf_preds = rf.predict(X_test_final)
 rf_probs = rf.predict_proba(X_test_final)
 
-# --- EFFICIENT SVM WITH REDUCED GRIDSEARCH ---
-# Small grid for speed (as SVM is slow on large data)
+# --- SVM WITH REDUCED GRIDSEARCH ---
 param_grid = {'C': [1, 10], 'gamma': ['scale', 0.01]}
 svm = SVC(kernel='rbf', probability=True, random_state=42)
 grid = GridSearchCV(svm, param_grid, cv=3, scoring='accuracy', n_jobs=-1)
@@ -60,6 +62,16 @@ svm_best = grid.best_estimator_
 svm_preds = svm_best.predict(X_test_final)
 svm_probs = svm_best.predict_proba(X_test_final)
 print("Best SVM params:", grid.best_params_)
+
+# --- MLPClassifier ---
+mlp = MLPClassifier(hidden_layer_sizes=(100,), max_iter=500, random_state=42)
+mlp.fit(X_train, y_train_enc)
+mlp_preds = mlp.predict(X_test_final)
+try:
+    mlp_probs = mlp.predict_proba(X_test_final)
+    mlp_conf = mlp_probs.max(axis=1)
+except Exception:
+    mlp_conf = np.nan * np.ones_like(rf_probs.max(axis=1))
 
 # --- EVALUATION FUNCTION ---
 def print_metrics(name, y_true, y_pred):
@@ -76,26 +88,31 @@ def print_metrics(name, y_true, y_pred):
 
 print_metrics("Random Forest (External Test)", y_test_enc, rf_preds)
 print_metrics("SVM (External Test)", y_test_enc, svm_preds)
+print_metrics("MLP (External Test)", y_test_enc, mlp_preds)
 
-# --- CONFUSION MATRIX ---
-def plot_cm(y_true, y_pred, model_name):
+# --- CONFUSION MATRIX & SAVE ---
+def plot_cm(y_true, y_pred, model_name, save_path=None):
     cm = confusion_matrix(y_true, y_pred)
-    plt.figure(figsize=(14, 12))
-    sns.heatmap(cm, cmap="Blues", xticklabels=le.classes_, yticklabels=le.classes_, annot=False)
+    plt.figure(figsize=(12, 10))
+    sns.heatmap(cm, cmap="Blues", xticklabels=le.classes_, yticklabels=le.classes_, annot=True, fmt='d', cbar_kws={'label': 'Count'})
     plt.title(f"Confusion Matrix - {model_name}")
     plt.xlabel('Predicted')
     plt.ylabel('Actual')
     plt.tight_layout()
+    if save_path is not None:
+        folder = os.path.dirname(save_path)
+        if folder and not os.path.exists(folder):
+            os.makedirs(folder)
+        plt.savefig(save_path, dpi=300)
+        print(f"Confusion matrix saved to {save_path}")
     plt.show()
     return cm
 
-cm_rf = plot_cm(y_test_enc, rf_preds, "Random Forest (External Test)")
-cm_svm = plot_cm(y_test_enc, svm_preds, "SVM (External Test)")
+plot_cm(y_test_enc, rf_preds, "Random Forest (External Test)", save_path="Outputs/External_cms/Binary/rf_confusion_matrix_binary.png")
+plot_cm(y_test_enc, svm_preds, "SVM (External Test)", save_path="Outputs/External_cms/Binary/svm_confusion_matrix_binary.png")
+plot_cm(y_test_enc, mlp_preds, "MLP (External Test)", save_path="Outputs/External_cms/Binary/mlp_confusion_matrix_binary.png")
 
-print("Random Forest Confusion Matrix (Raw):\n", cm_rf)
-print("SVM Confusion Matrix (Raw):\n", cm_svm)
-
-# --- FEATURE IMPORTANCE (RF) ---
+# --- FEATURE IMPORTANCE (RF only) ---
 importances = rf.feature_importances_
 indices = importances.argsort()[::-1]
 feature_names = np.array(feature_cols)
@@ -106,15 +123,17 @@ plt.bar(range(10), importances[indices[:10]], align='center')
 plt.xticks(range(10), feature_names[indices[:10]], rotation=45)
 plt.tight_layout()
 plt.show()
-print("Top features:", [feature_names[i] for i in indices[:10]])
+print("Top features (Random Forest):", [feature_names[i] for i in indices[:10]])
 
 # --- SAVE RESULTS ---
 results = pd.DataFrame({
     'True_Disease': le.inverse_transform(y_test_enc),
     'RF_Prediction': le.inverse_transform(rf_preds),
     'SVM_Prediction': le.inverse_transform(svm_preds),
+    'MLP_Prediction': le.inverse_transform(mlp_preds),
     'RF_Confidence': rf_probs.max(axis=1),
-    'SVM_Confidence': svm_probs.max(axis=1)
+    'SVM_Confidence': svm_probs.max(axis=1),
+    'MLP_Confidence': mlp_conf
 })
 results.to_csv('Outputs/external_structured_test_predictions.csv', index=False)
 print("Saved predictions to external_structured_test_predictions.csv")
