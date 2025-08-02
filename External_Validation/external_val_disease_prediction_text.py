@@ -4,65 +4,80 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import re
 import nltk
-import os
 from nltk.stem import WordNetLemmatizer
 from collections import Counter, defaultdict
 import warnings
+import os
 warnings.filterwarnings('ignore')
 
-from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.model_selection import GridSearchCV, train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
 from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import (
-    accuracy_score, classification_report, confusion_matrix,
-    f1_score, precision_score, recall_score
+    accuracy_score, precision_score, recall_score,
+    f1_score, classification_report, confusion_matrix
 )
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-# --- Data & Preprocessing ---
+# 1. DOWNLOAD NLTK RESOURCES
 nltk.download('punkt_tab')
 nltk.download('wordnet')
 
-df = pd.read_csv('Datasets/Symptom2Disease_augmented.csv')
-texts = df['text'].astype(str)
-labels = df['label']
-
+# 2. TEXT PREPROCESSING
 lemmatizer = WordNetLemmatizer()
 def preprocess_text(text):
-    text = text.lower()
+    text = str(text).lower()
     text = re.sub(r'\d+', '', text)
-    words = nltk.word_tokenize(text)
-    words = [w for w in words if w.isalpha() and len(w) > 2]
-    words = [lemmatizer.lemmatize(w) for w in words]
-    return ' '.join(words)
+    tokens = nltk.word_tokenize(text)
+    tokens = [t for t in tokens if t.isalpha() and len(t) > 2]
+    tokens = [lemmatizer.lemmatize(t) for t in tokens]
+    return ' '.join(tokens)
 
-texts_clean = texts.apply(preprocess_text)
+def load_and_prepare_csv(path):
+    df = pd.read_csv(path)
+    cols = [c.lower() for c in df.columns]
+    text_col  = next((c for c in df.columns if 'text' in c.lower() or 'desc' in c.lower()), None)
+    label_col = next((c for c in df.columns if 'label' in c.lower() or 'disease' in c.lower()), None)
+    if text_col is None or label_col is None:
+        raise ValueError(f"Cannot find text/label columns in {path}")
+    texts  = df[text_col].astype(str).apply(preprocess_text)
+    labels = df[label_col].astype(str)
+    return texts, labels, df
+
+train_path = 'Datasets/Symptom2Disease_augmented_train.csv'
+test_path  = 'Datasets/Symptom2Disease_augmented_test_shuffled.csv'
+
+texts_train, labels_train, df_train = load_and_prepare_csv(train_path)
+texts_test,  labels_test,  df_test  = load_and_prepare_csv(test_path)
+
 vectorizer = TfidfVectorizer(
     binary=True,
     stop_words='english',
     max_features=200,
     token_pattern=r'\b[a-zA-Z]{3,}\b'
 )
-X = vectorizer.fit_transform(texts_clean)
-le = LabelEncoder()
-y = le.fit_transform(labels)
 
-# --- (1) Per-class Support Plot ---
-support_count = Counter(y)
+X_train_full = vectorizer.fit_transform(texts_train)
+X_test_full  = vectorizer.transform(texts_test)
+le = LabelEncoder()
+y_train_full = le.fit_transform(labels_train)
+
+# --- Per-class Support Plot (on TRAIN set) ---
+support_count = Counter(y_train_full)
 classes_sorted = [i for i, _ in support_count.most_common(30)]
 class_labels = [le.classes_[i] for i in classes_sorted]
 support_vals = [support_count[i] for i in classes_sorted]
 plt.figure(figsize=(14, 6))
 sns.barplot(x=support_vals, y=class_labels, orient='h', color='skyblue')
-plt.title('Per-class Support (Top 30 Diseases)')
+plt.title('Per-class Support (Top 30 Diseases, Training Set)')
 plt.xlabel('Number of Samples')
 plt.ylabel('Disease')
 plt.tight_layout()
-plt.savefig("Outputs/internal_val_per_class_support.png", dpi=300)
+plt.savefig("Outputs/external_val_per_class_support.png", dpi=300)
 plt.close()
-print("Saved per-class support plot as Outputs/internal_val_per_class_support.png")
+print("Saved per-class support plot as Outputs/external_val_per_class_support.png")
 
 # --- Helper Functions ---
 def get_top_n_classes(y_true, n=20):
@@ -74,7 +89,6 @@ def print_metrics_top_n(name, y_true, y_pred, encoder, top_n=20):
     macro_f1 = f1_score(y_true, y_pred, average='macro')
     macro_prec = precision_score(y_true, y_pred, average='macro')
     macro_rec = recall_score(y_true, y_pred, average='macro')
-    # For summary only, do not print
     return acc, macro_f1, macro_prec, macro_rec
 
 def plot_cm_top_n_agg(cm_sum, class_names, model_name="Model", save_path=None):
@@ -97,9 +111,7 @@ def plot_cm_top_n_agg(cm_sum, class_names, model_name="Model", save_path=None):
         print(f"Confusion matrix saved to {save_path}")
     plt.close()
 
-# Error analysis helpers
 def add_confusion_pairs(cm, class_names, global_counter):
-    # Expects diagonal-zeroed confusion matrix
     for i in range(len(class_names)):
         for j in range(len(class_names)):
             if i != j and cm[i, j] > 0:
@@ -131,12 +143,16 @@ pair_mlp = defaultdict(int)
 seeds = list(range(10))
 
 for seed in seeds:
-    X_temp, X_test, y_temp, y_test, texts_temp, texts_test = train_test_split(
-        X, y, texts_clean, test_size=0.2, random_state=seed, stratify=y
-    )
-    X_train, X_val, y_train, y_val, texts_train, texts_val = train_test_split(
-        X_temp, y_temp, texts_temp, test_size=0.2, random_state=seed, stratify=y_temp
-    )
+    # For each run, shuffle train/test by seed (labels in test always aligned to train)
+    # Align test to only those classes in train for each seed
+    label_map = {lbl: idx for idx, lbl in enumerate(le.classes_)}
+    mask = np.array([lbl in label_map for lbl in labels_test])
+    X_test = X_test_full[mask]
+    labels_test_seed = labels_test[mask].values
+    y_test = np.array([label_map[lbl] for lbl in labels_test_seed])
+    # Train on full train, always the same split (simulate: just change seed for models)
+    X_train = X_train_full
+    y_train = y_train_full
 
     rf = RandomForestClassifier(n_estimators=100, random_state=seed)
     rf.fit(X_train, y_train)
@@ -154,9 +170,9 @@ for seed in seeds:
     mlp_test_preds = mlp.predict(X_test)
 
     # Metrics for model comparison (top 20 classes)
-    rf_stats = print_metrics_top_n("Random Forest (Test)", y_test, rf_test_preds, le, top_n=20)
-    svm_stats = print_metrics_top_n("SVM (Test)", y_test, svm_test_preds, le, top_n=20)
-    mlp_stats = print_metrics_top_n("MLP (Test)", y_test, mlp_test_preds, le, top_n=20)
+    rf_stats = print_metrics_top_n("Random Forest (External)", y_test, rf_test_preds, le, top_n=20)
+    svm_stats = print_metrics_top_n("SVM (External)", y_test, svm_test_preds, le, top_n=20)
+    mlp_stats = print_metrics_top_n("MLP (External)", y_test, mlp_test_preds, le, top_n=20)
     all_metrics['RF'].append(rf_stats)
     all_metrics['SVM'].append(svm_stats)
     all_metrics['MLP'].append(mlp_stats)
@@ -206,25 +222,25 @@ for i, name in enumerate(metrics_names):
     plt.title(f'Model Comparison: {name} (Mean ± Std over 10 runs)')
     plt.ylim(0, 1)
     plt.tight_layout()
-    plt.savefig(f"Outputs/Comparison/internal_model_comparison_{name.replace(' ', '_').lower()}.png", dpi=300)
+    plt.savefig(f"Outputs/Comparison/external_model_comparison_{name.replace(' ', '_').lower()}.png", dpi=300)
     plt.close()
     print(f"Saved model comparison barplot for {name}.")
 
 # --- (4) Confusion Matrices: Aggregate and Save ---
 plot_cm_top_n_agg(confusion_rf_sum, class_names, model_name="Random Forest",
-                  save_path="Outputs/Internal_cms/internal_rf_confusion_matrix_top20_SUM.png")
+                  save_path="Outputs/External_cms/Text/external_rf_confusion_matrix_top20_SUM.png")
 plot_cm_top_n_agg(confusion_svm_sum, class_names, model_name="SVM",
-                  save_path="Outputs/Internal_cms/internal_svm_confusion_matrix_top20_SUM.png")
+                  save_path="Outputs/External_cms/Text/external_svm_confusion_matrix_top20_SUM.png")
 plot_cm_top_n_agg(confusion_mlp_sum, class_names, model_name="MLP",
-                  save_path="Outputs/Internal_cms/internal_mlp_confusion_matrix_top20_SUM.png")
+                  save_path="Outputs/External_cms/Text/external_mlp_confusion_matrix_top20_SUM.png")
 
 # --- (5) Error Analysis: Most Confused Pairs Aggregated ---
 plot_confused_pairs_bar_global(pair_rf, "Random Forest",
-    save_path="Outputs/Error_Analysis/internal_rf_confused_bar_AGGREGATED.png", top_n=7)
+    save_path="Outputs/Error_Analysis/external_rf_confused_bar_AGGREGATED.png", top_n=7)
 plot_confused_pairs_bar_global(pair_svm, "SVM",
-    save_path="Outputs/Error_Analysis/internal_svm_confused_bar_AGGREGATED.png", top_n=7)
+    save_path="Outputs/Error_Analysis/external_svm_confused_bar_AGGREGATED.png", top_n=7)
 plot_confused_pairs_bar_global(pair_mlp, "MLP",
-    save_path="Outputs/Error_Analysis/internal_mlp_confused_bar_AGGREGATED.png", top_n=7)
+    save_path="Outputs/Error_Analysis/external_mlp_confused_bar_AGGREGATED.png", top_n=7)
 
 # --- (6) Save summary tables ---
 summary = pd.DataFrame({
@@ -238,5 +254,5 @@ summary = pd.DataFrame({
     'Macro Recall Mean': [rf_mean[3], svm_mean[3], mlp_mean[3]],
     'Macro Recall Std': [rf_std[3], svm_std[3], mlp_std[3]],
 })
-summary.to_csv("Outputs/internal_val_metric_summary.csv", index=False)
-print("Saved summary metric table as Outputs/internal_val_metric_summary.csv")
+summary.to_csv("Outputs/external_val_metric_summary.csv", index=False)
+print("Saved summary metric table as Outputs/external_val_metric_summary.csv")
