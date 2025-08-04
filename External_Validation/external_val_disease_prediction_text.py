@@ -66,12 +66,12 @@ y_train_full = le.fit_transform(labels_train)
 
 # --- Per-class Support Plot (on TRAIN set) ---
 support_count = Counter(y_train_full)
-classes_sorted = [i for i, _ in support_count.most_common(30)]
+classes_sorted = [i for i, _ in support_count.most_common(10)]
 class_labels = [le.classes_[i] for i in classes_sorted]
 support_vals = [support_count[i] for i in classes_sorted]
 plt.figure(figsize=(14, 6))
 sns.barplot(x=support_vals, y=class_labels, orient='h', color='skyblue')
-plt.title('Per-class Support (Top 30 Diseases, Training Set)')
+plt.title('External: Per-class Support (Top 10 Diseases, Training Set)')
 plt.xlabel('Number of Samples')
 plt.ylabel('Disease')
 plt.tight_layout()
@@ -241,6 +241,19 @@ plot_confused_pairs_bar_global(pair_svm, "SVM",
     save_path="Outputs/Error_Analysis/external_svm_confused_bar_AGGREGATED.png", top_n=7)
 plot_confused_pairs_bar_global(pair_mlp, "MLP",
     save_path="Outputs/Error_Analysis/external_mlp_confused_bar_AGGREGATED.png", top_n=7)
+
+# Top-10 feature importances (Random Forest on test set)
+importances = rf.feature_importances_
+indices = importances.argsort()[::-1]
+feature_names = vectorizer.get_feature_names_out()
+
+plt.figure(figsize=(12, 5))
+plt.title("Top 10 Feature Importances (Random Forest)")
+plt.bar(range(10), importances[indices[:10]], align='center')
+plt.xticks(range(10), feature_names[indices[:10]], rotation=45)
+plt.tight_layout()
+plt.show()
+print("Top features:", [feature_names[i] for i in indices[:10]])
 
 # --- (6) Save summary tables ---
 summary = pd.DataFrame({
